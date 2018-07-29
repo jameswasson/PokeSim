@@ -5,13 +5,15 @@ import AttackStates.Moves.Swift;
 import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
 import Pokemons.Pokemon;
+import Utils.RNG;
+
 
 public class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
     public void execute(Pokemon ourSelves, Pokemon opponent){
         logger.println("Move not implemented");
     }
-    public void sayWeUsedMove(Pokemon us){
+    protected void sayWeUsedMove(Pokemon us){
         logger.println(us.getName() + " used " + getName(getClass()) + "!");
     }
 
@@ -50,5 +52,22 @@ public class AttackState {
     @Override
     public String toString(){
         return getName(this.getClass());
+    }
+
+    public int getPower(){
+        logger.println(toString() + ".getPower not implemented");
+        return 0;
+    }
+
+    public DamageCategorie getDamageCategory(){
+        logger.println(toString() + ".getDamageCategory not implemented");
+        return DamageCategorie.physical;
+    }
+
+    public boolean willBeCritical(Pokemon pokemon){
+        double baseSpeed = 100;//todo implement v
+        //baseSpeed = pokemon.getBaseSpeed
+        double probabilityOfCrit = (baseSpeed + 76)/ 1024;
+        return RNG.random() < probabilityOfCrit;
     }
 }

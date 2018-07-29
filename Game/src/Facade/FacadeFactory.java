@@ -24,8 +24,7 @@ public class FacadeFactory {
         return implMap;
     }
     private static Map<Class<?>, Object> defaultInstances() {
-        Map<Class<?>, Object> implMap = new HashMap<>();
-        return implMap;
+        return new HashMap<>();
     }
 
     private static Map<Class<?>, Class<?>> interfaceToClass;

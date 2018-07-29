@@ -5,7 +5,7 @@ import BattleStates.pre.Asleep;
 import Pokemons.Pokemon;
 
 public class Drowsy extends BattleState {
-    int turnsTillFallsAsleep;
+    private int turnsTillFallsAsleep;
     public Drowsy(Pokemon pokemon){
         pokemon.addPostBattleState(this);
         turnsTillFallsAsleep = 2;

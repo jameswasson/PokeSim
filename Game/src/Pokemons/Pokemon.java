@@ -78,12 +78,10 @@ public class Pokemon implements IPokemon{
     public AttackState getAttackState() {
         return attackState;
     }
-    public void setAttackState(Class attackStateClass){
+    private void setAttackState(Class attackStateClass){
         try {
             attackState = (AttackState) attackStateClass.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

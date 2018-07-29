@@ -14,8 +14,8 @@ public class Rollout extends AttackState {
         this.countOfRollouts = countOfRollouts;
     }
     public void execute(Pokemon ourSelf,Pokemon opponent) {
-        countOfRollouts++;
         sayWeUsedMove(ourSelf);
+        countOfRollouts++;
         int multiplier = (int) (Math.pow(2, countOfRollouts - 1));
         logger.println("Damage was multiplied X" + multiplier + "!");
         if (countOfRollouts < 5){

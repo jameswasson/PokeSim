@@ -1,0 +1,86 @@
+package AttackStates;
+
+import BattleStates.post.Burn;
+import Pokemons.Pokedex;
+import Pokemons.Pokemon;
+import Utils.RNG;
+
+public class DamageCalculator {
+
+    //Reference: https://bulbapedia.bulbagarden.net/wiki/Damage
+    public static int getDamage(Pokemon ourselves, Pokemon opponent, AttackState move){
+        double modifier = getDamageModifier(ourselves, opponent, move);
+        double level = 100;
+        double power = move.getPower();
+        double a_d = getEffectiveDefenceAttackStats(ourselves, opponent, move); // a / d
+        double damage = (level * 2)/5 + 2;
+        damage *= power * a_d / 50;
+        damage += 2;
+        damage *= modifier;
+        return (int)damage;
+    }
+
+    private static double getEffectiveDefenceAttackStats(Pokemon ourselves, Pokemon opponent, AttackState move){
+        DamageCategorie categorie = move.getDamageCategory();
+        double ourAttack;
+        double theirDefence;
+        if (categorie == DamageCategorie.physical){
+//            TODO implement
+//            ourAttack = ourselves.getAttackStat();
+//            theirDefence = opponent.getDefenceStat();
+            ourAttack = 1;
+            theirDefence = 1;
+        }
+        else if (categorie == DamageCategorie.special){
+//            TODO implement
+//            ourAttack = ourselves.getSpecialStat();
+//            theirDefence = opponent.getSpecialStat();
+            ourAttack = 1;
+            theirDefence = 1;
+        }
+        else{
+            //ERROR! Bad things
+            return 0;
+        }
+        return ourAttack/theirDefence;
+    }
+
+    private static double getDamageModifier(Pokemon ourselves, Pokemon opponent, AttackState move){
+        //target, badge and burn are not implemented in gen 1
+        double weather = getWeather(move);
+        double critical = getCritical(ourselves, move);
+        double random = RNG.random(.85,1);
+        double STAB = getSTAB(ourselves, move);
+        double type = getType(move, opponent);
+        double other = getOther(ourselves, move, opponent);
+        return weather * critical * random * STAB * type * other;
+    }
+
+    private static double getOther(Pokemon pokemon, AttackState move, Pokemon opponent){
+        //add to this function as necessary, keep dynamic please
+        return 1;
+    }
+
+    private static double getSTAB(Pokemon pokemon, AttackState move){
+        //todo implement this
+        return 1;
+    }
+
+    private static double getType(AttackState move, Pokemon opponent){
+        //todo implement this
+        return 1;
+    }
+
+    private static double getCritical(Pokemon pokemon, AttackState move){
+        //more complicated in gen 1, we are treating ourselves here with simplicity.
+        if (move.willBeCritical(pokemon))
+            return 2;
+        else
+            return 1;
+    }
+
+    private static double getWeather(AttackState move){
+        //TODO implement once stage effects are implemented
+        return 1;
+    }
+}

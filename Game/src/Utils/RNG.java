@@ -15,6 +15,12 @@ public class RNG {
     public static double random(){
         return getRandom().nextDouble();
     }
+    public static double random(double lower, double upper){
+        double rand = random();
+        rand *= (upper - lower);
+        rand += lower;
+        return rand;
+    }
 
     private static Random getRandom(){
         if (random == null)
