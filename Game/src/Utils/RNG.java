@@ -21,6 +21,11 @@ public class RNG {
         rand += lower;
         return rand;
     }
+    public static int randomInt(int lower, int upper){
+        //upper and lower are both inclusive
+        double rand = random((double)lower, (double)++upper);
+        return (int)rand;
+    }
 
     private static Random getRandom(){
         if (random == null)

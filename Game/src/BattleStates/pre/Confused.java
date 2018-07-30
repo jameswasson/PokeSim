@@ -9,11 +9,8 @@ import Utils.RNG;
 
 public class Confused extends BattleState {
     private int turnsTillNotConfused;
-    public Confused(Pokemon p){
-        logger.println(p.getName() + " is confused!");
-        p.getPreBattleStates().add(this);
-        turnsTillNotConfused = (int)(RNG.random() * 3) + 1;
-        this.execute(p);
+    private Confused(){
+        turnsTillNotConfused = RNG.randomInt(1, 3);
     }
     public boolean execute(Pokemon pokemon){
         boolean shouldSnapOut = turnsTillNotConfused == 0;
@@ -29,7 +26,10 @@ public class Confused extends BattleState {
             FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " is already confused!");
         }
         else{
-            new Confused(pokemon);
+            logger.println(pokemon.getName() + " is confused!");
+            Confused confused = new Confused();
+            pokemon.getPreBattleStates().add(confused);
+            confused.execute(pokemon);
         }
     }
 }

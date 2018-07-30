@@ -59,9 +59,9 @@ public class AttackState {
         return 0;
     }
 
-    public DamageCategorie getDamageCategory(){
+    public DamageCategory getDamageCategory(){
         logger.println(toString() + ".getDamageCategory not implemented");
-        return DamageCategorie.physical;
+        return DamageCategory.physical;
     }
 
     public boolean willBeCritical(Pokemon pokemon){

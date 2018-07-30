@@ -1,6 +1,6 @@
 package AttackStates;
 
-public enum DamageCategorie {
+public enum DamageCategory {
     physical,
     special,
     status

@@ -1,7 +1,5 @@
 package AttackStates;
 
-import BattleStates.post.Burn;
-import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
@@ -17,32 +15,10 @@ public class DamageCalculator {
         damage *= power * a_d / 50;
         damage += 2;
         damage *= modifier;
-        return (int)damage;
-    }
-
-    private static double getEffectiveDefenceAttackStats(Pokemon ourselves, Pokemon opponent, AttackState move){
-        DamageCategorie categorie = move.getDamageCategory();
-        double ourAttack;
-        double theirDefence;
-        if (categorie == DamageCategorie.physical){
-//            TODO implement
-//            ourAttack = ourselves.getAttackStat();
-//            theirDefence = opponent.getDefenceStat();
-            ourAttack = 1;
-            theirDefence = 1;
-        }
-        else if (categorie == DamageCategorie.special){
-//            TODO implement
-//            ourAttack = ourselves.getSpecialStat();
-//            theirDefence = opponent.getSpecialStat();
-            ourAttack = 1;
-            theirDefence = 1;
-        }
-        else{
-            //ERROR! Bad things
-            return 0;
-        }
-        return ourAttack/theirDefence;
+        if ((int)damage == 0)
+            return 1;
+        else
+            return (int)damage;
     }
 
     private static double getDamageModifier(Pokemon ourselves, Pokemon opponent, AttackState move){
@@ -54,6 +30,31 @@ public class DamageCalculator {
         double type = getType(move, opponent);
         double other = getOther(ourselves, move, opponent);
         return weather * critical * random * STAB * type * other;
+    }
+
+    private static double getEffectiveDefenceAttackStats(Pokemon ourselves, Pokemon opponent, AttackState move){
+        DamageCategory category = move.getDamageCategory();
+        double ourAttack;
+        double theirDefence;
+        if (category == DamageCategory.physical){
+//            TODO implement
+//            ourAttack = ourselves.getAttackStat();
+//            theirDefence = opponent.getDefenceStat();
+            ourAttack = 1;
+            theirDefence = 1;
+        }
+        else if (category == DamageCategory.special){
+//            TODO implement
+//            ourAttack = ourselves.getSpecialStat();
+//            theirDefence = opponent.getSpecialStat();
+            ourAttack = 1;
+            theirDefence = 1;
+        }
+        else{
+            //ERROR! Bad things
+            return 0;
+        }
+        return ourAttack/theirDefence;
     }
 
     private static double getOther(Pokemon pokemon, AttackState move, Pokemon opponent){
@@ -71,16 +72,16 @@ public class DamageCalculator {
         return 1;
     }
 
+    private static double getWeather(AttackState move){
+        //TODO implement once stage effects are implemented
+        return 1;
+    }
+
     private static double getCritical(Pokemon pokemon, AttackState move){
         //more complicated in gen 1, we are treating ourselves here with simplicity.
         if (move.willBeCritical(pokemon))
             return 2;
         else
             return 1;
-    }
-
-    private static double getWeather(AttackState move){
-        //TODO implement once stage effects are implemented
-        return 1;
     }
 }
