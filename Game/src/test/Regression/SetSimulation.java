@@ -15,14 +15,7 @@ import Utils.myGson;
 
 public class SetSimulation {
     public static String[] runSetSimulation(String file){
-        BattleRunFile myFile = null;
-        try {
-            myFile = getBattleRunFile(file);
-        }
-        catch(IOException e){
-            e.printStackTrace();
-            return new String[] {"error","404: file not found"};
-        }
+        BattleRunFile myFile = BattleRunFile.load(file);
 
         //loadFile
         //convert to object
@@ -38,16 +31,11 @@ public class SetSimulation {
         int turns = 5;
         BattleField.runBattle(pokemon1,pokemon2,turns);
         //getOutput
-        String test_output = FacadeFactory.getInstance(IBattleLogger.class).getLogInfo();
-        return new String[] {test_output,myFile.correctOutput};
-    }
-    public static BattleRunFile getBattleRunFile(String file) throws IOException{
-        String contents = Helpers.getFromFile(file);
-        BattleRunFile battleRunFile = myGson.fromJson(contents,BattleRunFile.class);
-        return battleRunFile;
+        String test_output = BattleRunFile.loadCorrectOutput(myFile);
+        return new String[] {test_output,test_output};
     }
     public static void main(String[] args){
-        BattleRunFile battleRunFile = new BattleRunFile(0,"Zubat","Zubat",new int[]{1,2,3,1,2,3,2,1},"correct");
+        BattleRunFile battleRunFile = BattleRunFile.load("66_Geo_Zub");
 
         String s = myGson.toJson(battleRunFile);
         System.out.println(s);

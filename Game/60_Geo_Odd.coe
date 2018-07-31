@@ -1,0 +1,31 @@
+Select a move for Geodude:
+(1): Confuse Ray
+(2): Rollout
+Type a number from 1 to 2: Select a move for Oddish:
+(1): Mega Drain
+(2): Yawn
+Type a number from 1 to 2: 
+Geodude used Rollout!
+Damage was multiplied X1!
+Oddish used Yawn!
+
+Select a move for Oddish:
+(1): Mega Drain
+(2): Yawn
+Type a number from 1 to 2: 
+Geodude used Rollout!
+Damage was multiplied X2!
+Oddish used Mega Drain!
+Drained X HP from Geodude
+Oddish gained X HP!
+Geodude fell asleep!
+
+Select a move for Oddish:
+(1): Mega Drain
+(2): Yawn
+Type a number from 1 to 2: 
+Geodude is asleep!
+Oddish used Mega Drain!
+Drained X HP from Geodude
+Oddish gained X HP!
+

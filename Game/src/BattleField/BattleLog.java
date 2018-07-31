@@ -1,24 +1,10 @@
 package BattleField;
 
-/**
- * Created by James on 7/3/2018.
- */
-
-public class BattleLog implements IBattleLogger{
+public class BattleLog extends MasterLog {
 
     @Override
     public void print(String s) {
         System.out.print(s);
-    }
-
-    @Override
-    public void println(String s) {
-        print(s + "\n");
-    }
-
-    @Override
-    public void println() {
-        println("");
     }
 
     @Override

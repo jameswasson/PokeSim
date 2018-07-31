@@ -1,0 +1,13 @@
+{
+  "seed": 60,
+  "pokemon1": "Geodude",
+  "pokemon2": "Oddish",
+  "moveSelection": [
+    2,
+    2,
+    1,
+    1
+  ],
+  "correctOutputFileName": "60_Geo_Odd.coe",
+  "id": "60_Geo_Odd"
+}

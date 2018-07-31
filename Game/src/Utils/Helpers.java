@@ -35,26 +35,35 @@ public class Helpers {
     }
 
     public static String getFromFile(String file) throws IOException {
-
-        Scanner scnr = new Scanner(new File(file));
+        file = "\\" + file;
+        try{
+            Scanner testScanner = new Scanner(new File(getDirectory()+file));
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+            System.out.println("ERROR, File not found at " + getDirectory() + file);
+            throw e;
+        }
+        Scanner scnr = new Scanner(new File(getDirectory()+file));
 
         StringBuilder contents = new StringBuilder();
         while(scnr.hasNextLine()) {
             contents.append(scnr.nextLine());
-            if (scnr.hasNextLine());
+            if (scnr.hasNextLine())
                 contents.append("\n");
         }
         return contents.toString();
     }
 
     public static void writeToFile(String data, String file) throws IOException{
-        PrintWriter out = new PrintWriter(file);
+        file = "\\" + file;
+        PrintWriter out = new PrintWriter(getDirectory() + file);
         out.print(data);
         out.close();
     }
 
     public static String getDirectory(){
-        return new File("test.txt").getAbsolutePath();
+        return new File("").getAbsolutePath();
     }
 
     public static void main(String[] args) {

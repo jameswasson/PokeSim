@@ -1,0 +1,38 @@
+Select a move for Geodude:
+(1): Confuse Ray
+(2): Rollout
+Type a number from 1 to 2: Select a move for Zubat:
+(1): Confuse Ray
+(2): Mega Drain
+(3): Swift
+Type a number from 1 to 3: 
+Geodude used Rollout!
+Damage was multiplied X1!
+Zubat used Confuse Ray!
+Geodude is confused!
+
+Select a move for Zubat:
+(1): Confuse Ray
+(2): Mega Drain
+(3): Swift
+Type a number from 1 to 3: 
+Geodude is confused!
+It hurt itself in its confusion!
+Zubat used Confuse Ray!
+Geodude is confused!
+
+Select a move for Geodude:
+(1): Confuse Ray
+(2): Rollout
+Type a number from 1 to 2: Select a move for Zubat:
+(1): Confuse Ray
+(2): Mega Drain
+(3): Swift
+Type a number from 1 to 3: 
+Geodude is confused!
+Geodude is confused!
+It hurt itself in its confusion!
+Zubat used Mega Drain!
+Drained X HP from Geodude
+Zubat gained X HP!
+

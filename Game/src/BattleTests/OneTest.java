@@ -13,7 +13,7 @@ public class OneTest {
     }
     @Test
     public void runOneBattle(){
-        String fileName = "BattleRunFiles//file.txt";
+        String fileName = "60_Geo_Odd.rfe";
         String[] results = SetSimulation.runSetSimulation(fileName);
 
         assert results[0].equals(results[1]);

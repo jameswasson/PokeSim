@@ -6,6 +6,7 @@ import java.util.Map;
 import BattleField.BattleLog;
 import BattleField.IBattleLogger;
 import BattleField.TestLog;
+import BattleField.TestMakerLog;
 import Utils.SelectMove.IChooseMove;
 import Utils.SelectMove.TestChooseMove;
 import Utils.SelectMove.UserChooseMove;
@@ -21,6 +22,12 @@ public class FacadeFactory {
         Map<Class<?>, Class<?>> implMap = new HashMap<>();
         implMap.put(IBattleLogger.class, TestLog.class);
         implMap.put(IChooseMove.class, TestChooseMove.class);
+        return implMap;
+    }
+    private static Map<Class<?>, Class<?>> testMakerClasses(){
+        Map<Class<?>, Class<?>> implMap = new HashMap<>();
+        implMap.put(IBattleLogger.class, TestMakerLog.class);
+        implMap.put(IChooseMove.class, UserChooseMove.class);
         return implMap;
     }
     private static Map<Class<?>, Object> defaultInstances() {
@@ -74,6 +81,9 @@ public class FacadeFactory {
     }
     public static void createTestingEnvironment(){
         interfaceToClass = testClasses();
+    }
+    public static void createTestMakerEnvironment(){
+        interfaceToClass = testMakerClasses();
     }
 
     public int eh(){

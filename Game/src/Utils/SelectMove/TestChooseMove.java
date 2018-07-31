@@ -19,6 +19,12 @@ public class TestChooseMove implements IChooseMove{
         FacadeFactory.getInstance(IBattleLogger.class).println(Integer.toString(toReturn));
         return toReturn;
     }
+
+    @Override
+    public int[] getChosenMoves() {
+        return listOfMoves;
+    }
+
     public void loadMoves(int[] loadedMoves){
         listOfMoves = loadedMoves;
     }
