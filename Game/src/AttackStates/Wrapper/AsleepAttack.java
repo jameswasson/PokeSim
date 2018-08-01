@@ -3,9 +3,6 @@ package AttackStates.Wrapper;
 import AttackStates.AttackState;
 import Pokemons.Pokemon;
 
-/**
- * Created by James on 3/4/2018.
- */
 
 public class AsleepAttack extends AttackState {
     AttackState nextAttack;

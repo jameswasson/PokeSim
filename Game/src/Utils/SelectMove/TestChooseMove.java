@@ -3,10 +3,6 @@ package Utils.SelectMove;
 import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
 
-/**
- * Created by James on 7/6/2018.
- */
-
 public class TestChooseMove implements IChooseMove{
     private int[] listOfMoves;
     public int getMove(int num_of_moves_available){

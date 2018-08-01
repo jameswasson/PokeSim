@@ -48,7 +48,6 @@ public class MoveDatabase {
     private void addOddish(){
         List<Class> oddishList = new ArrayList<>();
         oddishList.add(MegaDrain.class);
-        oddishList.add(Yawn.class);
         nameToAttackMap.put("Oddish",oddishList);
     }
 }

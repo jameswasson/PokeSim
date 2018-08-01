@@ -2,10 +2,6 @@ package Utils;
 
 import java.util.Random;
 
-/**
- * Created by James on 7/6/2018.
- */
-
 public class RNG {
     private static Random random;
 

@@ -1,11 +1,11 @@
 package AttackStates.Moves;
 
-import AttackStates.AttackState;
+import AttackStates.Move;
 import BattleStates.BattleState;
 import BattleStates.pre.SetNextMove;
 import Pokemons.Pokemon;
 
-public class Rollout extends AttackState {
+public class Rollout extends Move {
     int countOfRollouts;
     public Rollout(){
         countOfRollouts = 0;
@@ -13,8 +13,7 @@ public class Rollout extends AttackState {
     public Rollout(int countOfRollouts){
         this.countOfRollouts = countOfRollouts;
     }
-    public void execute(Pokemon ourSelf,Pokemon opponent) {
-        sayWeUsedMove(ourSelf);
+    public void attack(Pokemon ourSelf,Pokemon opponent) {
         countOfRollouts++;
         int multiplier = (int) (Math.pow(2, countOfRollouts - 1));
         logger.println("Damage was multiplied X" + multiplier + "!");

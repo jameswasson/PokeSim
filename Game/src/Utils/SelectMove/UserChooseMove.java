@@ -4,10 +4,6 @@ import Utils.Helpers;
 
 import java.util.ArrayList;
 
-/**
- * Created by James on 7/6/2018.
- */
-
 public class UserChooseMove implements IChooseMove {
     private ArrayList<Integer> chosenMoves = new ArrayList<>();
     public int getMove(int num_of_moves_available) {

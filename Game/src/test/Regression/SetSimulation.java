@@ -1,13 +1,10 @@
 package test.Regression;
 
-import java.io.IOException;
 
 import BattleField.BattleField;
-import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
 import Pokemons.IPokemon;
 import Pokemons.Pokemon;
-import Utils.Helpers;
 import Utils.RNG;
 import Utils.SelectMove.IChooseMove;
 import Utils.SelectMove.TestChooseMove;

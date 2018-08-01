@@ -1,7 +1,7 @@
 package AttackStates.Moves;
 
-import AttackStates.AttackState;
+import AttackStates.Move;
 
-public class NotImplemented extends AttackState {
+public class NotImplemented extends Move {
 
 }

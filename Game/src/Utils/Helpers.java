@@ -1,18 +1,11 @@
 package Utils;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
 import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
-
-/**
- * Created by James on 3/3/2018.
- */
 
 public class Helpers {
 

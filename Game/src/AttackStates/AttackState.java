@@ -16,7 +16,8 @@ public class AttackState {
     protected void sayWeUsedMove(Pokemon us){
         logger.println(us.getName() + " used " + getName(getClass()) + "!");
     }
-
+    public void attack(Pokemon ourselves, Pokemon opponent){
+    }
     //returns appropriate name of move from class
     public static String getName(Class moveClass){
         String name = "";
