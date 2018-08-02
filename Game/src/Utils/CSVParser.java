@@ -9,7 +9,7 @@ import java.util.*;
 
 public abstract class CSVParser {
 
-    public abstract List<String> processLine(String line);
+    public abstract List<String> processLine(String line, boolean verbose);
 
     //loads fileName as location of csv Pokedex and returns parsed instance
     public Set<String> getCSV(String fileName){
@@ -26,7 +26,7 @@ public abstract class CSVParser {
         }
         while(scnr.hasNextLine()){
             if (!firstIter) {
-                List<String> processed = processLine(scnr.nextLine());
+                List<String> processed = processLine(scnr.nextLine(),false);
                 toReturn.addAll(processed);
             }
             else {

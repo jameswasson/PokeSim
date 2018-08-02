@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class MovedexParser extends CSVParser {
 
-    public List<String> processLine(String line) {
+    public List<String> processLine(String line, boolean verbose) {
         List<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(line);
         scnr.useDelimiter(",");

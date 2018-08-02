@@ -23,8 +23,8 @@ public class TestMaker {
 
     private static void makeTestFrom(long seed, String poke1, String poke2, int turns, String file){
         RNG.setSeed(seed);
-        IPokemon pokemon1 = new Pokemon(poke1);
-        IPokemon pokemon2 = new Pokemon(poke2);
+        IPokemon pokemon1 = null;
+        IPokemon pokemon2 = null;
         runBattle(pokemon1, pokemon2, turns);
 
         String correctOutput = FacadeFactory.getInstance(IBattleLogger.class).getLogInfo();

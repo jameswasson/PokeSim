@@ -2,6 +2,7 @@ package BattleField;
 
 import Facade.FacadeFactory;
 import Pokemons.IPokemon;
+import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 
 public class BattleField {
@@ -10,8 +11,8 @@ public class BattleField {
     }
 
     public static void main(String[] args){
-        IPokemon pokemon1 = new Pokemon("Geodude");
-        IPokemon pokemon2 = new Pokemon("Zubat");
+        IPokemon pokemon1 = Pokedex.getPokemon(126);//magmar
+        IPokemon pokemon2 = Pokedex.getPokemon(41);//zubat
         int turns = 100;
         runBattle(pokemon1, pokemon2, turns);
     }

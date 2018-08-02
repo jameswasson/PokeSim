@@ -42,7 +42,7 @@ public class MoveDatabase {
     private void addGeodude(){
         List<Class> geodudeList = new ArrayList<>();
         geodudeList.add(ConfuseRay.class);
-        geodudeList.add(Rollout.class);
+        geodudeList.add(MegaPunch.class);
         nameToAttackMap.put("Geodude",geodudeList);
     }
     private void addOddish(){

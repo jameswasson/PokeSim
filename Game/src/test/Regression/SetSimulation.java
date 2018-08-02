@@ -19,8 +19,8 @@ public class SetSimulation {
         //prepareSeed
         RNG.setSeed(myFile.seed);
         //get pokemon
-        IPokemon pokemon1 = new Pokemon(myFile.pokemon1);
-        IPokemon pokemon2 = new Pokemon(myFile.pokemon2);
+        IPokemon pokemon1 = null;
+        IPokemon pokemon2 = null;
         //load moves
         int[] moves = myFile.moveSelection;
         ((TestChooseMove)(FacadeFactory.getInstance(IChooseMove.class))).loadMoves(moves);

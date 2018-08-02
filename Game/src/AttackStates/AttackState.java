@@ -1,9 +1,11 @@
 package AttackStates;
 
+import AttackStates.Moves.MegaPunch;
 import AttackStates.Moves.NotImplemented;
 import AttackStates.Moves.Swift;
 import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
+import Pokemons.EleType;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
@@ -66,9 +68,13 @@ public class AttackState {
     }
 
     public boolean willBeCritical(Pokemon pokemon){
-        double baseSpeed = 100;//todo implement v
-        //baseSpeed = pokemon.getBaseSpeed
+        double baseSpeed = pokemon.getBaseSPD();
         double probabilityOfCrit = (baseSpeed + 76)/ 1024;
         return RNG.random() < probabilityOfCrit;
+    }
+
+    public EleType getEleType(){
+        //todo implement v
+        return EleType.None;
     }
 }

@@ -20,19 +20,82 @@ public class Pokemon implements IPokemon{
     List<BattleState> preBattleStates;
     AttackState attackState;
     List<BattleState> postBattleStates;
-    List<Class> moves;
-    String name;
+    List<Class<?>> moves;
     IBattleLogger logger;
 
-    public Pokemon(String name){
+    int pokedexNo;
+    String name;
+    EleType type1;
+    EleType type2;
+    int HP;
+    int ATK;
+    int DEF;
+    int SPC;
+    int SPD;
+
+    public int getPokedexNo(){
+        return pokedexNo;
+    }
+    public int getBaseHP(){
+        return HP;
+    }
+    public int getBaseATK(){
+        return ATK;
+    }
+    public int getBaseDEF() {
+        return DEF;
+    }
+    public int getBaseSPC(){
+        return SPC;
+    }
+    public int getBaseSPD(){
+        return SPD;
+    }
+    public int getCurHP(){
+        //todo change
+        return getBaseHP();
+    }
+    public int getCurATK(){
+        //todo change
+        return getBaseATK();
+    }
+    public int getCurDEF(){
+        //todo change
+        return getBaseDEF();
+    }
+    public int getCurSPC(){
+        //todo change
+        return getBaseSPC();
+    }
+    public int getCurSPD(){
+        //todo change
+        return getBaseSPD();
+    }
+    public boolean isType(EleType type){
+        return type == type1 || type == type2;
+    }
+
+    public Pokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Class<?>> moves) {
+        this.pokedexNo = pokedexNo;
         this.name = name;
+        this.type1 = type1;
+        this.type2 = type2;
+        this.HP = HP;
+        this.ATK = ATK;
+        this.DEF = DEF;
+        this.SPC = SPC;
+        this.SPD = SPD;
+        this.moves = moves;
         this.preBattleStates = new ArrayList<>();
         this.postBattleStates = new ArrayList<>();
-        this.moves = MoveDatabase.getAttackStateFor(name);
         this.shouldSelectMove = true;
         this.logger = FacadeFactory.getInstance(IBattleLogger.class);
         this.moveGetter = FacadeFactory.getInstance(IChooseMove.class);
     }
+    public static Pokemon copyPokemon(Pokemon pokemon){
+        return new Pokemon(pokemon.pokedexNo,pokemon.name,pokemon.type1,pokemon.type2,pokemon.HP,pokemon.ATK,pokemon.DEF,pokemon.SPC,pokemon.SPD,pokemon.moves);
+    }
+
     public void selectMove(){
         if (!shouldSelectMove)
             return;

@@ -37,18 +37,12 @@ public class DamageCalculator {
         double ourAttack;
         double theirDefence;
         if (category == DamageCategory.physical){
-//            TODO implement
-//            ourAttack = ourselves.getAttackStat();
-//            theirDefence = opponent.getDefenceStat();
-            ourAttack = 1;
-            theirDefence = 1;
+            ourAttack = ourselves.getCurATK();
+            theirDefence = opponent.getCurDEF();
         }
         else if (category == DamageCategory.special){
-//            TODO implement
-//            ourAttack = ourselves.getSpecialStat();
-//            theirDefence = opponent.getSpecialStat();
-            ourAttack = 1;
-            theirDefence = 1;
+            ourAttack = ourselves.getCurSPC();
+            theirDefence = opponent.getCurSPC();
         }
         else{
             //ERROR! Bad things
@@ -63,8 +57,10 @@ public class DamageCalculator {
     }
 
     private static double getSTAB(Pokemon pokemon, AttackState move){
-        //todo implement this
-        return 1;
+        if (pokemon.isType(move.getEleType()))
+            return 1.5;
+        else
+            return 1;
     }
 
     private static double getType(AttackState move, Pokemon opponent){
