@@ -23,7 +23,7 @@ No.,Name,Type,Category,Contest,PP,Power,Accuracy
 35,Wrap,Normal,Physical,Tough,20,15,90
 36,Take Down,Normal,Physical,Tough,20,90,85
 37,Thrash,Normal,Physical,Tough,10,120,100
-38,Double-Edge,Normal,Physical,Tough,15,120,100
+38,Double Edge,Normal,Physical,Tough,15,120,100
 39,Tail Whip,Normal,Status,Cute,30,-1,100
 40,Poison Sting,Poison,Physical,Clever,35,15,100
 41,Twineedle,Bug,Physical,Cool,20,25,100
@@ -91,7 +91,7 @@ No.,Name,Type,Category,Contest,PP,Power,Accuracy
 117,Bide,Normal,Physical,Tough,10,-1,-1
 118,Metronome,Normal,Status,Cute,10,-1,-1
 119,Mirror Move,Flying,Status,Clever,20,-1,-1
-120,Self-Destruct,Normal,Physical,Beautiful,5,200,100
+120,Self Destruct,Normal,Physical,Beautiful,5,200,100
 121,Egg Bomb,Normal,Physical,Cute,10,100,75
 123,Smog,Poison,Special,Tough,20,30,70
 124,Sludge,Poison,Special,Tough,20,65,100

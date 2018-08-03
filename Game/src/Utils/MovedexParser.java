@@ -11,16 +11,16 @@ public class MovedexParser extends CSVParser {
         List<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(line);
         scnr.useDelimiter(",");
-        System.out.println(scnr.next());
+        scnr.next();//move no.
         String moveName = scnr.next();
-        System.out.println(moveName);
         toReturn.add(moveName);
-        System.out.println(scnr.next());
-        System.out.println(scnr.next());
-        System.out.println(scnr.next());
-        System.out.println(scnr.next());
-        System.out.println(scnr.next());
-        System.out.println(scnr.next());
+        System.out.println(moveName);
+        String category = scnr.next();
+        String type = scnr.next();
+        String contest_type = scnr.next();
+        String pp = scnr.next();
+        String basepow = scnr.next();
+        String accuracy = scnr.next();
         return toReturn;
     }
 

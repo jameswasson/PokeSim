@@ -21,7 +21,7 @@ No,Name,Type1,Type2,HP,Att,Def,Spc,Spd,Move0,Move1,Move2,Move3
 20,Raticate,Normal,,274,219,179,159,253,Super Fang,Hyper Fang,Quick Attack,Toxic
 21,Spearow,Normal,Flying,252,187,125,129,207,Drill Peck,Swift,Double Team,Fly
 22,Fearow,Normal,Flying,286,229,179,173,251,Drill Peck,Mirror Move,Hyper Beam,Growl
-23,Ekans,Poison,,242,187,153,147,177,Double-Edge,Glare,Earthquake,Mega Drain
+23,Ekans,Poison,,242,187,153,147,177,Double Edge,Glare,Earthquake,Mega Drain
 24,Arbok,Poison,,284,227,197,189,219,Dig,Glare,Strength,Acid
 25,Pikachu,Electric,,242,177,125,167,247,Thunderbolt,Thunder Wave,Swift,Reflect
 26,Raichu,Electric,,276,229,159,231,251,Thunder,Thunder Wave,Quick Attack,Mega Kick
@@ -41,12 +41,12 @@ No,Name,Type1,Type2,HP,Att,Def,Spc,Spd,Move0,Move1,Move2,Move3
 40,Wigglytuff,Normal,,444,197,149,159,149,Sing,Disable,Strength,Hyper Beam
 41,Zubat,Poison,Flying,252,157,135,147,177,Confuse Ray,Swift,Mega Drain,Haze
 42,Golbat,Poison,Flying,306,209,189,201,231,Supersonic,Hyper Beam,Mega Drain,Haze
-43,Oddish,Grass,Poison,262,167,175,217,127,Petal Dance,Mega Drain,Stun Spore,Double-Edge
+43,Oddish,Grass,Poison,262,167,175,217,127,Petal Dance,Mega Drain,Stun Spore,Double Edge
 44,Gloom,Grass,Poison,284,187,199,229,139,Petal Dance,Mega Drain,Stun Spore,Acid
 45,Vileplume,Grass,Poison,306,209,219,251,151,Solar Beam,Mega Drain,Stun Spore,Acid
 46,Paras,Bug,Grass,242,207,175,177,117,Slash,Spore,Dig,Mega Drain
 47,Parasect,Bug,Grass,284,247,219,219,119,Slash,Spore,Growth,Mega Drain
-48,Venonat,Bug,Poison,292,177,165,147,157,Psychic,Mega Drain,Double-Edge,Toxic
+48,Venonat,Bug,Poison,292,177,165,147,157,Psychic,Mega Drain,Double Edge,Toxic
 49,Venomoth,Bug,Poison,304,187,179,239,239,Psychic,Mega Drain,Sleep Powder,Flash
 50,Diglett,Ground,,192,177,115,157,257,Earthquake,Fissure,Slash,Sand Attack
 51,Dugtrio,Ground,,234,217,159,199,299,Dig,Rock Slide,Growl,Sand Attack
@@ -67,7 +67,7 @@ No,Name,Type1,Type2,HP,Att,Def,Spc,Spd,Move0,Move1,Move2,Move3
 66,Machop,Fighting,,312,227,165,137,137,Submission,Body Slam,Seismic Toss,Focus Energy
 67,Machoke,Fighting,,324,257,199,159,149,Submission,Dig,Seismic Toss,Focus Energy
 68,Machamp,Fighting,,330,305,205,175,155,Low Kick,Mega Punch,Leer,Focus Energy
-69,Bellsprout,Grass,Poison,272,217,135,207,147,Razor Leaf,Toxic,Wrap,Double-Edge
+69,Bellsprout,Grass,Poison,272,217,135,207,147,Razor Leaf,Toxic,Wrap,Double Edge
 70,Weepinbell,Grass,Poison,294,237,159,229,169,Razor Leaf,Mega Drain,Growth,Stun Spore
 71,Victreebel,Grass,Poison,310,255,175,245,185,Razor Leaf,Acid,Wrap,Sleep Powder
 72,Tentacool,Water,Poison,252,147,135,267,207,Surf,Blizzard,Mega Drain,Toxic
@@ -93,14 +93,14 @@ No,Name,Type1,Type2,HP,Att,Def,Spc,Spd,Move0,Move1,Move2,Move3
 92,Gastly,Ghost,Poison,232,137,125,267,227,Hypnosis,Psychic,Confuse Ray,Night Shade
 93,Haunter,Ghost,Poison,254,157,149,289,249,Hypnosis,Dream Eater,Confuse Ray,Psychic
 94,Gengar,Ghost,Poison,270,175,165,305,265,Hypnosis,Dream Eater,Metronome,Night Shade
-95,Onix,Rock,Ground,234,147,379,119,199,Rock Slide,Earthquake,Fissure,Self-Destruct
+95,Onix,Rock,Ground,234,147,379,119,199,Rock Slide,Earthquake,Fissure,Self Destruct
 96,Drowzee,Psychic,,292,163,155,247,151,Hypnosis,Dream Eater,Seismic Toss,Psychic
 97,Hypno,Psychic,,320,191,185,275,179,Hypnosis,Poison Gas,Headbutt,Psychic
 98,Krabby,Water,,224,267,239,109,159,Surf,Body Slam,Guillotine,Blizzard
 99,Kingler,Water,,260,305,275,145,195,Crabhammer,Strength,Guillotine,Toxic
 100,Voltorb,Electric,,252,127,165,177,267,Thunderbolt,Thunder Wave,Take Down,Reflect
 101,Electrode,Electric,,276,149,189,211,331,Thunder,Thunder Wave,Swift,Flash
-102,Exeggcute,Grass,Psychic,292,147,225,187,147,Leech Seed,Toxic,Psychic,Self-Destruct
+102,Exeggcute,Grass,Psychic,292,147,225,187,147,Leech Seed,Toxic,Psychic,Self Destruct
 103,Exeggutor,Grass,Psychic,334,229,209,289,149,Stomp,Sleep Powder,Psychic,Solar Beam
 104,Cubone,Ground,,272,167,255,147,137,Bonemerang ,Blizzard,Thrash,Focus Energy
 105,Marowak,Ground,,284,217,279,159,149,Bone Club,Headbutt,Thrash,Focus Energy
@@ -115,7 +115,7 @@ No,Name,Type1,Type2,HP,Att,Def,Spc,Spd,Move0,Move1,Move2,Move3
 114,Tangela,Grass,,294,167,289,259,179,Mega Drain,Solar Beam,Growth,Stun Spore
 115,Kangaskhan,Normal,,360,235,205,125,225,Dizzy Punch,Rock Slide,Surf,Substitute
 116,Horsea,Water,,232,147,205,207,187,Hydro Pump,Ice Beam,Toxic,Smokescreen
-117,Seadra,Water,,266,179,239,241,221,Surf,Double-Edge,Toxic,Smokescreen
+117,Seadra,Water,,266,179,239,241,221,Surf,Double Edge,Toxic,Smokescreen
 118,Goldeen,Water,,262,201,185,167,193,Surf,Horn Drill,Double Team,Agility
 119,Seaking,Water,,316,233,179,211,187,Waterfall,Horn Drill,Supersonic,Fury Attack
 120,Staryu,Water,,224,147,169,199,229,Surf,Psychic,Minimize,Recover
@@ -131,7 +131,7 @@ No,Name,Type1,Type2,HP,Att,Def,Spc,Spd,Move0,Move1,Move2,Move3
 130,Gyarados,Water,Flying,334,289,197,239,201,Bubble Beam,Bite,Fire Blast,Leer
 131,Lapras,Water,Ice,404,209,199,229,159,Bubble Beam,Mist,Sing,Ice Beam
 132,Ditto,Normal,,268,163,161,163,163,Transform,Struggle,,
-133,Eevee,Normal,,282,177,165,197,177,Double-Edge,Focus Energy,Sand Attack,Quick Attack
+133,Eevee,Normal,,282,177,165,197,177,Double Edge,Focus Energy,Sand Attack,Quick Attack
 134,Vaporeon,Water,,410,175,165,265,175,Hydro Pump,Acid Armor,Haze,Quick Attack
 135,Jolteon,Electric,,280,175,165,265,305,Thunder,Pin Missile,Sand Attack,Quick Attack
 136,Flareon,Fire,,280,305,165,265,175,Fire Blast,Smog,Sand Attack,Quick Attack
