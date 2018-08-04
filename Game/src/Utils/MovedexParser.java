@@ -1,5 +1,7 @@
 package Utils;
 
+import Pokemons.Movedex;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,16 +14,19 @@ public class MovedexParser extends CSVParser {
         Scanner scnr = new Scanner(line);
         scnr.useDelimiter(",");
         scnr.next();//move no.
-        String moveName = scnr.next();
-        toReturn.add(moveName);
-        System.out.println(moveName);
-        String category = scnr.next();
-        String type = scnr.next();
-        String contest_type = scnr.next();
-        String pp = scnr.next();
-        String basepow = scnr.next();
-        String accuracy = scnr.next();
+        toReturn.add(scnr.next());// move name
+        toReturn.add(scnr.next());// category
+        toReturn.add(scnr.next());// type
+        toReturn.add(scnr.next());// contest type
+        toReturn.add(scnr.next());// pp
+        toReturn.add(scnr.next());// base power
+        toReturn.add(scnr.next());// accuracy
+        Movedex.loadDex(toReturn);
         return toReturn;
+    }
+
+    public static void loadMoves(){
+        getMoveNames();
     }
 
     public static Set<String> getMoveNames(){

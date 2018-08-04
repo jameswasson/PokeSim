@@ -1,11 +1,11 @@
 package AttackStates.Wrapper;
 
 import AttackStates.AttackState;
+import AttackStates.AttackWrapper;
 import Pokemons.Pokemon;
 
 
-public class AsleepAttack extends AttackState {
-    AttackState nextAttack;
+public class AsleepAttack extends AttackWrapper {
     boolean shouldWakeUp;
     public AsleepAttack(AttackState nextAttack,boolean shouldWakeUp){
         this.nextAttack = nextAttack;

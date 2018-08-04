@@ -1,22 +1,22 @@
 package AttackStates;
 
-import AttackStates.Moves.MegaPunch;
 import AttackStates.Moves.NotImplemented;
 import AttackStates.Moves.Swift;
 import BattleField.IBattleLogger;
+import BattleStates.pre.Confused;
 import Facade.FacadeFactory;
 import Pokemons.EleType;
+import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
-
-public class AttackState {
+public abstract class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
     public void execute(Pokemon ourSelves, Pokemon opponent){
         logger.println("Move not implemented");
     }
     protected void sayWeUsedMove(Pokemon us){
-        logger.println(us.getName() + " used " + getName(getClass()) + "!");
+        logger.println(us.getName() + " used " + getName(this.getClass()) + "!");
     }
     public void attack(Pokemon ourselves, Pokemon opponent){
     }
@@ -52,15 +52,7 @@ public class AttackState {
         return toReturn;
     }
 
-    @Override
-    public String toString(){
-        return getName(this.getClass());
-    }
-
-    public int getPower(){
-        logger.println(toString() + ".getPower not implemented");
-        return 0;
-    }
+    abstract int getPower();
 
     public DamageCategory getDamageCategory(){
         logger.println(toString() + ".getDamageCategory not implemented");
@@ -73,8 +65,11 @@ public class AttackState {
         return RNG.random() < probabilityOfCrit;
     }
 
-    public EleType getEleType(){
-        //todo implement v
-        return EleType.None;
+    abstract EleType getEleType();
+
+    public static void main(String[] args) {
+        Pokemon p = Pokedex.getPokemon("Geodude");
+        Confused.tryToConfuse(p);
+        p.selectMove();
     }
 }

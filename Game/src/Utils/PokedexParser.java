@@ -43,7 +43,7 @@ public class PokedexParser extends CSVParser {
             System.out.println("SPC\t\t" + SPC);
             System.out.println("SPD\t\t" + SPD);
             for (int i = 0; i < moves.size(); i++)
-                System.out.println("move" + i + "\t" + AttackState.getName(moves.get(i)));
+                System.out.println("move" + i + "\t" + moves.get(i).getName());
             System.out.println("===========================================");
         }
         Pokemon loadedPokemon = new Pokemon(no,name,type1,type2,HP,ATK,DEF,SPC,SPD,moves);

@@ -2,25 +2,25 @@ package AttackStates.Wrapper;
 
 
 import AttackStates.AttackState;
+import AttackStates.AttackWrapper;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
-public class ConfusedAttack extends AttackState {
-    AttackState baseAttackState;
+public class ConfusedAttack extends AttackWrapper {
     boolean shouldSnapOut;
-    public ConfusedAttack(AttackState baseAttackState,boolean shouldSnapOut){
-        this.baseAttackState = baseAttackState;
+    public ConfusedAttack(AttackState nextAttack,boolean shouldSnapOut){
+        this.nextAttack = nextAttack;
         this.shouldSnapOut = shouldSnapOut;
     }
     public void execute(Pokemon us, Pokemon them){
         if (shouldSnapOut){
             logger.println(us.getName() + " snapped out of confusion!");
-            baseAttackState.execute(us,them);
+            nextAttack.execute(us,them);
             return;
         }
         logger.println(us.getName() + " is confused!");
         if (RNG.random() < 0.5)
-            baseAttackState.execute(us,them);
+            nextAttack.execute(us,them);
         else
             logger.println("It hurt itself in its confusion!");
     }
