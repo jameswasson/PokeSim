@@ -26,7 +26,10 @@ public class Move extends AttackState {
     @Override
     public void execute(Pokemon ourSelves, Pokemon opponent) {
         sayWeUsedMove(ourSelves);
-        attack(ourSelves, opponent);
+        if (TypesHelper.hasNoEffect(getEleType(),opponent.getType1())||TypesHelper.hasNoEffect(getEleType(),opponent.getType2()))
+            logger.println("But it had no effect on " + opponent.getName());
+        else
+            attack(ourSelves, opponent);
     }
 
     @Override
@@ -39,12 +42,22 @@ public class Move extends AttackState {
     }
 
     @Override
-    EleType getEleType() {
+    public EleType getEleType() {
         return type;
     }
 
     @Override
     int getPower() {
         return basePower;
+    }
+
+    @Override
+    public int getSpeedPriority() {
+        return 0;
+    }
+
+    @Override
+    DamageCategory getDamageCategory() {
+        return damageCategory;
     }
 }

@@ -2,7 +2,6 @@ package test.Regression;
 
 import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
-import Pokemons.IPokemon;
 import Pokemons.Pokemon;
 import Utils.RNG;
 import Utils.SelectMove.IChooseMove;
@@ -23,8 +22,8 @@ public class TestMaker {
 
     private static void makeTestFrom(long seed, String poke1, String poke2, int turns, String file){
         RNG.setSeed(seed);
-        IPokemon pokemon1 = null;
-        IPokemon pokemon2 = null;
+        Pokemon pokemon1 = null;
+        Pokemon pokemon2 = null;
         runBattle(pokemon1, pokemon2, turns);
 
         String correctOutput = FacadeFactory.getInstance(IBattleLogger.class).getLogInfo();

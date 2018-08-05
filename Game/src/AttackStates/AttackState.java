@@ -12,6 +12,7 @@ import Utils.RNG;
 
 public abstract class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
+    protected boolean wasCritical;
     public void execute(Pokemon ourSelves, Pokemon opponent){
         logger.println("Move not implemented");
     }
@@ -52,20 +53,20 @@ public abstract class AttackState {
         return toReturn;
     }
 
-    abstract int getPower();
-
-    public DamageCategory getDamageCategory(){
-        logger.println(toString() + ".getDamageCategory not implemented");
-        return DamageCategory.physical;
-    }
+    abstract DamageCategory getDamageCategory();
 
     public boolean willBeCritical(Pokemon pokemon){
         double baseSpeed = pokemon.getBaseSPD();
         double probabilityOfCrit = (baseSpeed + 76)/ 1024;
-        return RNG.random() < probabilityOfCrit;
+        wasCritical = RNG.random() < probabilityOfCrit;
+        return wasCritical;
     }
 
-    abstract EleType getEleType();
+    public abstract EleType getEleType();
+
+    public abstract int getSpeedPriority();
+
+    abstract int getPower();
 
     public static void main(String[] args) {
         Pokemon p = Pokedex.getPokemon("Geodude");

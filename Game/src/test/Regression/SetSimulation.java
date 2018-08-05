@@ -3,7 +3,6 @@ package test.Regression;
 
 import BattleField.BattleField;
 import Facade.FacadeFactory;
-import Pokemons.IPokemon;
 import Pokemons.Pokemon;
 import Utils.RNG;
 import Utils.SelectMove.IChooseMove;
@@ -19,8 +18,8 @@ public class SetSimulation {
         //prepareSeed
         RNG.setSeed(myFile.seed);
         //get pokemon
-        IPokemon pokemon1 = null;
-        IPokemon pokemon2 = null;
+        Pokemon pokemon1 = null;
+        Pokemon pokemon2 = null;
         //load moves
         int[] moves = myFile.moveSelection;
         ((TestChooseMove)(FacadeFactory.getInstance(IChooseMove.class))).loadMoves(moves);

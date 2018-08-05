@@ -19,4 +19,6 @@ public class AsleepAttack extends AttackWrapper {
         else
             logger.println(us.getName() + " is asleep!");
     }
+
+
 }

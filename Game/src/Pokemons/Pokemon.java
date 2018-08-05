@@ -14,7 +14,7 @@ import Utils.SelectMove.IChooseMove;
 
 import javax.swing.table.AbstractTableModel;
 
-public class Pokemon implements IPokemon{
+public class Pokemon{
     IChooseMove moveGetter;
     boolean shouldSelectMove;
     List<BattleState> preBattleStates;
@@ -29,9 +29,41 @@ public class Pokemon implements IPokemon{
     EleType type2;
     int HP;
     int ATK;
+    int SPD;
     int DEF;
     int SPC;
-    int SPD;
+    int curHP;
+    int ATKStage;
+    int SPDStage;
+    int DEFStage;
+    int SPCStage;
+    int ACCStage;
+    int EVAStage;
+
+    public EleType getType1() {
+        return type1;
+    }
+    public EleType getType2() {
+        return type2;
+    }
+    public void changeATK(int stage){
+        ATKStage =  StageIncrementer.incrementBy("Attack", ATKStage, stage, name);
+    }
+    public void changeSPD(int stage){
+        SPDStage =  StageIncrementer.incrementBy("Speed", SPDStage, stage, name);
+    }
+    public void changeDEF(int stage){
+        DEFStage =  StageIncrementer.incrementBy("Defence", DEFStage, stage, name);
+    }
+    public void changeSPC(int stage){
+        SPCStage =  StageIncrementer.incrementBy("Special", SPCStage, stage, name);
+    }
+    public void changeACC(int stage){
+        ACCStage =  StageIncrementer.incrementBy("Accuracy", ACCStage, stage, name);
+    }
+    public void changeEVA(int stage){
+        EVAStage =  StageIncrementer.incrementBy("Evasiveness", EVAStage, stage, name);
+    }
 
     public int getPokedexNo(){
         return pokedexNo;
@@ -52,24 +84,25 @@ public class Pokemon implements IPokemon{
         return SPD;
     }
     public int getCurHP(){
-        //todo change
-        return getBaseHP();
+        return curHP;
     }
     public int getCurATK(){
-        //todo change
-        return getBaseATK();
+        return (int)(getBaseATK()*StageIncrementer.getStatMultiplier(ATKStage));
     }
     public int getCurDEF(){
-        //todo change
-        return getBaseDEF();
+        return (int)(getBaseDEF()*StageIncrementer.getStatMultiplier(DEFStage));
     }
     public int getCurSPC(){
-        //todo change
-        return getBaseSPC();
+        return (int)(getBaseSPC()*StageIncrementer.getStatMultiplier(SPCStage));
     }
     public int getCurSPD(){
-        //todo change
-        return getBaseSPD();
+        return (int)(getBaseSPD()*StageIncrementer.getStatMultiplier(SPDStage));
+    }
+    public int getCurACC(){
+        return (int)(StageIncrementer.getStatMultiplierAccEva(ACCStage));
+    }
+    public int getCurEVA(){
+        return (int)(StageIncrementer.getStatMultiplierAccEva(-EVAStage));
     }
     public boolean isType(EleType type){
         return type == type1 || type == type2;
@@ -85,6 +118,11 @@ public class Pokemon implements IPokemon{
         this.DEF = DEF;
         this.SPC = SPC;
         this.SPD = SPD;
+        this.curHP = HP;
+        this.ATKStage = 0;
+        this.DEFStage = 0;
+        this.SPCStage = 0;
+        this.SPDStage = 0;
         this.moves = moves;
         this.preBattleStates = new ArrayList<>();
         this.postBattleStates = new ArrayList<>();
@@ -113,8 +151,8 @@ public class Pokemon implements IPokemon{
             setAttackState(moves.get(moveIndex));
         }
     }
-    public void attack(IPokemon toAttack){
-        attackState.execute(this,(Pokemon)toAttack);
+    public void attack(Pokemon toAttack){
+        attackState.execute(this, toAttack);
         attackState = null;
     }
     public String getName(){

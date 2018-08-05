@@ -1,6 +1,7 @@
 package AttackStates;
 
 import Pokemons.Pokemon;
+import Pokemons.TypesHelper;
 import Utils.RNG;
 
 public class DamageCalculator {
@@ -64,12 +65,20 @@ public class DamageCalculator {
     }
 
     private static double getType(AttackState move, Pokemon opponent){
-        //todo implement this
-        return 1;
+        double attackBonus = 1;
+        if (TypesHelper.isWeakAgainst(move.getEleType(),opponent.getType1()))
+            attackBonus *= 2;
+        if (TypesHelper.isWeakAgainst(move.getEleType(),opponent.getType2()))
+            attackBonus *= 2;
+        if (TypesHelper.hasResistanceAgainst(move.getEleType(), opponent.getType1()))
+            attackBonus /= 2;
+        if (TypesHelper.hasResistanceAgainst(move.getEleType(), opponent.getType2()))
+            attackBonus /= 2;
+        return attackBonus;
     }
 
     private static double getWeather(AttackState move){
-        //TODO implement once stage effects are implemented
+        //Supposedly there is no weather-changing moves in Gen 1
         return 1;
     }
 
@@ -80,4 +89,6 @@ public class DamageCalculator {
         else
             return 1;
     }
+
+
 }
