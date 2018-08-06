@@ -12,7 +12,6 @@ import Utils.RNG;
 
 public abstract class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
-    protected boolean wasCritical;
     public void execute(Pokemon ourSelves, Pokemon opponent){
         logger.println("Move not implemented");
     }
@@ -55,18 +54,21 @@ public abstract class AttackState {
 
     abstract DamageCategory getDamageCategory();
 
-    public boolean willBeCritical(Pokemon pokemon){
-        double baseSpeed = pokemon.getBaseSPD();
-        double probabilityOfCrit = (baseSpeed + 76)/ 1024;
-        wasCritical = RNG.random() < probabilityOfCrit;
-        return wasCritical;
-    }
+    abstract double getCriticalEffect();
 
     public abstract EleType getEleType();
 
     public abstract int getSpeedPriority();
 
     abstract int getPower();
+
+    abstract protected int getAccuracy(Pokemon ourselves, Pokemon opponent);
+
+    abstract boolean wasCritical();
+
+    abstract void setCriticalEffect(double effect);
+
+    abstract boolean willBeCritical(Pokemon pokemon);
 
     public static void main(String[] args) {
         Pokemon p = Pokedex.getPokemon("Geodude");

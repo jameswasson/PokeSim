@@ -9,7 +9,7 @@ public class DamageCalculator {
     //Reference: https://bulbapedia.bulbagarden.net/wiki/Damage
     public static int getDamage(Pokemon ourselves, Pokemon opponent, AttackState move){
         double modifier = getDamageModifier(ourselves, opponent, move);
-        double level = 100;
+        double level = ourselves.getLevel();
         double power = move.getPower();
         double a_d = getEffectiveDefenceAttackStats(ourselves, opponent, move); // a / d
         double damage = (level * 2)/5 + 2;
@@ -74,6 +74,8 @@ public class DamageCalculator {
             attackBonus /= 2;
         if (TypesHelper.hasResistanceAgainst(move.getEleType(), opponent.getType2()))
             attackBonus /= 2;
+
+        move.setCriticalEffect(attackBonus);
         return attackBonus;
     }
 

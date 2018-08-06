@@ -1,6 +1,7 @@
 package AttackStates;
 
 import Pokemons.EleType;
+import Pokemons.Pokemon;
 
 public abstract class AttackWrapper extends AttackState {
     protected AttackState nextAttack;
@@ -23,5 +24,30 @@ public abstract class AttackWrapper extends AttackState {
     @Override
     DamageCategory getDamageCategory() {
         return nextAttack.getDamageCategory();
+    }
+
+    @Override
+    boolean wasCritical() {
+        return nextAttack.wasCritical();
+    }
+
+    @Override
+    void setCriticalEffect(double effect) {
+        nextAttack.setCriticalEffect(effect);
+    }
+
+    @Override
+    boolean willBeCritical(Pokemon pokemon) {
+        return nextAttack.willBeCritical(pokemon);
+    }
+
+    @Override
+    double getCriticalEffect() {
+        return nextAttack.getCriticalEffect();
+    }
+
+    @Override
+    protected int getAccuracy(Pokemon ourselves, Pokemon opponent) {
+        return nextAttack.getAccuracy(ourselves, opponent);
     }
 }

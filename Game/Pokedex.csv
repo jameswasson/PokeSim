@@ -130,7 +130,7 @@ No,Name,Type1,Type2,HP,Att,Def,Spc,Spd,Move0,Move1,Move2,Move3
 129,Magikarp,Water,,212,87,175,107,227,Splash,Tackle,,
 130,Gyarados,Water,Flying,334,289,197,239,201,Bubble Beam,Bite,Fire Blast,Leer
 131,Lapras,Water,Ice,404,209,199,229,159,Bubble Beam,Mist,Sing,Ice Beam
-132,Ditto,Normal,,268,163,161,163,163,Transform,Struggle,,
+132,Ditto,Normal,,268,163,161,163,163,Transform,,,
 133,Eevee,Normal,,282,177,165,197,177,Double Edge,Focus Energy,Sand Attack,Quick Attack
 134,Vaporeon,Water,,410,175,165,265,175,Hydro Pump,Acid Armor,Haze,Quick Attack
 135,Jolteon,Electric,,280,175,165,265,305,Thunder,Pin Missile,Sand Attack,Quick Attack

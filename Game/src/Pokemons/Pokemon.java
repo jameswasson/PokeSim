@@ -40,6 +40,33 @@ public class Pokemon{
     int ACCStage;
     int EVAStage;
 
+    public int getLevel(){
+        return 100;// assume 100 for now
+    }
+    public void setATKStage(int ATKStage) {
+        this.ATKStage = ATKStage;
+    }
+
+    public void setSPDStage(int SPDStage) {
+        this.SPDStage = SPDStage;
+    }
+
+    public void setDEFStage(int DEFStage) {
+        this.DEFStage = DEFStage;
+    }
+
+    public void setSPCStage(int SPCStage) {
+        this.SPCStage = SPCStage;
+    }
+
+    public void setACCStage(int ACCStage) {
+        this.ACCStage = ACCStage;
+    }
+
+    public void setEVAStage(int EVAStage) {
+        this.EVAStage = EVAStage;
+    }
+
     public EleType getType1() {
         return type1;
     }
