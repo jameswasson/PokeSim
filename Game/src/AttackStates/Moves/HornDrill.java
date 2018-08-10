@@ -5,7 +5,7 @@ import Pokemons.Pokemon;
 
 public class HornDrill extends Move {
     @Override
-    protected int getAccuracy(Pokemon ourselves, Pokemon opponent) {
+    protected double getAccuracy(Pokemon ourselves, Pokemon opponent) {
         return new Guillotine().getAccuracy(ourselves,opponent);
     }
 }

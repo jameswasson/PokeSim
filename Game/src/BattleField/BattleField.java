@@ -13,10 +13,12 @@ public class BattleField {
         Pokemon pokemon1 = Pokedex.getPokemon("Magmar");//magmar
         Pokemon pokemon2 = Pokedex.getPokemon(41);//zubat
         int turns = 100;
-        runBattle(pokemon1, pokemon2, turns);
+        try {
+            runBattle(pokemon1, pokemon2, turns);
+        }catch (PokemonFainted e){}
     }
 
-    public static void runBattle(Pokemon pokemon1, Pokemon pokemon2, int num_of_turns) {
+    public static void runBattle(Pokemon pokemon1, Pokemon pokemon2, int num_of_turns) throws PokemonFainted{
         for (int i = 0; i < num_of_turns; i++) {
             pokemon1.selectMove();
             pokemon2.selectMove();
@@ -26,17 +28,27 @@ public class BattleField {
             pokemon2.runPreBattleStates();
             if (speedCompare(pokemon1, pokemon2)){
                 pokemon1.attack(pokemon2);
+                checkIfFainted(pokemon1,pokemon2);
                 pokemon2.attack(pokemon1);
+                checkIfFainted(pokemon1,pokemon2);
             }
             else {
                 pokemon1.attack(pokemon2);
+                checkIfFainted(pokemon1,pokemon2);
                 pokemon2.attack(pokemon1);
+                checkIfFainted(pokemon1,pokemon2);
             }
             pokemon1.runPostBattleStates();
+            checkIfFainted(pokemon1,pokemon2);
             pokemon2.runPostBattleStates();
-
+            checkIfFainted(pokemon1,pokemon2);
             endl();
         }
+    }
+
+    private static void checkIfFainted(Pokemon p1, Pokemon p2) throws PokemonFainted{
+        if (p1.hasFainted() || p2.hasFainted())
+            throw new PokemonFainted();
     }
 
     private static boolean speedCompare(Pokemon pokemon1, Pokemon pokemon2){

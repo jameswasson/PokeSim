@@ -29,23 +29,19 @@ public class Move extends AttackState {
     }
 
     @Override
-    public void execute(Pokemon ourSelves, Pokemon opponent) {
-        sayWeUsedMove(ourSelves);
+    public void execute(Pokemon ourselves, Pokemon opponent) {
+        sayWeUsedMove(ourselves);
         if (TypesHelper.hasNoEffect(getEleType(),opponent.getType1())||TypesHelper.hasNoEffect(getEleType(),opponent.getType2()))
             logger.println("But it had no effect on " + opponent.getName() + "!s");
-        else if (willMiss(ourSelves, opponent))
+        else if (willMiss(ourselves, opponent))
             if (damageCategory == DamageCategory.status)
                 logger.println("But it failed!");
             else
                 logger.println("But it missed!");
         else {
-            attack(ourSelves, opponent);
-            if (wasCritical())
-                logger.println("Critical Hit!");
-            if (getCriticalEffect() > 1)
-                logger.println("It was super effective!");
-            else if (getCriticalEffect() < 1)
-                logger.println("It wasn't very effective.");
+            int damage = DamageCalculator.getDamage(ourselves,opponent,this);
+            attack(ourselves, opponent, damage);
+
         }
     }
 
@@ -53,23 +49,28 @@ public class Move extends AttackState {
         if (SemiInvulnerable.isSemiInvulnerable(opponent))
             return true;
         double getHitChance = getChanceOfHitting(ourselves, opponent);
-        return RNG.random() < getHitChance;
+        return RNG.random() > getHitChance;
     }
 
     public double getChanceOfHitting(Pokemon ourselves, Pokemon opponent){
-        return getAccuracy(ourselves,opponent) * ourselves.getCurACC() * opponent.getCurEVA();
+        if (baseAccuracy == -1)
+            return 1.0;//will always hit
+        double moveAccuracy = getAccuracy(ourselves,opponent)/100.0;
+        double ourAccuracy = ourselves.getCurACC();
+        double theirAccuracy = opponent.getCurACC();
+        double totalAccuracy = moveAccuracy*ourAccuracy*theirAccuracy;
+        return totalAccuracy;
     }
 
     @Override
-    protected int getAccuracy(Pokemon ourselves, Pokemon opponent) {
+    protected double getAccuracy(Pokemon ourselves, Pokemon opponent) {
+        //Override this function if a move's accuracy is -1 and is dependant on other factors.
         return baseAccuracy;
     }
 
     @Override
-    public void attack(Pokemon ourselves, Pokemon opponent) {
-        int damage = DamageCalculator.getDamage(ourselves,opponent,this);
-        logger.println("Should deal " + damage + " damage.");
-        //todo deal general damage
+    public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
+        dealDamage(ourselves, opponent, damage);
     }
 
     @Override
@@ -114,5 +115,16 @@ public class Move extends AttackState {
         double probabilityOfCrit = (baseSpeed + 76)/ 1024;
         wasCritical = RNG.random() < probabilityOfCrit;
         return wasCritical;
+    }
+
+    public void dealDamage(Pokemon ourselves, Pokemon opponent, int damage){
+        opponent.loseHP(damage);
+        if (wasCritical())
+            logger.println("Critical Hit!");
+        if (getCriticalEffect() > 1)
+            logger.println("It was super effective!");
+        else if (getCriticalEffect() < 1)
+            logger.println("It wasn't very effective.");
+
     }
 }

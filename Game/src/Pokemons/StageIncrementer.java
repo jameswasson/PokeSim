@@ -6,7 +6,7 @@ import Facade.FacadeFactory;
 public class StageIncrementer {
     public static int incrementBy(String type, int currentStage, int stageIncrement, String pokemonName){
         IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
-        int bound = Math.min(-6,Math.max(6,currentStage + stageIncrement));
+        int bound = Math.max(-6,Math.min(6,currentStage + stageIncrement));
         switch(bound - currentStage){
             case -2:
                 logger.println(pokemonName+"'s " + type + " greatly fell!");

@@ -8,7 +8,6 @@ import Facade.FacadeFactory;
 import Pokemons.EleType;
 import Pokemons.Pokedex;
 import Pokemons.Pokemon;
-import Utils.RNG;
 
 public abstract class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
@@ -18,7 +17,8 @@ public abstract class AttackState {
     protected void sayWeUsedMove(Pokemon us){
         logger.println(us.getName() + " used " + getName(this.getClass()) + "!");
     }
-    public void attack(Pokemon ourselves, Pokemon opponent){
+    public void attack(Pokemon ourselves, Pokemon opponent, int damage){
+        logger.println(getName(this.getClass()) + ".attack() not implemented!");
     }
     //returns appropriate name of move from class
     public static String getName(Class moveClass){
@@ -62,7 +62,7 @@ public abstract class AttackState {
 
     abstract int getPower();
 
-    abstract protected int getAccuracy(Pokemon ourselves, Pokemon opponent);
+    abstract protected double getAccuracy(Pokemon ourselves, Pokemon opponent);
 
     abstract boolean wasCritical();
 

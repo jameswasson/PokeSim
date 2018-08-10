@@ -24,7 +24,7 @@ public class TestMaker {
         RNG.setSeed(seed);
         Pokemon pokemon1 = null;
         Pokemon pokemon2 = null;
-        runBattle(pokemon1, pokemon2, turns);
+//        runBattle(pokemon1, pokemon2, turns);
 
         String correctOutput = FacadeFactory.getInstance(IBattleLogger.class).getLogInfo();
         int[] chosenMoves = FacadeFactory.getInstance(IChooseMove.class).getChosenMoves();

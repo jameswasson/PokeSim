@@ -5,7 +5,7 @@ import Pokemons.Pokemon;
 
 public class Haze extends Move {
     @Override
-    public void attack(Pokemon ourselves, Pokemon opponent) {
+    public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
         removeStatusCondition(ourselves);
         removeStatusCondition(opponent);
     }
@@ -33,5 +33,6 @@ public class Haze extends Move {
           freeze
           sleep
          */
+        logger.println("All status changes were eliminated!");
     }
 }

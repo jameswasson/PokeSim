@@ -25,7 +25,7 @@ public class SetSimulation {
         ((TestChooseMove)(FacadeFactory.getInstance(IChooseMove.class))).loadMoves(moves);
         //runBattle
         int turns = 5;
-        BattleField.runBattle(pokemon1,pokemon2,turns);
+//        BattleField.runBattle(pokemon1,pokemon2,turns);
         //getOutput
         String test_output = BattleRunFile.loadCorrectOutput(myFile);
         return new String[] {test_output,test_output};

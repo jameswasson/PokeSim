@@ -46,32 +46,38 @@ public class Pokemon{
     public void setATKStage(int ATKStage) {
         this.ATKStage = ATKStage;
     }
-
     public void setSPDStage(int SPDStage) {
         this.SPDStage = SPDStage;
     }
-
     public void setDEFStage(int DEFStage) {
         this.DEFStage = DEFStage;
     }
-
     public void setSPCStage(int SPCStage) {
         this.SPCStage = SPCStage;
     }
-
     public void setACCStage(int ACCStage) {
         this.ACCStage = ACCStage;
     }
-
     public void setEVAStage(int EVAStage) {
         this.EVAStage = EVAStage;
     }
-
     public EleType getType1() {
         return type1;
     }
     public EleType getType2() {
         return type2;
+    }
+    public void loseHP(int HPLoss){
+        curHP -= HPLoss;
+        curHP = Math.max(0,curHP);//if negative, make zero
+    }
+    public void gainHP(int HPGain){
+        int amountAbleToGain = HP - curHP;
+        int amountToGain = Math.min(amountAbleToGain, HPGain);
+        curHP += amountToGain;
+    }
+    public boolean hasFainted(){
+        return curHP == 0;
     }
     public void changeATK(int stage){
         ATKStage =  StageIncrementer.incrementBy("Attack", ATKStage, stage, name);
