@@ -3,10 +3,8 @@ package AttackStates;
 import AttackStates.Moves.NotImplemented;
 import AttackStates.Moves.Swift;
 import BattleField.IBattleLogger;
-import BattleStates.pre.Confused;
 import Facade.FacadeFactory;
 import Pokemons.EleType;
-import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 
 public abstract class AttackState {
@@ -47,6 +45,7 @@ public abstract class AttackState {
             toReturn = Class.forName(classFullName);
         }
         catch (Exception e){
+            e.printStackTrace();
             toReturn = NotImplemented.class;
         }
         return toReturn;
@@ -69,10 +68,4 @@ public abstract class AttackState {
     abstract void setCriticalEffect(double effect);
 
     abstract boolean willBeCritical(Pokemon pokemon);
-
-    public static void main(String[] args) {
-        Pokemon p = Pokedex.getPokemon("Geodude");
-        Confused.tryToConfuse(p);
-        p.selectMove();
-    }
 }

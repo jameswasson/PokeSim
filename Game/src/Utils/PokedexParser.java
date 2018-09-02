@@ -1,6 +1,7 @@
 package Utils;
 
 import AttackStates.AttackState;
+import AttackStates.Move;
 import Pokemons.EleType;
 import Pokemons.Pokedex;
 import Pokemons.Pokemon;
@@ -26,11 +27,11 @@ public class PokedexParser extends CSVParser {
         int DEF = Integer.valueOf(scnr.next());
         int SPC = Integer.valueOf(scnr.next());
         int SPD = Integer.valueOf(scnr.next());
-        ArrayList<Class<?>> moves = new ArrayList<>();
+        ArrayList<Move> moves = new ArrayList<>();
         while (scnr.hasNext()) {
             String moveName = scnr.next();
             if (!moveName.equals(""))
-                moves.add(AttackState.getClass(moveName));
+                moves.add(Move.getMove(moveName));
         }
         if (verbose) {
             System.out.println("No.\t\t" + no);
@@ -43,7 +44,7 @@ public class PokedexParser extends CSVParser {
             System.out.println("SPC\t\t" + SPC);
             System.out.println("SPD\t\t" + SPD);
             for (int i = 0; i < moves.size(); i++)
-                System.out.println("move" + i + "\t" + moves.get(i).getName());
+                System.out.println("move" + i + "\t" + AttackState.getName(moves.get(i).getClass()));
             System.out.println("===========================================");
         }
         Pokemon loadedPokemon = new Pokemon(no,name,type1,type2,HP,ATK,DEF,SPC,SPD,moves);

@@ -5,14 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import AttackStates.AttackState;
+import AttackStates.Move;
 import BattleField.IBattleLogger;
 import BattleStates.BattleState;
 import Facade.FacadeFactory;
-import Pokemons.MoveDatabase.MoveDatabase;
-import Utils.Helpers;
 import Utils.SelectMove.IChooseMove;
-
-import javax.swing.table.AbstractTableModel;
 
 public class Pokemon{
     IChooseMove moveGetter;
@@ -20,7 +17,7 @@ public class Pokemon{
     List<BattleState> preBattleStates;
     AttackState attackState;
     List<BattleState> postBattleStates;
-    List<Class<?>> moves;
+    List<Move> moves;
     IBattleLogger logger;
 
     int pokedexNo;
@@ -141,7 +138,7 @@ public class Pokemon{
         return type == type1 || type == type2;
     }
 
-    public Pokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Class<?>> moves) {
+    public Pokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves) {
         this.pokedexNo = pokedexNo;
         this.name = name;
         this.type1 = type1;
@@ -164,17 +161,26 @@ public class Pokemon{
         this.moveGetter = FacadeFactory.getInstance(IChooseMove.class);
     }
     public static Pokemon copyPokemon(Pokemon pokemon){
-        return new Pokemon(pokemon.pokedexNo,pokemon.name,pokemon.type1,pokemon.type2,pokemon.HP,pokemon.ATK,pokemon.DEF,pokemon.SPC,pokemon.SPD,pokemon.moves);
+        //copy moves here
+        List<Move> newMoves = new ArrayList<>();
+        for (Move move: pokemon.moves)
+            newMoves.add(Move.copyMove(move));
+        return new Pokemon(pokemon.pokedexNo,pokemon.name,pokemon.type1,pokemon.type2,pokemon.HP,pokemon.ATK,pokemon.DEF,pokemon.SPC,pokemon.SPD,newMoves);
     }
 
     public void selectMove(){
         if (!shouldSelectMove)
             return;
         logger.println("Select a move for " + name + ":");
+        List<Integer> noPPMoves = new ArrayList<>();
         for (int i = 0; i < moves.size(); i++){
-            logger.println("(" + (i + 1) + "): " + AttackState.getName(moves.get(i)));
+            Move move = moves.get(i);
+            logger.print("(" + (i + 1) + "): " + AttackState.getName(move.getClass()));
+            logger.println(" (" + move.getCurrentPowerPoints() + "/" + move.getPowerPoints() + ")");
+            if (move.getCurrentPowerPoints() == 0)
+                noPPMoves.add(i + 1);
         }
-        int selection = moveGetter.getMove(moves.size()) - 1;
+        int selection = moveGetter.getMove(moves.size(), noPPMoves) - 1;
         setAttackState(moves.get(selection));
     }
     public void selectMove(int moveIndex){

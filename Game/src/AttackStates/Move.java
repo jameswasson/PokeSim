@@ -13,6 +13,7 @@ public class Move extends AttackState {
     protected EleType type;
     protected DamageCategory damageCategory;
     protected int powerPoints;
+    protected int currentPowerPoints;
     protected int basePower;
     protected int baseAccuracy;
     protected boolean wasCritical;
@@ -26,6 +27,7 @@ public class Move extends AttackState {
         type = TypesHelper.enumOf(allInfo.get(1));
         damageCategory = DamageCategory.valueOf(allInfo.get(2).toLowerCase());
         powerPoints = Integer.valueOf(allInfo.get(4));
+        currentPowerPoints = powerPoints;
         basePower = Integer.valueOf(allInfo.get(5));
         baseAccuracy = Integer.valueOf(allInfo.get(6));
     }
@@ -33,6 +35,7 @@ public class Move extends AttackState {
     @Override
     public void execute(Pokemon ourselves, Pokemon opponent) {
         sayWeUsedMove(ourselves);
+        currentPowerPoints--;
         if (TypesHelper.hasNoEffect(getEleType(),opponent.getType1())||TypesHelper.hasNoEffect(getEleType(),opponent.getType2()))
             logger.println("But it had no effect on " + opponent.getName() + "!s");
         else if (willMiss(ourselves, opponent))
@@ -131,4 +134,28 @@ public class Move extends AttackState {
         else if (getCriticalEffect() < 1)
             logger.println("It wasn't very effective.");
     }
+
+    public int getCurrentPowerPoints() {
+        return currentPowerPoints;
+    }
+
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    //returns new instance from move by name
+    public static Move getMove(String s){
+        Class<?> classOfMove = getClass(s);
+        try {
+            return (Move) classOfMove.getDeclaredConstructor().newInstance();
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Move copyMove(Move m){
+        return getMove(getName(m.getClass()));
+    }
+
 }

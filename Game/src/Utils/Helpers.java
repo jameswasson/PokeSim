@@ -3,13 +3,14 @@ package Utils;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Scanner;
 import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
 
 public class Helpers {
 
-    public static int getNumberFromUserInRange(int lower, int upper){//range is inclsive
+    public static int getNumberFromUserInRange(int lower, int upper, List<Integer> cannotPick){//range is inclsive
         IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
         int toReturn = -1;
         do{
@@ -21,6 +22,10 @@ public class Helpers {
             }catch(NumberFormatException e){}
             if (toReturn > upper || toReturn < lower){
                 logger.println("Invalid input");
+                toReturn = -1;
+            }
+            else if (cannotPick.contains(toReturn)){
+                logger.println("Cannot pick selection");
                 toReturn = -1;
             }
         }while(toReturn == -1);
