@@ -5,7 +5,8 @@ import BattleStates.pre.Confused;
 import Pokemons.Pokemon;
 
 public class ConfuseRay extends Move {
-    public void attack(Pokemon us, Pokemon them){
-        Confused.tryToConfuse(them);
+    @Override
+    public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
+        Confused.tryToConfuse(opponent);
     }
 }

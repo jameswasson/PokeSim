@@ -20,6 +20,8 @@ public class BattleField {
 
     public static void runBattle(Pokemon pokemon1, Pokemon pokemon2, int num_of_turns) throws PokemonFainted{
         for (int i = 0; i < num_of_turns; i++) {
+            displayHealth(pokemon1);
+            displayHealth(pokemon2);
             pokemon1.selectMove();
             pokemon2.selectMove();
             endl();
@@ -55,5 +57,20 @@ public class BattleField {
         if (pokemon1.getAttackState().getSpeedPriority() != pokemon2.getAttackState().getSpeedPriority())
             return pokemon1.getAttackState().getSpeedPriority() > pokemon2.getAttackState().getSpeedPriority();
         return pokemon1.getCurSPD() > pokemon2.getCurSPD();
+    }
+    public static void displayHealth(Pokemon pokemon){
+        IBattleLogger log = FacadeFactory.getInstance(IBattleLogger.class);
+        log.print(pokemon.getName() + "\nHP: ");
+        int barLength = 45;
+        double percentHealth = (double)pokemon.getCurHP() / (double)pokemon.getBaseHP();
+        int healthLength = (int)(barLength * percentHealth);
+        for (int i = 0; i < barLength; i++)
+        {
+            if (i <= healthLength)
+                log.print("#");
+            else
+                log.print("-");
+        }
+        log.println("\t (" + pokemon.getCurHP() + "/" + pokemon.getBaseHP() + ")");
     }
 }

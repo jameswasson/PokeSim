@@ -1,5 +1,6 @@
 package AttackStates;
 
+import BattleStates.post.Burn;
 import Pokemons.Pokemon;
 import Pokemons.TypesHelper;
 import Utils.RNG;
@@ -53,8 +54,10 @@ public class DamageCalculator {
     }
 
     private static double getOther(Pokemon pokemon, AttackState move, Pokemon opponent){
-        //add to this function as necessary, keep dynamic please
-        return 1;
+        double toReturn = 1;
+        if (Burn.isBurned(pokemon))
+            toReturn /= 2;
+        return toReturn;
     }
 
     private static double getSTAB(Pokemon pokemon, AttackState move){
@@ -91,6 +94,4 @@ public class DamageCalculator {
         else
             return 1;
     }
-
-
 }

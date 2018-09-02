@@ -186,7 +186,6 @@ public class Pokemon{
     }
     public void attack(Pokemon toAttack){
         attackState.execute(this, toAttack);
-        attackState = null;
     }
     public String getName(){
         return name;
@@ -230,5 +229,8 @@ public class Pokemon{
     }
     public List<BattleState> getPreBattleStates() {
         return preBattleStates;
+    }
+    public List<BattleState> getPostBattleStates() {
+        return postBattleStates;
     }
 }

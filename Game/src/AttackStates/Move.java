@@ -19,13 +19,15 @@ public class Move extends AttackState {
     protected double criticalEffect;
 
     public Move(){
+        criticalEffect = 1;
         List<String> allInfo = Movedex.getMove(getName(this.getClass()));
+        if (allInfo == null)
+            return;
         type = TypesHelper.enumOf(allInfo.get(1));
         damageCategory = DamageCategory.valueOf(allInfo.get(2).toLowerCase());
         powerPoints = Integer.valueOf(allInfo.get(4));
         basePower = Integer.valueOf(allInfo.get(5));
         baseAccuracy = Integer.valueOf(allInfo.get(6));
-        criticalEffect = 1;
     }
 
     @Override
@@ -39,9 +41,12 @@ public class Move extends AttackState {
             else
                 logger.println("But it missed!");
         else {
-            int damage = DamageCalculator.getDamage(ourselves,opponent,this);
+            int damage;
+            if (basePower == -1)
+                damage = -1;
+            else
+                damage = DamageCalculator.getDamage(ourselves,opponent,this);
             attack(ourselves, opponent, damage);
-
         }
     }
 
@@ -80,8 +85,6 @@ public class Move extends AttackState {
 
     @Override
     int getPower() {
-        if (basePower == -1)
-            logger.println("basePower of " + getName(this.getClass()) + "is -1.");
         return basePower;
     }
 
@@ -118,6 +121,8 @@ public class Move extends AttackState {
     }
 
     public void dealDamage(Pokemon ourselves, Pokemon opponent, int damage){
+        if (damage == -1)
+            logger.println("-1 damage was dealt!");
         opponent.loseHP(damage);
         if (wasCritical())
             logger.println("Critical Hit!");
@@ -125,6 +130,5 @@ public class Move extends AttackState {
             logger.println("It was super effective!");
         else if (getCriticalEffect() < 1)
             logger.println("It wasn't very effective.");
-
     }
 }

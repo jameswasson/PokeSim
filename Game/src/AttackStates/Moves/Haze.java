@@ -16,23 +16,6 @@ public class Haze extends Move {
         pokemon.setSPDStage(0);
         pokemon.setSPCStage(0);
         pokemon.setEVAStage(0);
-        /*todo remove the following
-          paraylsis
-          burn
-          Focus energy
-          dire hit
-          mist
-          guard spec
-          xaccuracy
-          leech seed
-          disable
-          reflect
-          light screen
-          confusion
-          turn bad Poison to regular poison
-          freeze
-          sleep
-         */
         logger.println("All status changes were eliminated!");
     }
 }

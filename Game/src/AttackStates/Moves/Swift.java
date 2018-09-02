@@ -1,6 +1,7 @@
 package AttackStates.Moves;
 
 import AttackStates.Move;
+import BattleStates.SemiInvulnerable;
 import Pokemons.Pokemon;
 
 /**
@@ -10,6 +11,8 @@ import Pokemons.Pokemon;
 public class Swift extends Move {
     @Override
     public boolean willMiss(Pokemon ourselves, Pokemon opponent) {
+        if (SemiInvulnerable.isSemiInvulnerable(opponent))
+            return true;
         return false;
     }
 }
