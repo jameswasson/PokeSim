@@ -6,7 +6,6 @@ import Pokemons.Movedex;
 import Pokemons.Pokemon;
 import Pokemons.TypesHelper;
 import Utils.RNG;
-
 import java.util.List;
 
 public class Move extends AttackState {
@@ -36,8 +35,8 @@ public class Move extends AttackState {
     public void execute(Pokemon ourselves, Pokemon opponent) {
         sayWeUsedMove(ourselves);
         currentPowerPoints--;
-        if (TypesHelper.hasNoEffect(getEleType(),opponent.getType1())||TypesHelper.hasNoEffect(getEleType(),opponent.getType2()))
-            logger.println("But it had no effect on " + opponent.getName() + "!s");
+        if (noEffect(opponent.getType1(),opponent.getType2()))
+            logger.println("But it had no effect on " + opponent.getName() + "!");
         else if (willMiss(ourselves, opponent))
             if (damageCategory == DamageCategory.status)
                 logger.println("But it failed!");
@@ -68,6 +67,12 @@ public class Move extends AttackState {
         double theirAccuracy = opponent.getCurACC();
         double totalAccuracy = moveAccuracy*ourAccuracy*theirAccuracy;
         return totalAccuracy;
+    }
+
+    public boolean noEffect(EleType type1, EleType type2){
+        if (damageCategory == DamageCategory.status)
+            return false; // can effect
+        return TypesHelper.hasNoEffect(getEleType(), type1)||TypesHelper.hasNoEffect(getEleType(), type2);
     }
 
     @Override
@@ -102,7 +107,7 @@ public class Move extends AttackState {
     }
 
     @Override
-    boolean wasCritical() {
+    public boolean wasCritical() {
         return wasCritical;
     }
 
@@ -158,4 +163,7 @@ public class Move extends AttackState {
         return getMove(getName(m.getClass()));
     }
 
+    public void setCurrentPowerPoints(int currentPowerPoints) {
+        this.currentPowerPoints = currentPowerPoints;
+    }
 }

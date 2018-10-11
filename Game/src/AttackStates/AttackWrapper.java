@@ -27,7 +27,7 @@ public abstract class AttackWrapper extends AttackState {
     }
 
     @Override
-    boolean wasCritical() {
+    public boolean wasCritical() {
         return nextAttack.wasCritical();
     }
 

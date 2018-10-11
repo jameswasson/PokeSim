@@ -63,7 +63,7 @@ public abstract class AttackState {
 
     abstract protected double getAccuracy(Pokemon ourselves, Pokemon opponent);
 
-    abstract boolean wasCritical();
+    public abstract boolean wasCritical();
 
     abstract void setCriticalEffect(double effect);
 

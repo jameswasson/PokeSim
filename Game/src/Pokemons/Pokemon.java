@@ -1,242 +1,206 @@
 package Pokemons;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import AttackStates.AttackState;
 import AttackStates.Move;
 import BattleField.IBattleLogger;
 import BattleStates.BattleState;
 import Facade.FacadeFactory;
 import Utils.SelectMove.IChooseMove;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Pokemon{
-    IChooseMove moveGetter;
-    boolean shouldSelectMove;
-    List<BattleState> preBattleStates;
-    AttackState attackState;
-    List<BattleState> postBattleStates;
-    List<Move> moves;
-    IBattleLogger logger;
 
-    int pokedexNo;
-    String name;
-    EleType type1;
-    EleType type2;
-    int HP;
-    int ATK;
-    int SPD;
-    int DEF;
-    int SPC;
-    int curHP;
-    int ATKStage;
-    int SPDStage;
-    int DEFStage;
-    int SPCStage;
-    int ACCStage;
-    int EVAStage;
+    Pokemon basePokemon;
 
-    public int getLevel(){
-        return 100;// assume 100 for now
+    public void setBasePokemon(Pokemon pokemon){
+        this.basePokemon = pokemon;
+    }
+    public BasePokemon getBasePokemon(){
+        return basePokemon.getBasePokemon();
+    }
+
+    public Pokemon(){}
+    public Pokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves){
+        basePokemon = new BasePokemon(pokedexNo,name,type1,type2,HP,ATK,DEF,SPC,SPD,moves);
+    }
+
+    public static Pokemon copyPokemon(Pokemon pkm){
+        BasePokemon base = pkm.getBasePokemon();
+        BasePokemon copy = BasePokemon.copyBasePokemon(base);
+        return new Pokemon(copy);
+    }
+
+    public Pokemon(BasePokemon pokemon){
+        basePokemon = pokemon;
+    }
+    public int getLevel() {
+        return basePokemon.getLevel();
     }
     public void setATKStage(int ATKStage) {
-        this.ATKStage = ATKStage;
+        basePokemon.setATKStage(ATKStage);
     }
     public void setSPDStage(int SPDStage) {
-        this.SPDStage = SPDStage;
+        basePokemon.setSPDStage(SPDStage);
     }
     public void setDEFStage(int DEFStage) {
-        this.DEFStage = DEFStage;
+        basePokemon.setDEFStage(DEFStage);
     }
     public void setSPCStage(int SPCStage) {
-        this.SPCStage = SPCStage;
+        basePokemon.setSPCStage(SPCStage);
     }
     public void setACCStage(int ACCStage) {
-        this.ACCStage = ACCStage;
+        basePokemon.setACCStage(ACCStage);
     }
     public void setEVAStage(int EVAStage) {
-        this.EVAStage = EVAStage;
+        basePokemon.setEVAStage(EVAStage);
     }
     public EleType getType1() {
-        return type1;
+        return basePokemon.getType1();
     }
     public EleType getType2() {
-        return type2;
+        return basePokemon.getType2();
     }
-    public void loseHP(int HPLoss){
-        curHP -= HPLoss;
-        curHP = Math.max(0,curHP);//if negative, make zero
+    public void loseHP(int HPLoss) {
+        basePokemon.loseHP(HPLoss);
     }
-    public void gainHP(int HPGain){
-        int amountAbleToGain = HP - curHP;
-        int amountToGain = Math.min(amountAbleToGain, HPGain);
-        curHP += amountToGain;
+    public void gainHP(int HPGain) {
+        basePokemon.gainHP(HPGain);
     }
-    public boolean hasFainted(){
-        return curHP == 0;
+    public boolean hasFainted() {
+        return basePokemon.hasFainted();
     }
-    public void changeATK(int stage){
-        ATKStage =  StageIncrementer.incrementBy("Attack", ATKStage, stage, name);
+    public void changeATK(int stage) {
+        basePokemon.changeATK(stage);
     }
-    public void changeSPD(int stage){
-        SPDStage =  StageIncrementer.incrementBy("Speed", SPDStage, stage, name);
+    public void changeSPD(int stage) {
+        basePokemon.changeSPD(stage);
     }
-    public void changeDEF(int stage){
-        DEFStage =  StageIncrementer.incrementBy("Defence", DEFStage, stage, name);
+    public void changeDEF(int stage) {
+        basePokemon.changeDEF(stage);
     }
-    public void changeSPC(int stage){
-        SPCStage =  StageIncrementer.incrementBy("Special", SPCStage, stage, name);
+    public void changeSPC(int stage) {
+        basePokemon.changeSPC(stage);
     }
-    public void changeACC(int stage){
-        ACCStage =  StageIncrementer.incrementBy("Accuracy", ACCStage, stage, name);
+    public void changeACC(int stage) {
+        basePokemon.changeACC(stage);
     }
-    public void changeEVA(int stage){
-        EVAStage =  StageIncrementer.incrementBy("Evasiveness", EVAStage, stage, name);
+    public void changeEVA(int stage) {
+        basePokemon.changeEVA(stage);
     }
-
-    public int getPokedexNo(){
-        return pokedexNo;
+    public int getPokedexNo() {
+        return basePokemon.getPokedexNo();
     }
-    public int getBaseHP(){
-        return HP;
+    public int getBaseHP() {
+        return basePokemon.getBaseHP();
     }
-    public int getBaseATK(){
-        return ATK;
+    public int getBaseATK() {
+        return basePokemon.getBaseATK();
     }
-    public int getBaseDEF() {
-        return DEF;
+    public int getBaseDEF(AttackState move) {
+        return basePokemon.getBaseDEF(move);
     }
-    public int getBaseSPC(){
-        return SPC;
+    public int getBaseSPC(AttackState move) {
+        return basePokemon.getBaseSPC(move);
     }
-    public int getBaseSPD(){
-        return SPD;
+    public int getBaseSPD() {
+        return basePokemon.getBaseSPD();
     }
-    public int getCurHP(){
-        return curHP;
+    public int getCurHP() {
+        return basePokemon.getCurHP();
     }
-    public int getCurATK(){
-        return (int)(getBaseATK()*StageIncrementer.getStatMultiplier(ATKStage));
+    public int getCurATK() {
+        return basePokemon.getCurATK();
     }
-    public int getCurDEF(){
-        return (int)(getBaseDEF()*StageIncrementer.getStatMultiplier(DEFStage));
+    public int getCurDEF(AttackState move) {
+        return basePokemon.getCurDEF(move);
     }
-    public int getCurSPC(){
-        return (int)(getBaseSPC()*StageIncrementer.getStatMultiplier(SPCStage));
+    public int getCurSPC(AttackState move) {
+        return basePokemon.getCurSPC(move);
     }
-    public int getCurSPD(){
-        return (int)(getBaseSPD()*StageIncrementer.getStatMultiplier(SPDStage));
+    public int getCurSPD() {
+        return basePokemon.getCurSPD();
     }
-    public int getCurACC(){
-        return (int)(StageIncrementer.getStatMultiplierAccEva(ACCStage));
+    public int getCurACC() {
+        return basePokemon.getCurACC();
     }
-    public int getCurEVA(){
-        return (int)(StageIncrementer.getStatMultiplierAccEva(-EVAStage));
+    public int getCurEVA() {
+        return basePokemon.getCurEVA();
     }
-    public boolean isType(EleType type){
-        return type == type1 || type == type2;
+    public boolean isType(EleType type) {
+        return basePokemon.isType(type);
     }
-
-    public Pokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves) {
-        this.pokedexNo = pokedexNo;
-        this.name = name;
-        this.type1 = type1;
-        this.type2 = type2;
-        this.HP = HP;
-        this.ATK = ATK;
-        this.DEF = DEF;
-        this.SPC = SPC;
-        this.SPD = SPD;
-        this.curHP = HP;
-        this.ATKStage = 0;
-        this.DEFStage = 0;
-        this.SPCStage = 0;
-        this.SPDStage = 0;
-        this.moves = moves;
-        this.preBattleStates = new ArrayList<>();
-        this.postBattleStates = new ArrayList<>();
-        this.shouldSelectMove = true;
-        this.logger = FacadeFactory.getInstance(IBattleLogger.class);
-        this.moveGetter = FacadeFactory.getInstance(IChooseMove.class);
+    public void setType1(EleType type1) {
+        basePokemon.setType1(type1);
     }
-    public static Pokemon copyPokemon(Pokemon pokemon){
-        //copy moves here
-        List<Move> newMoves = new ArrayList<>();
-        for (Move move: pokemon.moves)
-            newMoves.add(Move.copyMove(move));
-        return new Pokemon(pokemon.pokedexNo,pokemon.name,pokemon.type1,pokemon.type2,pokemon.HP,pokemon.ATK,pokemon.DEF,pokemon.SPC,pokemon.SPD,newMoves);
+    public void setType2(EleType type2) {
+        basePokemon.setType2(type2);
     }
-
-    public void selectMove(){
-        if (!shouldSelectMove)
-            return;
-        logger.println("Select a move for " + name + ":");
-        List<Integer> noPPMoves = new ArrayList<>();
-        for (int i = 0; i < moves.size(); i++){
-            Move move = moves.get(i);
-            logger.print("(" + (i + 1) + "): " + AttackState.getName(move.getClass()));
-            logger.println(" (" + move.getCurrentPowerPoints() + "/" + move.getPowerPoints() + ")");
-            if (move.getCurrentPowerPoints() == 0)
-                noPPMoves.add(i + 1);
-        }
-        int selection = moveGetter.getMove(moves.size(), noPPMoves) - 1;
-        setAttackState(moves.get(selection));
+    public void selectMove() {
+        basePokemon.selectMove();
     }
-    public void selectMove(int moveIndex){
-        if (!shouldSelectMove)
-            return;
-        if (moveIndex < moves.size()){
-            setAttackState(moves.get(moveIndex));
-        }
+    public void selectMove(int moveIndex) {
+        basePokemon.selectMove(moveIndex);
     }
-    public void attack(Pokemon toAttack){
-        attackState.execute(this, toAttack);
+    public void attack(Pokemon toAttack) {
+        basePokemon.attack(toAttack);
     }
-    public String getName(){
-        return name;
+    public String getName() {
+        return basePokemon.getName();
     }
-    public void runPreBattleStates(){
-        shouldSelectMove = true;//any state should be able to change this
-        for (Iterator<BattleState> iterator = preBattleStates.iterator(); iterator.hasNext();){
-            BattleState nextBattleState = iterator.next();
-            boolean shouldRemove = nextBattleState.execute(this);
-            if (shouldRemove)
-                iterator.remove();
-        }
+    public void runPreBattleStates() {
+        basePokemon.runPreBattleStates();
     }
-    public void runPostBattleStates(){
-        for (Iterator<BattleState> iterator = postBattleStates.iterator(); iterator.hasNext();){
-            BattleState nextBattleState = iterator.next();
-            boolean shouldRemove = nextBattleState.execute(this);
-            if (shouldRemove)
-                iterator.remove();
-        }
+    public void runPostBattleStates() {
+        basePokemon.runPostBattleStates();
     }
-
     public AttackState getAttackState() {
-        return attackState;
-    }
-    private void setAttackState(Class<?> attackStateClass){
-        try {
-            attackState = (AttackState) attackStateClass.getDeclaredConstructor().newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return basePokemon.getAttackState();
     }
     public void setAttackState(AttackState attackState) {
-        this.attackState = attackState;
+        basePokemon.setAttackState(attackState);
     }
     public void addPostBattleState(BattleState battleState) {
-        postBattleStates.add(battleState);
+        basePokemon.addPostBattleState(battleState);
     }
-    public void setShouldSelectMove(boolean shouldSelectMove){
-        this.shouldSelectMove = shouldSelectMove;
+    public void setShouldSelectMove(boolean shouldSelectMove) {
+        basePokemon.setShouldSelectMove(shouldSelectMove);
     }
     public List<BattleState> getPreBattleStates() {
-        return preBattleStates;
+        return basePokemon.getPreBattleStates();
     }
     public List<BattleState> getPostBattleStates() {
-        return postBattleStates;
+        return basePokemon.getPostBattleStates();
+    }
+    public List<Move> getMoves() {
+        return basePokemon.getMoves();
+    }
+    public void setMoves(List<Move> moves) {
+        basePokemon.setMoves(moves);
+    }
+    public int getATK() {
+        return basePokemon.getATK();
+    }
+    public int getSPD() {
+        return basePokemon.getSPD();
+    }
+    public int getDEF(AttackState move){
+        return basePokemon.getDEF(move);
+    }
+    public int getSPC() {
+        return basePokemon.getSPC();
+    }
+    public void setATK(int ATK) {
+        basePokemon.setATK(ATK);
+    }
+    public void setSPD(int SPD) {
+        basePokemon.setSPD(SPD);
+    }
+    public void setDEF(int DEF) {
+        basePokemon.setDEF(DEF);
+    }
+    public void setSPC(int SPC) {
+        basePokemon.setSPC(SPC);
     }
 }

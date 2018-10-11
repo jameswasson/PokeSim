@@ -40,11 +40,11 @@ public class DamageCalculator {
         double theirDefence;
         if (category == DamageCategory.physical){
             ourAttack = ourselves.getCurATK();
-            theirDefence = opponent.getCurDEF();
+            theirDefence = opponent.getCurDEF(move);
         }
         else if (category == DamageCategory.special){
-            ourAttack = ourselves.getCurSPC();
-            theirDefence = opponent.getCurSPC();
+            ourAttack = ourselves.getCurSPC(null);
+            theirDefence = opponent.getCurSPC(move);
         }
         else{
             //ERROR! Bad things
