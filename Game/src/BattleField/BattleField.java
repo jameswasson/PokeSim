@@ -10,8 +10,8 @@ public class BattleField {
     }
 
     public static void main(String[] args){
-        Pokemon pokemon1 = Pokedex.getPokemon("Magmar");//magmar
         Pokemon pokemon2 = Pokedex.getPokemon(41);//zubat
+        Pokemon pokemon1 = Pokedex.getPokemon("Magmar");
         int turns = 100;
         try {
             runBattle(pokemon1, pokemon2, turns);
