@@ -52,8 +52,12 @@ public class Move extends AttackState {
         }
     }
 
+    public boolean canHitSemiInvulnerable(Pokemon opponent){
+        return !SemiInvulnerable.isSemiInvulnerable(opponent);
+    }
+
     public boolean willMiss(Pokemon ourselves, Pokemon opponent){
-        if (SemiInvulnerable.isSemiInvulnerable(opponent))
+        if (!canHitSemiInvulnerable(opponent))
             return true;
         double getHitChance = getChanceOfHitting(ourselves, opponent);
         return RNG.random() > getHitChance;
