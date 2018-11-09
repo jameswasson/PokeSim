@@ -111,6 +111,7 @@ public class BasePokemon extends Pokemon{
     public int getBaseSPD(){
         return SPD;
     }
+    public int getBaseDEF(AttackState move) { return DEF;}
     public int getCurHP(){
         return curHP;
     }
