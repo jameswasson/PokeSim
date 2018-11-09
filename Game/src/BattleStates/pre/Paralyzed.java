@@ -8,6 +8,7 @@ import Pokemons.Pokemon;
 public class Paralyzed extends BattleState {
     @Override
     public boolean execute(Pokemon pokemon) {
+        pokemon.setAttackState(new ParalyzedAttack(pokemon.getAttackState()));
         return false;//paralysis never wears off
     }
     public static void tryToParalyze(Pokemon pokemon){
