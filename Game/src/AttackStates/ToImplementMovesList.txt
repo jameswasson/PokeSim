@@ -1,0 +1,51 @@
+Bide -                  Pokemon tracks damage received
+Counter -               Pokemon tracks damage received
+Bite -                  Causes Flinch
+Stomp -                 Causes Flinch
+Headbutt -              Causes Flinch
+RollingKick -           Causes Flinch
+HyperFang -             Causes Flinch
+LowKick -               Causes Flinch
+BoneClub -              Flinch + substitute case
+PetalDance -            Multiple turn uses then self becomes confused
+Thrash -                Multiple turn uses then self becomes confused
+PinMissile -            Multiple turn uses
+Bonemerang -            Multiple hits in one use
+SpikeCannon -           Multiple hits in one use
+FuryAttack -            Multiple hits in one use
+Wrap -                  Puts opponent in wrap
+Clamp -                 Puts opponent in clamp
+FireSpin -              Puts opponent in fire vortex
+LeechSeed -             Puts opponent in seeded state + more
+Crabhammer -            High crit rate
+RazorLeaf -             High crit rate
+Slash -                 High crit rate
+FocusEnergy -           Raises crit rate
+Disable -               Disables move
+DreamEater -            substitute case
+HighJumpKick -          Self takes damage if misses
+JumpKick -              Self takes damage if misses
+IceBeam -               Freezes
+IcePunch -              Freezes
+Blizzard -              Freezes
+LightScreen -           Changes SPC
+Reflect -               Changes DEF
+Metronome -             uses random move
+Mimic -                 copies one of the opponent's moves
+MirrorMove -            uses last move used against self by opponent
+Mist -                  Protects self from stat changes by opponent
+PoisonGas -             Poisons
+PoisonSting -           Poisons
+Sludge -                Poisons
+Smog -                  Poisons
+Rest -                  Heal + sleep for strictly 2 moves
+SeismicToss -           can hurt ghost type, but is fighting/physical
+NightShade -            hurts normal+psycic but is ghost
+SolarBeam -             2 turn move
+SkullBash -             2 turn move
+SkyAttack -             2 turn move
+HyperBeam -             2 turn move
+Dig -                   2 turn move + semi-invulnerable
+Fly -                   2 turn move + semi-invulnerable
+Substitute -            is substitue
+Whirlwind -             ?????
