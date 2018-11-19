@@ -11,24 +11,26 @@ import Utils.RNG;
 
 public class Asleep extends BattleState {
     public int turnsAsleep;
-    public Asleep(){
-        turnsAsleep = RNG.randomInt(1,3);
+    public Asleep(int turnsAsleep){
+        this.turnsAsleep = turnsAsleep;
     }
     public boolean execute(Pokemon pokemon){
         AttackState nextAttack = pokemon.getAttackState();
-        boolean shouldWakeUp = turnsAsleep == 0;
+        boolean shouldWakeUp = turnsAsleep-- == 0;
         AttackState wrappedAttack = new AsleepAttack(nextAttack,shouldWakeUp);
         pokemon.setAttackState(wrappedAttack);
-        turnsAsleep--;
         return shouldWakeUp;
     }
     public static void tryToPutToSleep(Pokemon pokemon){
+        tryToPutToSleep(pokemon, RNG.randomInt(1,3));
+    }
+    public static void tryToPutToSleep(Pokemon pokemon, int turnsAsleep){
         if (Asleep.isAsleep(pokemon)){
             logger.println(pokemon.getName() + " is already asleep!");
         }
         else{
             logger.println(pokemon.getName() + " fell asleep!");
-            BattleState asleep = new Asleep();
+            BattleState asleep = new Asleep(turnsAsleep);
             pokemon.getPreBattleStates().add(asleep);
             asleep.execute(pokemon);
         }

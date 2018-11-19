@@ -20,7 +20,6 @@ HighJumpKick -          Self takes damage if misses
 JumpKick -              Self takes damage if misses
 LightScreen -           Changes SPC
 Reflect -               Changes DEF
-Rest -                  Heal + sleep for strictly 2 moves
 SeismicToss -           can hurt ghost type, but is fighting/physical
 NightShade -            hurts normal+psycic but is ghost
 LeechSeed -             Puts opponent in seeded state + more
