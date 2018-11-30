@@ -44,4 +44,3 @@ LowKick -               Causes Flinch
 IceBeam -               Freezes
 IcePunch -              Freezes
 Blizzard -              Freezes
-Toxic -                 Badly Poisons
