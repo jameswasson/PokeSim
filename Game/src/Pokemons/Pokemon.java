@@ -203,4 +203,7 @@ public class Pokemon{
     public void setSPC(int SPC) {
         basePokemon.setSPC(SPC);
     }
+    public void setAttackState(Class<?> attackStateClass){
+        basePokemon.setAttackState(attackStateClass);
+    }
 }

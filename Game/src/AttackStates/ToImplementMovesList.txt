@@ -2,7 +2,6 @@ Whirlwind -             ?????
 Substitute -            is substitue
 Bide -                  Pokemon tracks damage received
 Counter -               Pokemon tracks damage received
-Metronome -             uses random move
 Mimic -                 copies one of the opponent's moves
 MirrorMove -            uses last move used against self by opponent
 Mist -                  Protects self from stat changes by opponent

@@ -226,7 +226,7 @@ public class BasePokemon extends Pokemon{
     public AttackState getAttackState() {
         return attackState;
     }
-    private void setAttackState(Class<?> attackStateClass){
+    public void setAttackState(Class<?> attackStateClass){
         try {
             attackState = (AttackState) attackStateClass.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
