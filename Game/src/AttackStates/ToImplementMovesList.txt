@@ -25,6 +25,9 @@ LeechSeed -             Puts opponent in seeded state + more
 Wrap -                  Puts opponent in wrap
 Clamp -                 Puts opponent in clamp
 FireSpin -              Puts opponent in fire vortex
+IceBeam -               Freezes
+IcePunch -              Freezes
+Blizzard -              Freezes
 SolarBeam -             2 turn move
 SkullBash -             2 turn move
 SkyAttack -             2 turn move
@@ -34,12 +37,3 @@ Fly -                   2 turn move + semi-invulnerable
 Crabhammer -            High crit rate
 RazorLeaf -             High crit rate
 Slash -                 High crit rate
-Bite -                  Causes Flinch
-Stomp -                 Causes Flinch
-Headbutt -              Causes Flinch
-RollingKick -           Causes Flinch
-HyperFang -             Causes Flinch
-LowKick -               Causes Flinch
-IceBeam -               Freezes
-IcePunch -              Freezes
-Blizzard -              Freezes
