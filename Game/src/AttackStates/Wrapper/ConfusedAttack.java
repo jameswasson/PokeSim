@@ -3,18 +3,20 @@ import AttackStates.AttackState;
 import AttackStates.AttackWrapper;
 import AttackStates.DamageCategory;
 import AttackStates.Move;
+import BattleStates.pre.Confused;
 import Pokemons.EleType;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
 public class ConfusedAttack extends AttackWrapper {
-    boolean shouldSnapOut;
+    private boolean shouldSnapOut;
     public ConfusedAttack(AttackState nextAttack,boolean shouldSnapOut){
         this.nextAttack = nextAttack;
         this.shouldSnapOut = shouldSnapOut;
     }
     public void execute(Pokemon us, Pokemon them){
         if (shouldSnapOut){
+            Confused.removeConfusion(us);
             logger.println(us.getName() + " snapped out of confusion!");
             nextAttack.execute(us,them);
             return;
@@ -48,9 +50,5 @@ public class ConfusedAttack extends AttackWrapper {
         }
         HurtConfusion hurtConfusion = new HurtConfusion();
         hurtConfusion.execute(pokemon,pokemon);
-    }
-    public static boolean isConfused(Pokemon pokemon){
-        AttackState state = pokemon.getAttackState();
-        return state instanceof ConfusedAttack;
     }
 }

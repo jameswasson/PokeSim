@@ -1,9 +1,7 @@
 package Pokemons;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
 import AttackStates.AttackState;
 import AttackStates.Move;
 import BattleField.IBattleLogger;
@@ -205,24 +203,14 @@ public class BasePokemon extends Pokemon{
     public String getName(){
         return name;
     }
-    public void runPreBattleStates(){
-        shouldSelectMove = true;//any state should be able to change this
-        for (Iterator<BattleState> iterator = preBattleStates.iterator(); iterator.hasNext();){
-            BattleState nextBattleState = iterator.next();
-            boolean shouldRemove = nextBattleState.execute(this);
-            if (shouldRemove)
-                iterator.remove();
-        }
+    public void runPreBattleStates(Pokemon pokemon){
+        for (BattleState preState:preBattleStates)
+            preState.execute(pokemon);
     }
-    public void runPostBattleStates(){
-        for (Iterator<BattleState> iterator = postBattleStates.iterator(); iterator.hasNext();){
-            BattleState nextBattleState = iterator.next();
-            boolean shouldRemove = nextBattleState.execute(this);
-            if (shouldRemove)
-                iterator.remove();
-        }
+    public void runPostBattleStates(Pokemon pokemon){
+        for (BattleState postState: postBattleStates)
+            postState.execute(pokemon);
     }
-
     public AttackState getAttackState() {
         return attackState;
     }

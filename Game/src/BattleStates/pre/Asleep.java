@@ -2,10 +2,7 @@ package BattleStates.pre;
 
 import AttackStates.Wrapper.AsleepAttack;
 import AttackStates.AttackState;
-import BattleField.IBattleLogger;
 import BattleStates.BattleState;
-import Facade.FacadeFactory;
-import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
@@ -14,19 +11,21 @@ public class Asleep extends BattleState {
     public Asleep(int turnsAsleep){
         this.turnsAsleep = turnsAsleep;
     }
-    public boolean execute(Pokemon pokemon){
+    public void execute(Pokemon pokemon){
         AttackState nextAttack = pokemon.getAttackState();
-        boolean shouldWakeUp = turnsAsleep-- == 0;
-        AttackState wrappedAttack = new AsleepAttack(nextAttack,shouldWakeUp);
-        pokemon.setAttackState(wrappedAttack);
-        return shouldWakeUp;
+        boolean shouldWakeUp = turnsAsleep <= 0;
+        pokemon.setAttackState(new AsleepAttack(nextAttack,shouldWakeUp));
+        turnsAsleep--;
     }
     public static void tryToPutToSleep(Pokemon pokemon){
         tryToPutToSleep(pokemon, RNG.randomInt(1,3));
     }
     public static void tryToPutToSleep(Pokemon pokemon, int turnsAsleep){
-        if (Asleep.isAsleep(pokemon)){
+        if (isAsleep(pokemon)){
             logger.println(pokemon.getName() + " is already asleep!");
+        }
+        else if (isNonVolatile(pokemon)){
+            logger.println("But it failed!");
         }
         else{
             logger.println(pokemon.getName() + " fell asleep!");
@@ -36,10 +35,9 @@ public class Asleep extends BattleState {
         }
     }
     public static boolean isAsleep(Pokemon pokemon){
-        for (BattleState state:pokemon.getPreBattleStates()){
-            if (state.getClass() == Asleep.class)
-                return true;
-        }
-        return false;
+        return new Asleep(0).containsState(pokemon);
+    }
+    public static void wakeUp(Pokemon pokemon){
+        new Asleep(0).removeState(pokemon);
     }
 }

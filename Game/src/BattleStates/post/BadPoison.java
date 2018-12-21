@@ -12,24 +12,24 @@ public class BadPoison extends BattleState{
     private BadPoison(){
         turnCount = 0;
     }
-    public boolean execute(Pokemon pokemon){
+    public void execute(Pokemon pokemon){
         //lose (1/8 * turnCount)th of health
         turnCount++;
         pokemon.loseHP(pokemon.getBaseHP()/8 * turnCount);
         FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " is hurt by its poison!");
-        return false;
     }
     public static void tryToBadlyPoison(Pokemon pokemon){
-        if (!isBadlyPoisoned(pokemon)) {
+        if (isBadlyPoisoned(pokemon)) {
+            logger.println(pokemon.getName() + " is already Poisoned!");
+        } else if (isNonVolatile(pokemon)) {
+            logger.println("But it failed!");
+        }
+        else {
             pokemon.addPostBattleState(new BadPoison());
             FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " was badly poisoned!");
         }
     }
     public static boolean isBadlyPoisoned(Pokemon pokemon){
-        List<BattleState> postStates =  pokemon.getPostBattleStates();
-        for (BattleState state: postStates)
-            if (state.getClass() == BadPoison.class)
-                return true;
-        return false;
+        return new BadPoison().containsState(pokemon);
     }
 }

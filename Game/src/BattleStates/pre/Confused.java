@@ -4,6 +4,7 @@ import AttackStates.Wrapper.ConfusedAttack;
 import BattleField.IBattleLogger;
 import BattleStates.BattleState;
 import Facade.FacadeFactory;
+import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
@@ -12,14 +13,13 @@ public class Confused extends BattleState {
     private Confused(){
         turnsTillNotConfused = RNG.randomInt(1, 3);
     }
-    public boolean execute(Pokemon pokemon){
-        boolean shouldSnapOut = turnsTillNotConfused == 0;
+    public void execute(Pokemon pokemon){
+        boolean shouldSnapOut = turnsTillNotConfused <= 0;
         pokemon.setAttackState(new ConfusedAttack(pokemon.getAttackState(),shouldSnapOut));
         turnsTillNotConfused--;
-        return shouldSnapOut;
     }
     public static boolean isConfused(Pokemon pokemon){
-        return ConfusedAttack.isConfused(pokemon);
+        return new Confused().containsState(pokemon);
     }
     public static void tryToConfuse(Pokemon pokemon){
         if (isConfused(pokemon)){
@@ -30,6 +30,24 @@ public class Confused extends BattleState {
             Confused confused = new Confused();
             pokemon.getPreBattleStates().add(confused);
             confused.execute(pokemon);
+        }
+    }
+    public static void removeConfusion(Pokemon pokemon){
+        new Confused().removeState(pokemon);
+    }
+
+    public static void main(String[] args) {
+        RNG.setSeed(0);
+        Pokemon goldeen = Pokedex.getPokemon("Goldeen");
+        Confused.tryToConfuse(goldeen);
+        Confused.tryToConfuse(goldeen);
+
+        for (int i = 0; i < 4; i++) {
+            logger.println("=====================================");
+            goldeen.selectMove(3);
+            goldeen.runPreBattleStates();
+            goldeen.attack(goldeen);
+            goldeen.runPostBattleStates();
         }
     }
 }

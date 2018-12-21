@@ -2,12 +2,7 @@ package Pokemons;
 
 import AttackStates.AttackState;
 import AttackStates.Move;
-import BattleField.IBattleLogger;
 import BattleStates.BattleState;
-import Facade.FacadeFactory;
-import Utils.SelectMove.IChooseMove;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Pokemon{
@@ -150,10 +145,16 @@ public class Pokemon{
         return basePokemon.getName();
     }
     public void runPreBattleStates() {
-        basePokemon.runPreBattleStates();
+        basePokemon.runPreBattleStates(this);
+    }
+    public void runPreBattleStates(Pokemon pokemon){
+        System.out.println("ERROR");
     }
     public void runPostBattleStates() {
-        basePokemon.runPostBattleStates();
+        basePokemon.runPostBattleStates(this);
+    }
+    public void runPostBattleStates(Pokemon pokemon){
+        System.out.println("ERROR");
     }
     public AttackState getAttackState() {
         return basePokemon.getAttackState();
