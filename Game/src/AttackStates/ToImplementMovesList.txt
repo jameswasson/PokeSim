@@ -1,4 +1,3 @@
-Whirlwind -             ?????
 Substitute -            is substitue
 Bide -                  Pokemon tracks damage received
 Counter -               Pokemon tracks damage received
