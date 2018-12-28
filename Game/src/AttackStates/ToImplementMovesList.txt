@@ -4,7 +4,6 @@ Counter -               Pokemon tracks damage received
 Mimic -                 copies one of the opponent's moves
 MirrorMove -            uses last move used against self by opponent
 Mist -                  Protects self from stat changes by opponent
-FocusEnergy -           Raises crit rate
 BoneClub -              Flinch + substitute case
 PetalDance -            Multiple turn uses then self becomes confused
 Thrash -                Multiple turn uses then self becomes confused
@@ -14,8 +13,6 @@ SpikeCannon -           Multiple hits in one use
 FuryAttack -            Multiple hits in one use
 Disable -               Disables move
 DreamEater -            substitute case
-HighJumpKick -          Self takes damage if misses
-JumpKick -              Self takes damage if misses
 LightScreen -           Changes SPC
 Reflect -               Changes DEF
 SeismicToss -           can hurt ghost type, but is fighting/physical
@@ -33,6 +30,4 @@ SkyAttack -             2 turn move
 HyperBeam -             2 turn move
 Dig -                   2 turn move + semi-invulnerable
 Fly -                   2 turn move + semi-invulnerable
-Crabhammer -            High crit rate
-RazorLeaf -             High crit rate
-Slash -                 High crit rate
+FocusEnergy -           Raises crit rate
