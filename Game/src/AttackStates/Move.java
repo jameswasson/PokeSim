@@ -37,12 +37,9 @@ public class Move extends AttackState {
         currentPowerPoints--;
         if (noEffect(opponent.getType1(),opponent.getType2()))
             logger.println("But it had no effect on " + opponent.getName() + "!");
-        else if (willMiss(ourselves, opponent))
-            if (damageCategory == DamageCategory.status)
-                logger.println("But it failed!");
-            else
-                logger.println("But it missed!");
-        else {
+        else if (willMiss(ourselves, opponent)) {
+            onMiss(ourselves, opponent);
+        } else {
             int damage;
             if (basePower == -1)
                 damage = -1;
@@ -50,6 +47,13 @@ public class Move extends AttackState {
                 damage = DamageCalculator.getDamage(ourselves,opponent,this);
             attack(ourselves, opponent, damage);
         }
+    }
+
+    public void onMiss(Pokemon ourselves, Pokemon opponent) {
+        if (damageCategory == DamageCategory.status)
+            logger.println("But it failed!");
+        else
+            logger.println("But it missed!");
     }
 
     public boolean canHitSemiInvulnerable(Pokemon opponent){
