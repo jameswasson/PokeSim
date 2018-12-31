@@ -77,6 +77,11 @@ public class Move extends AttackState {
         return totalAccuracy;
     }
 
+    public double getChanceOfCrit(Pokemon ourselves){
+        double baseSpeed = ourselves.getBaseSPD();
+        return (baseSpeed + 76)/ 1024;
+    }
+
     public boolean noEffect(EleType type1, EleType type2){
         if (damageCategory == DamageCategory.status)
             return false; // can effect
@@ -130,10 +135,15 @@ public class Move extends AttackState {
     }
 
     public boolean willBeCritical(Pokemon pokemon){
-        double baseSpeed = pokemon.getBaseSPD();
-        double probabilityOfCrit = (baseSpeed + 76)/ 1024;
-        wasCritical = RNG.random() < probabilityOfCrit;
+        double chance = getChanceOfCrit(pokemon);
+        chance *= critBonus();
+        chance *= pokemon.getCritBonus();
+        wasCritical = RNG.random() < chance;
         return wasCritical;
+    }
+
+    public double critBonus(){
+        return 1;//default: no bonus
     }
 
     public void dealDamage(Pokemon ourselves, Pokemon opponent, int damage){

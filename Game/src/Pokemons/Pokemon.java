@@ -17,8 +17,8 @@ public class Pokemon{
     }
 
     public Pokemon(){}
-    public Pokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves){
-        basePokemon = new BasePokemon(pokedexNo,name,type1,type2,HP,ATK,DEF,SPC,SPD,moves);
+    public Pokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves, int critBonus){
+        basePokemon = new BasePokemon(pokedexNo,name,type1,type2,HP,ATK,DEF,SPC,SPD,moves,critBonus);
     }
 
     public static Pokemon copyPokemon(Pokemon pkm){
@@ -206,5 +206,11 @@ public class Pokemon{
     }
     public void setAttackState(Class<?> attackStateClass){
         basePokemon.setAttackState(attackStateClass);
+    }
+    public double getCritBonus(){
+        return basePokemon.getCritBonus();
+    }
+    public void setCritBonus(int bonus){
+        basePokemon.setCritBonus(bonus);
     }
 }

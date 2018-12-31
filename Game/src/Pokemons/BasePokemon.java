@@ -35,6 +35,7 @@ public class BasePokemon extends Pokemon{
     int SPCStage;
     int ACCStage;
     int EVAStage;
+    int critBonus;
 
     public int getLevel(){
         return 100;// assume 100 for now
@@ -141,7 +142,7 @@ public class BasePokemon extends Pokemon{
         this.type2 = type2;
     }
 
-    public BasePokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves) {
+    public BasePokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves, int critBonus) {
         this.pokedexNo = pokedexNo;
         this.name = name;
         this.type1 = type1;
@@ -156,6 +157,7 @@ public class BasePokemon extends Pokemon{
         this.DEFStage = 0;
         this.SPCStage = 0;
         this.SPDStage = 0;
+        this.critBonus = critBonus;
         this.moves = moves;
         this.preBattleStates = new ArrayList<>();
         this.postBattleStates = new ArrayList<>();
@@ -168,7 +170,7 @@ public class BasePokemon extends Pokemon{
         List<Move> newMoves = new ArrayList<>();
         for (Move move: bp.moves)
             newMoves.add(Move.copyMove(move));
-        return new BasePokemon(bp.pokedexNo,bp.name,bp.type1,bp.type2,bp.HP,bp.ATK,bp.DEF,bp.SPC,bp.SPD,newMoves);
+        return new BasePokemon(bp.pokedexNo,bp.name,bp.type1,bp.type2,bp.HP,bp.ATK,bp.DEF,bp.SPC,bp.SPD,newMoves,bp.critBonus);
     }
 
     public BasePokemon getBasePokemon() {
@@ -264,5 +266,11 @@ public class BasePokemon extends Pokemon{
     }
     public void setSPC(int SPC) {
         this.SPC = SPC;
+    }
+    public double getCritBonus(){
+        return critBonus;
+    }
+    public void setCritBonus(int bonus){
+        this.critBonus = bonus;
     }
 }
