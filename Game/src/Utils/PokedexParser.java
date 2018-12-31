@@ -2,10 +2,7 @@ package Utils;
 
 import AttackStates.AttackState;
 import AttackStates.Move;
-import Pokemons.EleType;
-import Pokemons.Pokedex;
-import Pokemons.Pokemon;
-import Pokemons.TypesHelper;
+import Pokemons.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +44,7 @@ public class PokedexParser extends CSVParser {
                 System.out.println("move" + i + "\t" + AttackState.getName(moves.get(i).getClass()));
             System.out.println("===========================================");
         }
-        Pokemon loadedPokemon = new Pokemon(no,name,type1,type2,HP,ATK,DEF,SPC,SPD,moves, 1);
+        Pokemon loadedPokemon = new WrapperPokemon(no,name,type1,type2,HP,ATK,DEF,SPC,SPD,moves, 1);
         Pokedex.loadDex(loadedPokemon);
         return toReturn;
     }

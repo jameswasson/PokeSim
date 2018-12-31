@@ -37,6 +37,11 @@ public class BasePokemon extends Pokemon{
     int EVAStage;
     int critBonus;
 
+    @Override
+    public void setBasePokemon(Pokemon pokemon) {
+        logger.println("ERROR! BASEPOKEMON TOLD TO SETBASEPOKEMON");
+    }
+
     public int getLevel(){
         return 100;// assume 100 for now
     }
@@ -204,6 +209,12 @@ public class BasePokemon extends Pokemon{
     }
     public String getName(){
         return name;
+    }
+    public void runPreBattleStates(){
+        logger.println("ERROR!");
+    }
+    public void runPostBattleStates(){
+        logger.println("ERROR!");
     }
     public void runPreBattleStates(Pokemon pokemon){
         for (BattleState preState:preBattleStates)

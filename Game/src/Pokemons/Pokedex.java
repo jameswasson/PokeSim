@@ -26,13 +26,13 @@ public class Pokedex {
         return getPokedex()._getPokemon(name);
     }
     private Pokemon _getPokemon(String name){
-        return Pokemon.copyPokemon(dexName.get(name));
+        return WrapperPokemon.copyPokemon(dexName.get(name));
     }
     public static Pokemon getPokemon(int pokedexNo){
         return getPokedex()._getPokemon(pokedexNo);
     }
     private Pokemon _getPokemon(int pokedexNo){
-        return Pokemon.copyPokemon(dexNo.get(pokedexNo));
+        return WrapperPokemon.copyPokemon(dexNo.get(pokedexNo));
     }
     public static void loadDex(Pokemon pokemon){
         getPokedex()._loadDex(pokemon);

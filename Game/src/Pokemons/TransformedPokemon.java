@@ -2,11 +2,12 @@ package Pokemons;
 
 import AttackStates.AttackState;
 import AttackStates.Move;
+import AttackStates.Moves.Wrap;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransformedPokemon extends Pokemon {
+public class TransformedPokemon extends WrapperPokemon {
     int opponentBaseSPC;
     int opponentBaseDEF;
 
@@ -15,7 +16,7 @@ public class TransformedPokemon extends Pokemon {
     * Pokemon cannot transform back to original form, so let's write over unimportant data
     * ourselves.def and ourselves.spc are important data
     * opponent.def and opponent.spc must be stored somehow
-    * we should not store opponent anywhere in the case opponent changes (transform|substitue)
+    * we should not store opponent anywhere in the case opponent changes (transform, substitue, light screen, etc)
     * */
     public TransformedPokemon(Pokemon ourselves, Pokemon opponent){
         basePokemon = ourselves.getBasePokemon();
