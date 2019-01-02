@@ -189,8 +189,7 @@ public class BasePokemon extends Pokemon{
         List<Integer> noPPMoves = new ArrayList<>();
         for (int i = 0; i < moves.size(); i++){
             Move move = moves.get(i);
-            logger.print("(" + (i + 1) + "): " + AttackState.getName(move.getClass()));
-            logger.println(" (" + move.getCurrentPowerPoints() + "/" + move.getPowerPoints() + ")");
+            logger.println("(" + (i + 1) + "): " + move.getDisplayText());
             if (move.getCurrentPowerPoints() == 0)
                 noPPMoves.add(i + 1);
         }

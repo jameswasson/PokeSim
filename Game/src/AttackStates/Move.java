@@ -184,4 +184,8 @@ public class Move extends AttackState {
     public void setCurrentPowerPoints(int currentPowerPoints) {
         this.currentPowerPoints = currentPowerPoints;
     }
+
+    public String getDisplayText(){
+        return AttackState.getName(getClass()) + " (" + getCurrentPowerPoints() + "/" + getPowerPoints() + ")";
+    }
 }
