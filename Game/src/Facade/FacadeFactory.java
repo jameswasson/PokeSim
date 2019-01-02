@@ -7,6 +7,9 @@ import BattleField.BattleLog;
 import BattleField.IBattleLogger;
 import BattleField.TestLog;
 import BattleField.TestMakerLog;
+import Utils.FileManager.FileManager;
+import Utils.FileManager.IFileManager;
+import Utils.FileManager.TestFileManager;
 import Utils.SelectMove.IChooseMove;
 import Utils.SelectMove.TestChooseMove;
 import Utils.SelectMove.UserChooseMove;
@@ -16,18 +19,21 @@ public class FacadeFactory {
         Map<Class<?>, Class<?>> implMap = new HashMap<>();
         implMap.put(IBattleLogger.class, BattleLog.class);
         implMap.put(IChooseMove.class, UserChooseMove.class);
+        implMap.put(IFileManager.class, FileManager.class);
         return implMap;
     }
     private static Map<Class<?>, Class<?>> testClasses(){
         Map<Class<?>, Class<?>> implMap = new HashMap<>();
         implMap.put(IBattleLogger.class, TestLog.class);
         implMap.put(IChooseMove.class, TestChooseMove.class);
+        implMap.put(IFileManager.class, TestFileManager.class);
         return implMap;
     }
     private static Map<Class<?>, Class<?>> testMakerClasses(){
         Map<Class<?>, Class<?>> implMap = new HashMap<>();
         implMap.put(IBattleLogger.class, TestMakerLog.class);
         implMap.put(IChooseMove.class, UserChooseMove.class);
+        implMap.put(IFileManager.class, FileManager.class);
         return implMap;
     }
     private static Map<Class<?>, Object> defaultInstances() {

@@ -1,9 +1,5 @@
 package Utils;
 
-import AttackStates.AttackState;
-import Pokemons.EleType;
-import Pokemons.TypesHelper;
-
 import java.io.File;
 import java.util.*;
 
@@ -11,13 +7,12 @@ public abstract class CSVParser {
 
     public abstract List<String> processLine(String line, boolean verbose);
 
-    //loads fileName as location of csv Pokedex and returns parsed instance
-    public Set<String> getCSV(String fileName){
+    public Set<String> getCSV(File file){
         Set<String> toReturn = new HashSet<>();
         boolean firstIter = true;
         Scanner scnr;
         try {
-            scnr = new Scanner(new File(fileName));
+            scnr = new Scanner(file);
         }
         catch (Exception e){
             e.printStackTrace();

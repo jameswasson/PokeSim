@@ -1,7 +1,10 @@
 package Utils;
 
+import Facade.FacadeFactory;
 import Pokemons.Movedex;
+import Utils.FileManager.IFileManager;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -30,6 +33,7 @@ public class MovedexParser extends CSVParser {
     }
 
     public static Set<String> getMoveNames(){
-        return new MovedexParser().getCSV("Game//Movedex.csv");
+        File movedex = FacadeFactory.getInstance(IFileManager.class).getMovedexFile();
+        return new MovedexParser().getCSV(movedex);
     }
 }

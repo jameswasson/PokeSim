@@ -2,8 +2,11 @@ package Utils;
 
 import AttackStates.AttackState;
 import AttackStates.Move;
+import Facade.FacadeFactory;
 import Pokemons.*;
+import Utils.FileManager.IFileManager;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -50,7 +53,8 @@ public class PokedexParser extends CSVParser {
     }
 
     public static Set<String> loadPokedex() {
-        return new PokedexParser().getCSV("Game//Pokedex.csv");
+        File pokedexFile = FacadeFactory.getInstance(IFileManager.class).getPokedexFile();
+        return new PokedexParser().getCSV(pokedexFile);
     }
 
     public static void main(String[] args) {
