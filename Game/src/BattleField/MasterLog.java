@@ -16,5 +16,18 @@ abstract class MasterLog implements IBattleLogger {
     }
 
     @Override
+    public void println(int i){
+        println("" + i);
+    }
+
+    @Override
     abstract public String getLogInfo();
+
+    @Override
+    abstract public void reset();
+
+    @Override
+    public void printLogInfo(){
+        System.out.println(getLogInfo());
+    }
 }

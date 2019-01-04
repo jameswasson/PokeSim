@@ -203,6 +203,9 @@ public class BasePokemon extends Pokemon{
             setAttackState(moves.get(moveIndex));
         }
     }
+    public void selectMove(Class<?> moveClass){
+        attackState = Move.getMove(moveClass.getSimpleName());
+    }
     public void attack(Pokemon toAttack){
         attackState.execute(this, toAttack);
     }

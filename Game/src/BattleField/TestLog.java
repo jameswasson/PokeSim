@@ -11,4 +11,9 @@ public class TestLog extends MasterLog {
     public String getLogInfo() {
         return log;
     }
+
+    @Override
+    public void reset(){
+        log = "";
+    }
 }

@@ -14,4 +14,10 @@ public class TestMakerLog extends MasterLog {
     public String getLogInfo() {
         return testLog.getLogInfo();
     }
+
+    @Override
+    public void reset(){
+        testLog.reset();
+        printLog.reset();
+    }
 }

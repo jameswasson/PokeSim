@@ -138,6 +138,9 @@ public class WrapperPokemon extends Pokemon {
     public void selectMove(int moveIndex) {
         basePokemon.selectMove(moveIndex);
     }
+    public void selectMove(Class<?> moveClass){
+        basePokemon.selectMove(moveClass);
+    }
     public void attack(Pokemon toAttack) {
         basePokemon.attack(toAttack);
     }

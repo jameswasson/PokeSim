@@ -20,6 +20,7 @@ public abstract class Pokemon{
     public abstract void setType2(EleType type2);
     public abstract void selectMove();
     public abstract void selectMove(int moveIndex);
+    public abstract void selectMove(Class<?> moveClass);
     public abstract void attack(Pokemon toAttack);
     public abstract void runPreBattleStates();
     public abstract void runPreBattleStates(Pokemon pokemon);

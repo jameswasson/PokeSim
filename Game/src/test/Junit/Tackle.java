@@ -1,43 +1,30 @@
 package test.Junit;
 
-
-import BattleField.IBattleLogger;
-import Pokemons.Pokedex;
-import Pokemons.Pokemon;
-import Utils.RNG;
-import org.junit.Before;
 import org.junit.Test;
-import Facade.FacadeFactory;
 
-public class Tackle {
-    IBattleLogger logger;
-    Pokemon Caterpie;
-    Pokemon Magikarp;
-    @Before
-    public void prepareEnvironment(){
-        FacadeFactory.createTestingEnvironment();
-        logger = FacadeFactory.getInstance(IBattleLogger.class);
-        RNG.setSeed(0);
-        Caterpie = Pokedex.getPokemon("Caterpie");
-        Magikarp = Pokedex.getPokemon("Magikarp");
-    }
+public class Tackle extends Move {
     @Test
-    public void firstTest(){
-        Caterpie.selectMove(0);
-        Magikarp.selectMove(1);
-
-        Caterpie.runPreBattleStates();
-        Magikarp.runPreBattleStates();
-
-        Caterpie.attack(Magikarp);
-        Magikarp.attack(Caterpie);
-
-        Caterpie.runPostBattleStates();
-        Magikarp.runPostBattleStates();
+    public void damageTest(){
+        //general test, does Move.attack work?
+        //is DamageCalculator consistent?
+        tackle.execute(Caterpie, Magikarp);
+        tackle.execute(Magikarp, Caterpie);
 
         int caterpieHealthLoss = Caterpie.getBaseHP() - Caterpie.getCurHP();
         int magikarpHealthLoss = Magikarp.getBaseHP() - Magikarp.getCurHP();
         assert(caterpieHealthLoss == 21);
         assert(magikarpHealthLoss == 24);
+    }
+    @Test
+    public void RNGTest(){
+        //makes sure DamageCalculator uses RNG and deals varying damage.
+        tackle.execute(Caterpie, Magikarp);
+        int curHP = Magikarp.getCurHP();
+        int firstHPLoss = Magikarp.getBaseHP() - curHP;
+        tackle.execute(Caterpie, Magikarp);
+        int secondHPLoss = curHP - Magikarp.getCurHP();
+        assert(firstHPLoss != 0);
+        assert(secondHPLoss != 0);
+        assert(firstHPLoss != secondHPLoss);
     }
 }
