@@ -1,6 +1,5 @@
 package test.Junit;
 
-import Pokemons.Movedex;
 import Pokemons.Pokedex;
 import org.junit.Test;
 
@@ -13,6 +12,6 @@ public class AAALoadAssets extends Move {
      */
     @Test
     public void loadPokemonAndMoves(){
-        Pokedex.getPokemon(1);
+        Pokedex.getPokemon("Charmander");
     }
 }

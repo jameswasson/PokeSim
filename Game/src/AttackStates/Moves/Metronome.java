@@ -1,15 +1,12 @@
 package AttackStates.Moves;
 
 import AttackStates.Move;
-import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Metronome extends Move {
     private static List<Class> availableMoves;

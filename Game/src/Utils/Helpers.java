@@ -63,14 +63,4 @@ public class Helpers {
     public static String getDirectory(){
         return new File("").getAbsolutePath();
     }
-
-    public static void main(String[] args) {
-        try {
-            writeToFile("Hello\nWorld!","file.txt");
-            System.out.println(getFromFile("file.txt"));
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 }

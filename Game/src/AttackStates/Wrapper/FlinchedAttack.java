@@ -2,7 +2,6 @@ package AttackStates.Wrapper;
 
 import AttackStates.AttackState;
 import AttackStates.AttackWrapper;
-import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 
 public class FlinchedAttack  extends AttackWrapper {

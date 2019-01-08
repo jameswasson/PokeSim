@@ -4,7 +4,6 @@ import AttackStates.Wrapper.ConfusedAttack;
 import BattleField.IBattleLogger;
 import BattleStates.BattleState;
 import Facade.FacadeFactory;
-import Pokemons.Pokedex;
 import Pokemons.Pokemon;
 import Utils.RNG;
 
@@ -34,20 +33,5 @@ public class Confused extends BattleState {
     }
     public static void removeConfusion(Pokemon pokemon){
         new Confused().removeState(pokemon);
-    }
-
-    public static void main(String[] args) {
-        RNG.setSeed(0);
-        Pokemon goldeen = Pokedex.getPokemon("Goldeen");
-        Confused.tryToConfuse(goldeen);
-        Confused.tryToConfuse(goldeen);
-
-        for (int i = 0; i < 4; i++) {
-            logger.println("=====================================");
-            goldeen.selectMove(3);
-            goldeen.runPreBattleStates();
-            goldeen.attack(goldeen);
-            goldeen.runPostBattleStates();
-        }
     }
 }

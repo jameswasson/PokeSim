@@ -8,11 +8,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 public class MovedexParser extends CSVParser {
 
-    public List<String> processLine(String line, boolean verbose) {
+    public List<String> processLine(String line) {
         List<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(line);
         scnr.useDelimiter(",");
@@ -25,15 +24,11 @@ public class MovedexParser extends CSVParser {
         toReturn.add(scnr.next());// base power
         toReturn.add(scnr.next());// accuracy
         Movedex.loadDex(toReturn);
-        return toReturn;
+        return new ArrayList<>();
     }
 
     public static void loadMoves(){
-        getMoveNames();
-    }
-
-    public static Set<String> getMoveNames(){
         File movedex = FacadeFactory.getInstance(IFileManager.class).getMovedexFile();
-        return new MovedexParser().getCSV(movedex);
+        new MovedexParser().getCSV(movedex);
     }
 }

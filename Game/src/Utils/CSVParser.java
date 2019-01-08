@@ -5,10 +5,9 @@ import java.util.*;
 
 public abstract class CSVParser {
 
-    public abstract List<String> processLine(String line, boolean verbose);
+    public abstract List<String> processLine(String line);
 
-    public Set<String> getCSV(File file){
-        Set<String> toReturn = new HashSet<>();
+    public void getCSV(File file){
         boolean firstIter = true;
         Scanner scnr;
         try {
@@ -17,12 +16,11 @@ public abstract class CSVParser {
         catch (Exception e){
             e.printStackTrace();
             System.out.println(new File("").getAbsolutePath());
-            return null;
+            return;
         }
         while(scnr.hasNextLine()){
             if (!firstIter) {
-                List<String> processed = processLine(scnr.nextLine(),false);
-                toReturn.addAll(processed);
+                processLine(scnr.nextLine());
             }
             else {
                 firstIter = false;
@@ -30,8 +28,5 @@ public abstract class CSVParser {
             }
         }
         scnr.close();
-        return toReturn;
     }
-
-
 }
