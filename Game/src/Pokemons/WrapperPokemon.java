@@ -18,16 +18,8 @@ public class WrapperPokemon extends Pokemon {
     }
 
     public WrapperPokemon(){}
-    public WrapperPokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves, int critBonus){
-        basePokemon = new BasePokemon(pokedexNo,name,type1,type2,HP,ATK,DEF,SPC,SPD,moves,critBonus);
-    }
     public WrapperPokemon(BasePokemon pokemon){
         basePokemon = pokemon;
-    }
-    public static Pokemon copyPokemon(Pokemon pkm){
-        BasePokemon base = pkm.getBasePokemon();
-        BasePokemon copy = BasePokemon.copyBasePokemon(base);
-        return new WrapperPokemon(copy);
     }
 
     public int getLevel() {

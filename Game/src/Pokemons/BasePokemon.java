@@ -147,35 +147,32 @@ public class BasePokemon extends Pokemon{
         this.type2 = type2;
     }
 
-    public BasePokemon(int pokedexNo, String name, EleType type1, EleType type2, int HP, int ATK, int DEF, int SPC, int SPD, List<Move> moves, int critBonus) {
-        this.pokedexNo = pokedexNo;
+    public BasePokemon(String name){
+        List<String> pokeInfo = Pokedex.getPokemonInfo(name);
+        this.type1 = TypesHelper.enumOf(pokeInfo.get(1));
+        this.type2 = TypesHelper.enumOf(pokeInfo.get(2));
+        this.HP = Integer.valueOf(pokeInfo.get(3));
+        this.ATK = Integer.valueOf(pokeInfo.get(4));
+        this.DEF = Integer.valueOf(pokeInfo.get(5));
+        this.SPC = Integer.valueOf(pokeInfo.get(6));
+        this.SPD = Integer.valueOf(pokeInfo.get(7));
+        this.moves = new ArrayList<>();
+        for (int i = 8; i < pokeInfo.size(); i++){
+            this.moves.add(Move.getMove(pokeInfo.get(i)));
+        }
+
         this.name = name;
-        this.type1 = type1;
-        this.type2 = type2;
-        this.HP = HP;
-        this.ATK = ATK;
-        this.DEF = DEF;
-        this.SPC = SPC;
-        this.SPD = SPD;
-        this.curHP = HP;
+        this.curHP = this.HP;
         this.ATKStage = 0;
         this.DEFStage = 0;
         this.SPCStage = 0;
         this.SPDStage = 0;
-        this.critBonus = critBonus;
-        this.moves = moves;
+        this.critBonus = 1;
         this.preBattleStates = new ArrayList<>();
         this.postBattleStates = new ArrayList<>();
         this.shouldSelectMove = true;
         this.logger = FacadeFactory.getInstance(IBattleLogger.class);
         this.moveGetter = FacadeFactory.getInstance(IChooseMove.class);
-    }
-    public static BasePokemon copyBasePokemon(BasePokemon bp){
-        //copy moves here
-        List<Move> newMoves = new ArrayList<>();
-        for (Move move: bp.moves)
-            newMoves.add(Move.copyMove(move));
-        return new BasePokemon(bp.pokedexNo,bp.name,bp.type1,bp.type2,bp.HP,bp.ATK,bp.DEF,bp.SPC,bp.SPD,newMoves,bp.critBonus);
     }
 
     public BasePokemon getBasePokemon() {
