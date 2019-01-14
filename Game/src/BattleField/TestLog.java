@@ -2,6 +2,7 @@ package BattleField;
 
 public class TestLog extends MasterLog {
     private String log = "";
+
     @Override
     public void print(String s) {
         log += s;
@@ -13,7 +14,7 @@ public class TestLog extends MasterLog {
     }
 
     @Override
-    public void reset(){
+    public void reset() {
         log = "";
     }
 }

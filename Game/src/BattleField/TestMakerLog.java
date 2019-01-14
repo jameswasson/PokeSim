@@ -16,7 +16,7 @@ public class TestMakerLog extends MasterLog {
     }
 
     @Override
-    public void reset(){
+    public void reset() {
         testLog.reset();
         printLog.reset();
     }

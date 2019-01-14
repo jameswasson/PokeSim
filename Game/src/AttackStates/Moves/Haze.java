@@ -9,7 +9,8 @@ public class Haze extends Move {
         removeStatusCondition(ourselves);
         removeStatusCondition(opponent);
     }
-    public static void removeStatusCondition(Pokemon pokemon){
+
+    public static void removeStatusCondition(Pokemon pokemon) {
         pokemon.setACCStage(0);
         pokemon.setATKStage(0);
         pokemon.setDEFStage(0);

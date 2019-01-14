@@ -10,23 +10,25 @@ import java.util.List;
 
 public class Metronome extends Move {
     private static List<Class> availableMoves;
-    private static List<Class> getMoves(){
+
+    private static List<Class> getMoves() {
         if (availableMoves == null)
             availableMoves = findMoves();
         return availableMoves;
     }
-    private static Class getRandomMove(){
-        return getMoves().get(RNG.randomInt(0,getMoves().size() - 1));
+
+    private static Class getRandomMove() {
+        return getMoves().get(RNG.randomInt(0, getMoves().size() - 1));
     }
 
-    private static List<Class> findMoves(){
-        String moveHeadder = Metronome.class.getName().replaceAll( Metronome.class.getSimpleName(),"");
+    private static List<Class> findMoves() {
+        String moveHeadder = Metronome.class.getName().replaceAll(Metronome.class.getSimpleName(), "");
         File folder = new File("Game/src/AttackStates/Moves");
         List<String> pickableMoveNames = new ArrayList<>();
         List<Class> pickableMoveClasses = new ArrayList<>();
         File[] listOfFiles = folder.listFiles();
 
-        for (File curFile:listOfFiles)
+        for (File curFile : listOfFiles)
             if (curFile.isFile()) {
                 if (curFile.getName().contains(".java")) {
                     if (!curFile.getName().contains("Struggle") && !curFile.getName().contains("Metronome"))
@@ -37,7 +39,7 @@ public class Metronome extends Move {
         try {
             for (String s : pickableMoveNames)
                 pickableMoveClasses.add(Class.forName(s));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return pickableMoveClasses;

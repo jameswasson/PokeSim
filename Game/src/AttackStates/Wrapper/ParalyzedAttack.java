@@ -7,16 +7,15 @@ import Utils.RNG;
 
 public class ParalyzedAttack extends AttackWrapper {
 
-    public ParalyzedAttack(AttackState state){
+    public ParalyzedAttack(AttackState state) {
         nextAttack = state;
     }
 
     @Override
     public void execute(Pokemon ourSelves, Pokemon opponent) {
-        if (RNG.random() > .25){
-            nextAttack.execute(ourSelves,opponent);
-        }
-        else{
+        if (RNG.random() > .25) {
+            nextAttack.execute(ourSelves, opponent);
+        } else {
             logger.println(ourSelves.getName() + " is paralyzed! It can't move!");
         }
     }

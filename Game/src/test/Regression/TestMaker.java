@@ -1,11 +1,10 @@
-package test.Regression;
+package Regression;
 
 import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
 import Pokemons.Pokemon;
 import Utils.RNG;
 import Utils.SelectMove.IChooseMove;
-import static BattleField.BattleField.runBattle;
 
 public class TestMaker {
 
@@ -17,10 +16,10 @@ public class TestMaker {
         String poke2 = "Oddish";
         int turns = 3;
 
-        makeTestFrom(seed,poke1,poke2,turns,fileToStoreResult);
+        makeTestFrom(seed, poke1, poke2, turns, fileToStoreResult);
     }
 
-    private static void makeTestFrom(long seed, String poke1, String poke2, int turns, String file){
+    private static void makeTestFrom(long seed, String poke1, String poke2, int turns, String file) {
         RNG.setSeed(seed);
         Pokemon pokemon1 = null;
         Pokemon pokemon2 = null;
@@ -29,6 +28,6 @@ public class TestMaker {
         String correctOutput = FacadeFactory.getInstance(IBattleLogger.class).getLogInfo();
         int[] chosenMoves = FacadeFactory.getInstance(IChooseMove.class).getChosenMoves();
 
-        BattleRunFile.save(seed,poke1,poke2,chosenMoves,correctOutput);
+        BattleRunFile.save(seed, poke1, poke2, chosenMoves, correctOutput);
     }
 }

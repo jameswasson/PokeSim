@@ -1,8 +1,6 @@
 package AttackStates.Moves;
 
 import AttackStates.Move;
-import BattleField.IBattleLogger;
-import Facade.FacadeFactory;
 import Pokemons.Pokemon;
 
 public class Conversion extends Move {

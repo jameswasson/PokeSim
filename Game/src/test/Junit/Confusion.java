@@ -1,4 +1,4 @@
-package test.Junit;
+package Junit;
 
 import AttackStates.Moves.ConfuseRay;
 import AttackStates.Moves.Tackle;
@@ -8,27 +8,30 @@ import org.junit.Test;
 
 public class Confusion extends Move {
     @Test
-    public void allowAttack(){
+    public void allowAttack() {
         RNG.setSeed(1);
         attack();
-        assert(Caterpie.getBaseHP() - Caterpie.getCurHP() != 0);
+        assert (Caterpie.getBaseHP() - Caterpie.getCurHP() != 0);
     }
+
     @Test
-    public void preventAttack(){
+    public void preventAttack() {
         attack();
-        assert(Caterpie.getBaseHP() - Caterpie.getCurHP() == 0);
+        assert (Caterpie.getBaseHP() - Caterpie.getCurHP() == 0);
     }
+
     @Test
-    public void isConfusedWorks(){
+    public void isConfusedWorks() {
         attack();
-        assert(Confused.isConfused(Magikarp));
-        assert(!Confused.isConfused(Caterpie));
+        assert (Confused.isConfused(Magikarp));
+        assert (!Confused.isConfused(Caterpie));
         Magikarp.selectMove(Tackle.class);
-        assert(Confused.isConfused(Magikarp));
+        assert (Confused.isConfused(Magikarp));
         Magikarp.runPreBattleStates();
-        assert(Confused.isConfused(Magikarp));
+        assert (Confused.isConfused(Magikarp));
     }
-    public void attack(){
+
+    public void attack() {
         Magikarp.selectMove(Tackle.class);
         Caterpie.selectMove(ConfuseRay.class);
         Caterpie.attack(Magikarp);

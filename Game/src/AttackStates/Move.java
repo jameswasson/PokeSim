@@ -6,6 +6,7 @@ import Pokemons.Movedex;
 import Pokemons.Pokemon;
 import Pokemons.TypesHelper;
 import Utils.RNG;
+
 import java.util.List;
 
 public class Move extends AttackState {
@@ -18,7 +19,7 @@ public class Move extends AttackState {
     protected boolean wasCritical;
     protected double criticalEffect;
 
-    public Move(){
+    public Move() {
         criticalEffect = 1;
         List<String> allInfo = Movedex.getMove(getName(this.getClass()));
         if (allInfo == null)
@@ -35,7 +36,7 @@ public class Move extends AttackState {
     public void execute(Pokemon ourselves, Pokemon opponent) {
         sayWeUsedMove(ourselves);
         currentPowerPoints--;
-        if (noEffect(opponent.getType1(),opponent.getType2()))
+        if (noEffect(opponent.getType1(), opponent.getType2()))
             logger.println("But it had no effect on " + opponent.getName() + "!");
         else if (willMiss(ourselves, opponent)) {
             onMiss(ourselves, opponent);
@@ -44,7 +45,7 @@ public class Move extends AttackState {
             if (basePower == -1)
                 damage = -1;
             else
-                damage = DamageCalculator.getDamage(ourselves,opponent,this);
+                damage = DamageCalculator.getDamage(ourselves, opponent, this);
             attack(ourselves, opponent, damage);
         }
     }
@@ -56,36 +57,35 @@ public class Move extends AttackState {
             logger.println("But it missed!");
     }
 
-    public boolean canHitSemiInvulnerable(Pokemon opponent){
+    public boolean canHitSemiInvulnerable(Pokemon opponent) {
         return !SemiInvulnerable.isSemiInvulnerable(opponent);
     }
 
-    public boolean willMiss(Pokemon ourselves, Pokemon opponent){
+    public boolean willMiss(Pokemon ourselves, Pokemon opponent) {
         if (!canHitSemiInvulnerable(opponent))
             return true;
         double getHitChance = getChanceOfHitting(ourselves, opponent);
         return RNG.random() > getHitChance;
     }
 
-    public double getChanceOfHitting(Pokemon ourselves, Pokemon opponent){
+    public double getChanceOfHitting(Pokemon ourselves, Pokemon opponent) {
         if (baseAccuracy == -1)
             return 1.0;//will always hit
-        double moveAccuracy = getAccuracy(ourselves,opponent)/100.0;
+        double moveAccuracy = getAccuracy(ourselves, opponent) / 100.0;
         double ourAccuracy = ourselves.getCurACC();
         double theirAccuracy = opponent.getCurACC();
-        double totalAccuracy = moveAccuracy*ourAccuracy*theirAccuracy;
-        return totalAccuracy;
+        return moveAccuracy * ourAccuracy * theirAccuracy;
     }
 
-    public double getChanceOfCrit(Pokemon ourselves){
+    public double getChanceOfCrit(Pokemon ourselves) {
         double baseSpeed = ourselves.getBaseSPD();
-        return (baseSpeed + 76)/ 1024;
+        return (baseSpeed + 76) / 1024;
     }
 
-    public boolean noEffect(EleType type1, EleType type2){
+    public boolean noEffect(EleType type1, EleType type2) {
         if (damageCategory == DamageCategory.status)
             return false; // can effect
-        return TypesHelper.hasNoEffect(getEleType(), type1)||TypesHelper.hasNoEffect(getEleType(), type2);
+        return TypesHelper.hasNoEffect(getEleType(), type1) || TypesHelper.hasNoEffect(getEleType(), type2);
     }
 
     @Override
@@ -134,7 +134,7 @@ public class Move extends AttackState {
         criticalEffect = effect;
     }
 
-    public boolean willBeCritical(Pokemon pokemon){
+    public boolean willBeCritical(Pokemon pokemon) {
         double chance = getChanceOfCrit(pokemon);
         chance *= critBonus();
         chance *= pokemon.getCritBonus();
@@ -142,11 +142,11 @@ public class Move extends AttackState {
         return wasCritical;
     }
 
-    public double critBonus(){
+    public double critBonus() {
         return 1;//default: no bonus
     }
 
-    public void dealDamage(Pokemon ourselves, Pokemon opponent, int damage){
+    protected void dealDamage(Pokemon ourselves, Pokemon opponent, int damage) {
         if (damage == -1)
             logger.println("-1 damage was dealt!");
         opponent.loseHP(damage);
@@ -167,17 +167,17 @@ public class Move extends AttackState {
     }
 
     //returns new instance from move by name
-    public static Move getMove(String s){
+    public static Move getMove(String s) {
         Class<?> classOfMove = getClass(s);
         try {
             return (Move) classOfMove.getDeclaredConstructor().newInstance();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public static Move copyMove(Move m){
+    public static Move copyMove(Move m) {
         return getMove(getName(m.getClass()));
     }
 
@@ -185,7 +185,7 @@ public class Move extends AttackState {
         this.currentPowerPoints = currentPowerPoints;
     }
 
-    public String getDisplayText(){
+    public String getDisplayText() {
         return AttackState.getName(getClass()) + " (" + getCurrentPowerPoints() + "/" + getPowerPoints() + ")";
     }
 }

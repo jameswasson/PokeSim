@@ -1,9 +1,9 @@
-package test.Regression;
+package Regression;
 
 import Utils.Helpers;
 import Utils.myGson;
 
-public class BattleRunFile{
+public class BattleRunFile {
     long seed;
     String pokemon1;
     String pokemon2;
@@ -19,11 +19,11 @@ public class BattleRunFile{
         this.pokemon1 = pokemon1;
         this.pokemon2 = pokemon2;
         this.moveSelection = moveSelection;
-        this.id = String.valueOf(seed) + "_" + pokemon1.substring(0,3) + "_" + pokemon2.substring(0,3);
+        this.id = String.valueOf(seed) + "_" + pokemon1.substring(0, 3) + "_" + pokemon2.substring(0, 3);
         this.correctOutputFileName = this.id + correctOutputExtension;
     }
 
-    public static void save(long seed, String pokemon1, String pokemon2, int[] moveSelection, String correctOutput){
+    public static void save(long seed, String pokemon1, String pokemon2, int[] moveSelection, String correctOutput) {
         BattleRunFile toSave = new BattleRunFile(seed, pokemon1, pokemon2, moveSelection);
         String data1 = myGson.toJson(toSave);
         String data2 = correctOutput;
@@ -31,26 +31,27 @@ public class BattleRunFile{
         try {
             Helpers.writeToFile(data1, TestFolder + toSave.id + runFileExtension);
             Helpers.writeToFile(data2, TestFolder + toSave.correctOutputFileName);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static BattleRunFile load(String filename){
+    public static BattleRunFile load(String filename) {
         try {
             BattleRunFile toReturn;
             String data = Helpers.getFromFile(TestFolder + filename);
             toReturn = myGson.fromJson(data, BattleRunFile.class);
             return toReturn;
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    public static String loadCorrectOutput(BattleRunFile battleRunFile){
+
+    public static String loadCorrectOutput(BattleRunFile battleRunFile) {
         String filename = battleRunFile.correctOutputFileName;
-        try{
+        try {
             return Helpers.getFromFile(TestFolder + filename);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

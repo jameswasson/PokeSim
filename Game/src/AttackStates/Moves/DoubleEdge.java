@@ -1,7 +1,6 @@
 package AttackStates.Moves;
 
 import AttackStates.Move;
-import BattleField.IBattleLogger;
 import Pokemons.Pokemon;
 
 public class DoubleEdge extends Move {

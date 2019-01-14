@@ -16,7 +16,7 @@ abstract class MasterLog implements IBattleLogger {
     }
 
     @Override
-    public void println(int i){
+    public void println(int i) {
         println("" + i);
     }
 
@@ -27,7 +27,7 @@ abstract class MasterLog implements IBattleLogger {
     abstract public void reset();
 
     @Override
-    public void printLogInfo(){
+    public void printLogInfo() {
         System.out.println(getLogInfo());
     }
 }

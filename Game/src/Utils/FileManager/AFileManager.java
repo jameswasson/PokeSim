@@ -18,7 +18,7 @@ abstract class AFileManager implements IFileManager {
         return new File(MOVEDEX_PATH);
     }
 
-    public File checkPath(String fileName){
+    public File checkPath(String fileName) {
         File file = new File(fileName);
         if (file.exists())
             return file;

@@ -27,7 +27,7 @@ public class MovedexParser extends CSVParser {
         return new ArrayList<>();
     }
 
-    public static void loadMoves(){
+    public static void loadMoves() {
         File movedex = FacadeFactory.getInstance(IFileManager.class).getMovedexFile();
         new MovedexParser().getCSV(movedex);
     }

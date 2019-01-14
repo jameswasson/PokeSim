@@ -9,21 +9,25 @@ import Pokemons.Pokemon;
 
 public abstract class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
-    public void execute(Pokemon ourSelves, Pokemon opponent){
+
+    public void execute(Pokemon ourSelves, Pokemon opponent) {
         logger.println("Move not implemented");
     }
-    protected void sayWeUsedMove(Pokemon us){
+
+    protected void sayWeUsedMove(Pokemon us) {
         logger.println(us.getName() + " used " + getName(this.getClass()) + "!");
     }
-    public void attack(Pokemon ourselves, Pokemon opponent, int damage){
+
+    public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
         logger.println(getName(this.getClass()) + ".attack() not implemented!");
     }
+
     //returns appropriate name of move from class
-    public static String getName(Class moveClass){
+    public static String getName(Class moveClass) {
         String name = "";
         String className = moveClass.getSimpleName();
         String[] separated = className.split("(?=\\p{Upper})");
-        for (int i = 0; i < separated.length - 1; i++){
+        for (int i = 0; i < separated.length - 1; i++) {
             name += separated[i] + " ";
         }
         name += separated[separated.length - 1];
@@ -31,20 +35,19 @@ public abstract class AttackState {
     }
 
     //reverse of above function, returns class associated with provided name;
-    public static Class<?> getClass (String s){
+    public static Class<?> getClass(String s) {
         Class<?> dummyClass = Swift.class;
         String BaseDirectory = dummyClass.getName();
         String toRemoveName = dummyClass.getSimpleName();
         String nothing = "";
         String whiteSpace = "\\s+";
-        s = s.replaceAll(whiteSpace,nothing);
-        BaseDirectory = BaseDirectory.replaceAll(toRemoveName,nothing);
+        s = s.replaceAll(whiteSpace, nothing);
+        BaseDirectory = BaseDirectory.replaceAll(toRemoveName, nothing);
         String classFullName = BaseDirectory + s;
         Class<?> toReturn;
         try {
             toReturn = Class.forName(classFullName);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             toReturn = NotImplemented.class;
         }

@@ -13,10 +13,11 @@ public class BattleState {
 
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
 
-    public void execute(Pokemon pokemon){
+    public void execute(Pokemon pokemon) {
         System.out.println("Function not implemented.");
     }
-    public static boolean isNonVolatile(Pokemon pokemon){
+
+    public static boolean isNonVolatile(Pokemon pokemon) {
         /*returns true if Pokemon is any of the following:
             burned
             frozen
@@ -30,18 +31,19 @@ public class BattleState {
                 Asleep.isAsleep(pokemon);
     }
 
-    public void removeState(Pokemon pokemon){
+    public void removeState(Pokemon pokemon) {
         BattleState state = null;
-        for (BattleState bs : pokemon.getPreBattleStates()){
-            if (this.getClass().isInstance(bs)){
+        for (BattleState bs : pokemon.getPreBattleStates()) {
+            if (this.getClass().isInstance(bs)) {
                 state = bs;
                 break;
             }
         }
         pokemon.getPreBattleStates().remove(state);
     }
-    public boolean containsState(Pokemon pokemon){
-        for (BattleState bs: pokemon.getPreBattleStates()){
+
+    public boolean containsState(Pokemon pokemon) {
+        for (BattleState bs : pokemon.getPreBattleStates()) {
             if (this.getClass().isInstance(bs))
                 return true;
         }

@@ -10,7 +10,7 @@ import Pokemons.TransformedPokemon;
 public class Transform extends Move {
     @Override
     public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
-        ourselves.setBasePokemon(new TransformedPokemon(ourselves,opponent));
+        ourselves.setBasePokemon(new TransformedPokemon(ourselves, opponent));
         IBattleLogger log = FacadeFactory.getInstance(IBattleLogger.class);
         log.println(ourselves.getName() + " Transformed into " + opponent.getName() + "!");
     }

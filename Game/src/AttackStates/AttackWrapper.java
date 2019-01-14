@@ -32,11 +32,6 @@ public abstract class AttackWrapper extends AttackState {
     }
 
     @Override
-    void setCriticalEffect(double effect) {
-        nextAttack.setCriticalEffect(effect);
-    }
-
-    @Override
     boolean willBeCritical(Pokemon pokemon) {
         return nextAttack.willBeCritical(pokemon);
     }
@@ -44,6 +39,11 @@ public abstract class AttackWrapper extends AttackState {
     @Override
     double getCriticalEffect() {
         return nextAttack.getCriticalEffect();
+    }
+
+    @Override
+    void setCriticalEffect(double effect) {
+        nextAttack.setCriticalEffect(effect);
     }
 
     @Override

@@ -6,11 +6,11 @@ import Pokemons.Pokemon;
 public class Fissure extends Move {
     @Override
     protected double getAccuracy(Pokemon ourselves, Pokemon opponent) {
-        return new Guillotine().getAccuracy(ourselves,opponent);
+        return new Guillotine().getAccuracy(ourselves, opponent);
     }
 
     @Override
     public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
-        new Guillotine().attack(ourselves,opponent,damage);
+        new Guillotine().attack(ourselves, opponent, damage);
     }
 }

@@ -1,4 +1,4 @@
-package test.Junit;
+package Junit;
 
 import BattleField.IBattleLogger;
 import Facade.FacadeFactory;
@@ -15,7 +15,7 @@ public class Move {
     public AttackStates.Move tackle;
 
     @Before
-    public void prepareEnvironment(){
+    public void prepareEnvironment() {
         FacadeFactory.createTestingEnvironment();
         logger = FacadeFactory.getInstance(IBattleLogger.class);
         RNG.setSeed(0);
@@ -23,8 +23,9 @@ public class Move {
         Magikarp = Pokedex.getPokemon("Magikarp");
         tackle = new AttackStates.Moves.Tackle();
     }
+
     @After
-    public void resetEnvironment(){
+    public void resetEnvironment() {
         logger.reset();
     }
 }

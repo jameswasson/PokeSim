@@ -1,7 +1,7 @@
 package Utils;
 
 import Facade.FacadeFactory;
-import Pokemons.*;
+import Pokemons.Pokedex;
 import Utils.FileManager.IFileManager;
 
 import java.io.File;

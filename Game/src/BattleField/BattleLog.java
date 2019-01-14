@@ -13,5 +13,6 @@ public class BattleLog extends MasterLog {
     }
 
     @Override
-    public void reset(){}
+    public void reset() {
+    }
 }

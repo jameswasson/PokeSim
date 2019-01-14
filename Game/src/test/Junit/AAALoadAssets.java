@@ -1,4 +1,4 @@
-package test.Junit;
+package Junit;
 
 import Pokemons.Pokedex;
 import org.junit.Test;
@@ -11,7 +11,7 @@ public class AAALoadAssets extends Move {
      * Loads up Pokedex and Movedex for future use.
      */
     @Test
-    public void loadPokemonAndMoves(){
+    public void loadPokemonAndMoves() {
         Pokedex.getPokemon("Charmander");
     }
 }
