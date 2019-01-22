@@ -47,8 +47,6 @@ public abstract class Pokemon {
 
     public abstract void attack(Pokemon toAttack);
 
-    public abstract void runPreBattleStates();
-
     public abstract void runPostBattleStates();
 
     public abstract AttackState getAttackState();

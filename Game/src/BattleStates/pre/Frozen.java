@@ -21,8 +21,6 @@ public class Frozen extends BattleState {
             BattleState battleState = new Frozen();
             pokemon.getPreBattleStates().add(battleState);
             WrapperPokemon.wrap(pokemon, new FrozenPokemon());
-
-            battleState.execute(pokemon);
         }
         else{
             logger.println(pokemon.getName() + " is already frozen!");

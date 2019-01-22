@@ -20,7 +20,6 @@ public class Freezing extends Move {
         RNG.setSeed(11);
         Caterpie.selectMove(IceBeam.class);
         Caterpie.attack(Magikarp);
-        logger.printLogInfo();
         assert(Frozen.isFrozen(Magikarp));
     }
     @Test

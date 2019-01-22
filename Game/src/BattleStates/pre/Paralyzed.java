@@ -19,7 +19,6 @@ public class Paralyzed extends BattleState {
             logger.println(pokemon.getName() + " is paralyzed! It can't move!");
             BattleState paralyzed = new Paralyzed();
             pokemon.getPreBattleStates().add(paralyzed);
-            paralyzed.execute(pokemon);
         }
     }
 

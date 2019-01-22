@@ -217,14 +217,9 @@ public class WrapperPokemon extends Pokemon {
         return wrappedPokemon.getName();
     }
 
-    public void runPreBattleStates() {
-        wrappedPokemon.runPreBattleStates();
-    }
-
     public void runPostBattleStates() {
         wrappedPokemon.runPostBattleStates();
     }
-
 
     public AttackState getAttackState() {
         return wrappedPokemon.getAttackState();

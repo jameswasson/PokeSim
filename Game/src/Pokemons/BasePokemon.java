@@ -259,6 +259,7 @@ public class BasePokemon extends Pokemon {
     }
 
     public void attack(Pokemon toAttack) {
+        runPreBattleStates();
         attackState.execute(head, toAttack);
     }
 
@@ -266,7 +267,7 @@ public class BasePokemon extends Pokemon {
         return name;
     }
 
-    public void runPreBattleStates() {
+    private void runPreBattleStates() {
         for (BattleState preState : preBattleStates)
             preState.execute(head);
     }

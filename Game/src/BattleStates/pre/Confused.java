@@ -30,7 +30,6 @@ public class Confused extends BattleState {
             logger.println(pokemon.getName() + " is confused!");
             Confused confused = new Confused();
             pokemon.getPreBattleStates().add(confused);
-            confused.execute(pokemon);
         }
     }
 

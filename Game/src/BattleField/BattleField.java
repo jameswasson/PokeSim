@@ -27,8 +27,6 @@ public class BattleField {
             pokemon2.selectMove();
             endl();
 
-            pokemon1.runPreBattleStates();
-            pokemon2.runPreBattleStates();
             if (speedCompare(pokemon1, pokemon2)) {
                 pokemon1.attack(pokemon2);
                 checkIfFainted(pokemon1, pokemon2);

@@ -27,8 +27,6 @@ public class Confusion extends Move {
         assert (!Confused.isConfused(Caterpie));
         Magikarp.selectMove(Tackle.class);
         assert (Confused.isConfused(Magikarp));
-        Magikarp.runPreBattleStates();
-        assert (Confused.isConfused(Magikarp));
     }
 
     @Test

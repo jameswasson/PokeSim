@@ -33,7 +33,6 @@ public class Asleep extends BattleState {
             logger.println(pokemon.getName() + " fell asleep!");
             BattleState asleep = new Asleep(turnsAsleep);
             pokemon.getPreBattleStates().add(asleep);
-            asleep.execute(pokemon);
         }
     }
 
