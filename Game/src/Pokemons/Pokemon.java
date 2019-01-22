@@ -2,11 +2,14 @@ package Pokemons;
 
 import AttackStates.AttackState;
 import AttackStates.Move;
+import BattleField.IBattleLogger;
 import BattleStates.BattleState;
+import Facade.FacadeFactory;
 
 import java.util.List;
 
 public abstract class Pokemon {
+    public static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
     public Pokemon() {
     }
 

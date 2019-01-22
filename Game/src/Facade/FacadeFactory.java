@@ -63,6 +63,7 @@ public class FacadeFactory {
 
         if (obj == null) {
             try {
+//                obj = (K) klass.getDeclaredConstructor.newInstance();
                 obj = (K) klass.newInstance();
                 interfaceToInstance.put(intf, obj);
             } catch (IllegalAccessException e) {

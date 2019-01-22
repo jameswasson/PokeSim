@@ -65,4 +65,8 @@ public class TransformedPokemon extends WrapperPokemon {
         else
             return opponentBaseDEF;
     }
+
+    public static void transform(Pokemon ourselves, Pokemon opponent){
+        ourselves.setBasePokemon(new TransformedPokemon(ourselves, opponent));
+    }
 }

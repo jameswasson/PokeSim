@@ -9,13 +9,13 @@ import BattleStates.pre.Paralyzed;
 import Facade.FacadeFactory;
 import Pokemons.Pokemon;
 
-public class BattleState {
+import java.util.List;
+
+public abstract class BattleState {
 
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
 
-    public void execute(Pokemon pokemon) {
-        System.out.println("Function not implemented.");
-    }
+    abstract public void execute(Pokemon pokemon);
 
     public static boolean isNonVolatile(Pokemon pokemon) {
         /*returns true if Pokemon is any of the following:
@@ -32,14 +32,20 @@ public class BattleState {
     }
 
     public void removeState(Pokemon pokemon) {
+        removeFromStates(pokemon, pokemon.getPreBattleStates());
+        removeFromStates(pokemon, pokemon.getPostBattleStates());
+    }
+
+    private void removeFromStates(Pokemon pokemon, List<BattleState> list){
         BattleState state = null;
-        for (BattleState bs : pokemon.getPreBattleStates()) {
+        for (BattleState bs : list) {
             if (this.getClass().isInstance(bs)) {
                 state = bs;
                 break;
             }
         }
-        pokemon.getPreBattleStates().remove(state);
+        if (state != null)
+            list.remove(state);
     }
 
     public boolean containsState(Pokemon pokemon) {

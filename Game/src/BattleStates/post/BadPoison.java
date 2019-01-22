@@ -16,7 +16,7 @@ public class BadPoison extends BattleState {
         //lose (1/8 * turnCount)th of health
         turnCount++;
         pokemon.loseHP(pokemon.getBaseHP() / 8 * turnCount);
-        FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " is hurt by its poison!");
+        logger.println(pokemon.getName() + " is hurt by its poison!");
     }
 
     public static void tryToBadlyPoison(Pokemon pokemon) {
@@ -26,7 +26,7 @@ public class BadPoison extends BattleState {
             logger.println("But it failed!");
         } else {
             pokemon.addPostBattleState(new BadPoison());
-            FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " was badly poisoned!");
+            logger.println(pokemon.getName() + " was badly poisoned!");
         }
     }
 

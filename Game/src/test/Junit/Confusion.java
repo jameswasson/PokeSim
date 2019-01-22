@@ -31,6 +31,13 @@ public class Confusion extends Move {
         assert (Confused.isConfused(Magikarp));
     }
 
+    @Test
+    public void removeConfusion(){
+        attack();
+        Confused.removeConfusion(Magikarp);
+        assert(!Confused.isConfused(Magikarp));
+    }
+
     public void attack() {
         Magikarp.selectMove(Tackle.class);
         Caterpie.selectMove(ConfuseRay.class);

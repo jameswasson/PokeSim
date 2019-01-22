@@ -18,7 +18,6 @@ public class BasePokemon extends Pokemon {
     AttackState attackState;
     List<BattleState> postBattleStates;
     List<Move> moves;
-    IBattleLogger logger;
 
     int pokedexNo;
     String name;
@@ -206,7 +205,6 @@ public class BasePokemon extends Pokemon {
         this.preBattleStates = new ArrayList<>();
         this.postBattleStates = new ArrayList<>();
         this.shouldSelectMove = true;
-        this.logger = FacadeFactory.getInstance(IBattleLogger.class);
         this.moveGetter = FacadeFactory.getInstance(IChooseMove.class);
     }
 

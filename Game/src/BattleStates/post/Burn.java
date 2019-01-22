@@ -9,7 +9,7 @@ public class Burn extends BattleState {
     public void execute(Pokemon pokemon) {
         //lose 1/8th of health
         pokemon.loseHP(pokemon.getBaseHP() / 8);
-        FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " is hurt by its burn!");
+        logger.println(pokemon.getName() + " is hurt by its burn!");
     }
 
     public static void tryToBurn(Pokemon pokemon) {
@@ -19,7 +19,7 @@ public class Burn extends BattleState {
             logger.println("But it failed!");
         } else {
             pokemon.addPostBattleState(new Burn());
-            FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " was burned!");
+            logger.println(pokemon.getName() + " was burned!");
         }
     }
 

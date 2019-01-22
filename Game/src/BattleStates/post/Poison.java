@@ -9,7 +9,7 @@ public class Poison extends BattleState {
     public void execute(Pokemon pokemon) {
         //lose 1/8th of health
         pokemon.loseHP(pokemon.getBaseHP() / 8);
-        FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " is hurt by its poison!");
+        logger.println(pokemon.getName() + " is hurt by its poison!");
     }
 
     public static void tryToPoison(Pokemon pokemon) {
@@ -19,7 +19,7 @@ public class Poison extends BattleState {
             logger.println("But it failed!");
         } else {
             pokemon.addPostBattleState(new Poison());
-            FacadeFactory.getInstance(IBattleLogger.class).println(pokemon.getName() + " was poisoned!");
+            logger.println(pokemon.getName() + " was poisoned!");
         }
     }
 
