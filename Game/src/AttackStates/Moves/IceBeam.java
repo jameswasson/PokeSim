@@ -1,7 +1,5 @@
 package AttackStates.Moves;
 
-import AttackStates.Move;
-
-public class IceBeam extends Move {
-    //todo
+public class IceBeam extends Blizzard {
+    //does the same thing as Blizzard
 }

@@ -8,268 +8,297 @@ import java.util.List;
 
 public class WrapperPokemon extends Pokemon {
 
-    Pokemon basePokemon;
+    Pokemon wrappedPokemon;
 
-    public void setBasePokemon(Pokemon pokemon) {
-        this.basePokemon = pokemon;
+    public static void wrap(Pokemon toWrap, WrapperPokemon wrapper){
+        Pokemon inner = toWrap.getWrappedPokemon();
+        wrapper.setWrappedPokemon(inner);
+        toWrap.setWrappedPokemon(wrapper);
+    }
+
+    public void setHead(Pokemon head){
+        wrappedPokemon.setHead(head);
+    }
+
+    public Pokemon getHead(){
+        return wrappedPokemon.getHead();
+    }
+
+    public void removeSelf(){
+        Pokemon cur = wrappedPokemon.getHead();
+        while (cur.getWrappedPokemon() != this && cur.getWrappedPokemon() != null){
+            cur = cur.getWrappedPokemon();
+        }
+        if (cur.getWrappedPokemon() == null){
+            logger.println("Self not found!");
+        }
+        else{
+            cur.setWrappedPokemon(getWrappedPokemon());
+        }
+    }
+
+    public void setWrappedPokemon(Pokemon pokemon) {
+        this.wrappedPokemon = pokemon;
+    }
+
+    public Pokemon getWrappedPokemon(){
+        return wrappedPokemon;
     }
 
     public BasePokemon getBasePokemon() {
-        return basePokemon.getBasePokemon();
+        return wrappedPokemon.getBasePokemon();
     }
 
     public WrapperPokemon() {
     }
 
     public WrapperPokemon(BasePokemon pokemon) {
-        basePokemon = pokemon;
+        wrappedPokemon = pokemon;
+        wrappedPokemon.setHead(this);
     }
 
     public int getLevel() {
-        return basePokemon.getLevel();
+        return wrappedPokemon.getLevel();
     }
 
     public void setATKStage(int ATKStage) {
-        basePokemon.setATKStage(ATKStage);
+        wrappedPokemon.setATKStage(ATKStage);
     }
 
     public void setSPDStage(int SPDStage) {
-        basePokemon.setSPDStage(SPDStage);
+        wrappedPokemon.setSPDStage(SPDStage);
     }
 
     public void setDEFStage(int DEFStage) {
-        basePokemon.setDEFStage(DEFStage);
+        wrappedPokemon.setDEFStage(DEFStage);
     }
 
     public void setSPCStage(int SPCStage) {
-        basePokemon.setSPCStage(SPCStage);
+        wrappedPokemon.setSPCStage(SPCStage);
     }
 
     public void setACCStage(int ACCStage) {
-        basePokemon.setACCStage(ACCStage);
+        wrappedPokemon.setACCStage(ACCStage);
     }
 
     public void setEVAStage(int EVAStage) {
-        basePokemon.setEVAStage(EVAStage);
+        wrappedPokemon.setEVAStage(EVAStage);
     }
 
     public EleType getType1() {
-        return basePokemon.getType1();
+        return wrappedPokemon.getType1();
     }
 
     public EleType getType2() {
-        return basePokemon.getType2();
+        return wrappedPokemon.getType2();
     }
 
     public void loseHP(int HPLoss) {
-        basePokemon.loseHP(HPLoss);
+        wrappedPokemon.loseHP(HPLoss);
+    }
+
+    public void loseHP(int HPLoss, Move move){
+        wrappedPokemon.loseHP(HPLoss, move);
     }
 
     public void gainHP(int HPGain) {
-        basePokemon.gainHP(HPGain);
+        wrappedPokemon.gainHP(HPGain);
     }
 
     public boolean hasFainted() {
-        return basePokemon.hasFainted();
+        return wrappedPokemon.hasFainted();
     }
 
     public void changeATK(int stage) {
-        basePokemon.changeATK(stage);
+        wrappedPokemon.changeATK(stage);
     }
 
     public void changeSPD(int stage) {
-        basePokemon.changeSPD(stage);
+        wrappedPokemon.changeSPD(stage);
     }
 
     public void changeDEF(int stage) {
-        basePokemon.changeDEF(stage);
+        wrappedPokemon.changeDEF(stage);
     }
 
     public void changeSPC(int stage) {
-        basePokemon.changeSPC(stage);
+        wrappedPokemon.changeSPC(stage);
     }
 
     public void changeACC(int stage) {
-        basePokemon.changeACC(stage);
+        wrappedPokemon.changeACC(stage);
     }
 
     public void changeEVA(int stage) {
-        basePokemon.changeEVA(stage);
+        wrappedPokemon.changeEVA(stage);
     }
 
     public int getPokedexNo() {
-        return basePokemon.getPokedexNo();
+        return wrappedPokemon.getPokedexNo();
     }
 
     public int getBaseHP() {
-        return basePokemon.getBaseHP();
+        return wrappedPokemon.getBaseHP();
     }
 
     public int getBaseATK() {
-        return basePokemon.getBaseATK();
+        return wrappedPokemon.getBaseATK();
     }
 
     public int getBaseDEF(AttackState move) {
-        return basePokemon.getBaseDEF(move);
+        return wrappedPokemon.getBaseDEF(move);
     }
 
     public int getBaseSPC(AttackState move) {
-        return basePokemon.getBaseSPC(move);
+        return wrappedPokemon.getBaseSPC(move);
     }
 
     public int getBaseSPD() {
-        return basePokemon.getBaseSPD();
+        return wrappedPokemon.getBaseSPD();
     }
 
     public int getCurHP() {
-        return basePokemon.getCurHP();
+        return wrappedPokemon.getCurHP();
     }
 
     public int getCurATK() {
-        return basePokemon.getCurATK();
+        return wrappedPokemon.getCurATK();
     }
 
     public int getCurDEF(AttackState move) {
-        return basePokemon.getCurDEF(move);
+        return wrappedPokemon.getCurDEF(move);
     }
 
     public int getCurSPC(AttackState move) {
-        return basePokemon.getCurSPC(move);
+        return wrappedPokemon.getCurSPC(move);
     }
 
     public int getCurSPD() {
-        return basePokemon.getCurSPD();
+        return wrappedPokemon.getCurSPD();
     }
 
     public int getCurACC() {
-        return basePokemon.getCurACC();
+        return wrappedPokemon.getCurACC();
     }
 
     public int getCurEVA() {
-        return basePokemon.getCurEVA();
+        return wrappedPokemon.getCurEVA();
     }
 
     public boolean isType(EleType type) {
-        return basePokemon.isType(type);
+        return wrappedPokemon.isType(type);
     }
 
     public void setType1(EleType type1) {
-        basePokemon.setType1(type1);
+        wrappedPokemon.setType1(type1);
     }
 
     public void setType2(EleType type2) {
-        basePokemon.setType2(type2);
+        wrappedPokemon.setType2(type2);
     }
 
     public void selectMove() {
-        basePokemon.selectMove();
+        wrappedPokemon.selectMove();
     }
 
     public void selectMove(int moveIndex) {
-        basePokemon.selectMove(moveIndex);
+        wrappedPokemon.selectMove(moveIndex);
     }
 
     public void selectMove(Class<?> moveClass) {
-        basePokemon.selectMove(moveClass);
+        wrappedPokemon.selectMove(moveClass);
     }
 
     public void attack(Pokemon toAttack) {
-        basePokemon.attack(toAttack);
+        wrappedPokemon.attack(toAttack);
     }
 
     public String getName() {
-        return basePokemon.getName();
+        return wrappedPokemon.getName();
     }
 
     public void runPreBattleStates() {
-        basePokemon.runPreBattleStates(this);
-    }
-
-    public void runPreBattleStates(Pokemon pokemon) {
-        basePokemon.runPreBattleStates(pokemon);
+        wrappedPokemon.runPreBattleStates();
     }
 
     public void runPostBattleStates() {
-        basePokemon.runPostBattleStates(this);
+        wrappedPokemon.runPostBattleStates();
     }
 
-    public void runPostBattleStates(Pokemon pokemon) {
-        basePokemon.runPostBattleStates(pokemon);
-    }
 
     public AttackState getAttackState() {
-        return basePokemon.getAttackState();
+        return wrappedPokemon.getAttackState();
     }
 
     public void setAttackState(AttackState attackState) {
-        basePokemon.setAttackState(attackState);
+        wrappedPokemon.setAttackState(attackState);
     }
 
     public void addPostBattleState(BattleState battleState) {
-        basePokemon.addPostBattleState(battleState);
+        wrappedPokemon.addPostBattleState(battleState);
     }
 
     public void setShouldSelectMove(boolean shouldSelectMove) {
-        basePokemon.setShouldSelectMove(shouldSelectMove);
+        wrappedPokemon.setShouldSelectMove(shouldSelectMove);
     }
 
     public List<BattleState> getPreBattleStates() {
-        return basePokemon.getPreBattleStates();
+        return wrappedPokemon.getPreBattleStates();
     }
 
     public List<BattleState> getPostBattleStates() {
-        return basePokemon.getPostBattleStates();
+        return wrappedPokemon.getPostBattleStates();
     }
 
     public List<Move> getMoves() {
-        return basePokemon.getMoves();
+        return wrappedPokemon.getMoves();
     }
 
     public void setMoves(List<Move> moves) {
-        basePokemon.setMoves(moves);
+        wrappedPokemon.setMoves(moves);
     }
 
     public int getATK() {
-        return basePokemon.getATK();
+        return wrappedPokemon.getATK();
     }
 
     public int getSPD() {
-        return basePokemon.getSPD();
+        return wrappedPokemon.getSPD();
     }
 
     public int getDEF(AttackState move) {
-        return basePokemon.getDEF(move);
+        return wrappedPokemon.getDEF(move);
     }
 
     public int getSPC() {
-        return basePokemon.getSPC();
+        return wrappedPokemon.getSPC();
     }
 
     public void setATK(int ATK) {
-        basePokemon.setATK(ATK);
+        wrappedPokemon.setATK(ATK);
     }
 
     public void setSPD(int SPD) {
-        basePokemon.setSPD(SPD);
+        wrappedPokemon.setSPD(SPD);
     }
 
     public void setDEF(int DEF) {
-        basePokemon.setDEF(DEF);
+        wrappedPokemon.setDEF(DEF);
     }
 
     public void setSPC(int SPC) {
-        basePokemon.setSPC(SPC);
+        wrappedPokemon.setSPC(SPC);
     }
 
     public void setAttackState(Class<?> attackStateClass) {
-        basePokemon.setAttackState(attackStateClass);
+        wrappedPokemon.setAttackState(attackStateClass);
     }
 
     public double getCritBonus() {
-        return basePokemon.getCritBonus();
+        return wrappedPokemon.getCritBonus();
     }
 
     public void setCritBonus(int bonus) {
-        basePokemon.setCritBonus(bonus);
+        wrappedPokemon.setCritBonus(bonus);
     }
 }

@@ -12,6 +12,7 @@ import java.util.List;
 
 public class BasePokemon extends Pokemon {
 
+    Pokemon head;
     IChooseMove moveGetter;
     boolean shouldSelectMove;
     List<BattleState> preBattleStates;
@@ -38,8 +39,22 @@ public class BasePokemon extends Pokemon {
     int critBonus;
 
     @Override
-    public void setBasePokemon(Pokemon pokemon) {
-        logger.println("ERROR! BASEPOKEMON TOLD TO SETBASEPOKEMON");
+    public void setWrappedPokemon(Pokemon pokemon) {
+        logger.println("ERROR! BASEPOKEMON TOLD TO setWrappedPokemon");
+    }
+
+    @Override
+    public Pokemon getWrappedPokemon() {
+        logger.println("ERROR! BASEPOKEMON TOLD TO getWrappedPokemon");
+        return null;
+    }
+
+    public void setHead(Pokemon head) {
+        this.head = head;
+    }
+
+    public Pokemon getHead(){
+        return head;
     }
 
     public int getLevel() {
@@ -81,6 +96,10 @@ public class BasePokemon extends Pokemon {
     public void loseHP(int HPLoss) {
         curHP -= HPLoss;
         curHP = Math.max(0, curHP);//if negative, make zero
+    }
+
+    public void loseHP(int HPLoss, Move move){
+        loseHP(HPLoss);
     }
 
     public void gainHP(int HPGain) {
@@ -240,7 +259,7 @@ public class BasePokemon extends Pokemon {
     }
 
     public void attack(Pokemon toAttack) {
-        attackState.execute(this, toAttack);
+        attackState.execute(head, toAttack);
     }
 
     public String getName() {
@@ -248,21 +267,13 @@ public class BasePokemon extends Pokemon {
     }
 
     public void runPreBattleStates() {
-        logger.println("ERROR!");
+        for (BattleState preState : preBattleStates)
+            preState.execute(head);
     }
 
     public void runPostBattleStates() {
-        logger.println("ERROR!");
-    }
-
-    public void runPreBattleStates(Pokemon pokemon) {
-        for (BattleState preState : preBattleStates)
-            preState.execute(pokemon);
-    }
-
-    public void runPostBattleStates(Pokemon pokemon) {
         for (BattleState postState : postBattleStates)
-            postState.execute(pokemon);
+            postState.execute(head);
     }
 
     public AttackState getAttackState() {

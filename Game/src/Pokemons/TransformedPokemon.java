@@ -18,7 +18,7 @@ public class TransformedPokemon extends WrapperPokemon {
      * we should not store opponent anywhere in the case opponent changes (transform, substitue, light screen, etc)
      * */
     public TransformedPokemon(Pokemon ourselves, Pokemon opponent) {
-        basePokemon = ourselves.getBasePokemon();
+        wrappedPokemon = ourselves.getBasePokemon();
 
         //copies moves
         List<Move> opponentMoves = opponent.getMoves();
@@ -29,19 +29,19 @@ public class TransformedPokemon extends WrapperPokemon {
             newMove.setCurrentPowerPoints(Math.min(5, pp));
             ourNewMoves.add(Move.copyMove(newMove));
         }
-        basePokemon.setMoves(ourNewMoves);
+        wrappedPokemon.setMoves(ourNewMoves);
 
         //copies type
         EleType type1;
         EleType type2;
         type1 = opponent.getType1();
         type2 = opponent.getType2();
-        basePokemon.setType1(type1);
-        basePokemon.setType2(type2);
+        wrappedPokemon.setType1(type1);
+        wrappedPokemon.setType2(type2);
 
         //copies stats
-        basePokemon.setATK(opponent.getBaseATK());
-        basePokemon.setSPD(opponent.getBaseSPD());
+        wrappedPokemon.setATK(opponent.getBaseATK());
+        wrappedPokemon.setSPD(opponent.getBaseSPD());
         opponentBaseSPC = opponent.getBaseSPC(null);
         opponentBaseDEF = opponent.getBaseDEF(null);
     }
@@ -51,7 +51,7 @@ public class TransformedPokemon extends WrapperPokemon {
         if (move == null)
             return opponentBaseSPC;
         else if (move.wasCritical())
-            return basePokemon.getBaseSPC(null);
+            return wrappedPokemon.getBaseSPC(null);
         else
             return opponentBaseSPC;
     }
@@ -61,12 +61,12 @@ public class TransformedPokemon extends WrapperPokemon {
         if (move == null)
             return opponentBaseDEF;
         else if (move.wasCritical())
-            return basePokemon.getBaseDEF(null);
+            return wrappedPokemon.getBaseDEF(null);
         else
             return opponentBaseDEF;
     }
 
     public static void transform(Pokemon ourselves, Pokemon opponent){
-        ourselves.setBasePokemon(new TransformedPokemon(ourselves, opponent));
+        ourselves.setWrappedPokemon(new TransformedPokemon(ourselves, opponent));
     }
 }

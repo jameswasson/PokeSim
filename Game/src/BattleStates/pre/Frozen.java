@@ -1,17 +1,41 @@
 package BattleStates.pre;
 
+import AttackStates.AttackState;
+import AttackStates.Wrapper.FrozenAttack;
+import BattleStates.BattleState;
+import Pokemons.FrozenPokemon;
 import Pokemons.Pokemon;
+import Pokemons.WrapperPokemon;
 
-public class Frozen {
+public class Frozen extends BattleState {
+
+    @Override
+    public void execute(Pokemon pokemon) {
+        AttackState nextAttack = pokemon.getAttackState();
+        pokemon.setAttackState(new FrozenAttack(nextAttack));
+    }
+
     public static void tryToFreeze(Pokemon pokemon){
-        //todo
+        if (!isFrozen(pokemon)){
+            logger.println(pokemon.getName() + " is frozen!");
+            BattleState battleState = new Frozen();
+            pokemon.getPreBattleStates().add(battleState);
+            WrapperPokemon.wrap(pokemon, new FrozenPokemon());
+
+            battleState.execute(pokemon);
+        }
+        else{
+            logger.println(pokemon.getName() + " is already frozen!");
+        }
     }
+
     public static boolean isFrozen(Pokemon pokemon){
-        //todo
-        return false;
+        return new Frozen().containsState(pokemon);
     }
+
     public static void removeFreeze(Pokemon pokemon)
     {
-        //todo
+        new Frozen().removeState(pokemon);
     }
+
 }

@@ -13,6 +13,10 @@ public abstract class Pokemon {
     public Pokemon() {
     }
 
+    public abstract void setHead(Pokemon head);
+
+    public abstract Pokemon getHead();
+
     public abstract int getLevel();
 
     public abstract String getName();
@@ -25,7 +29,9 @@ public abstract class Pokemon {
 
     public abstract BasePokemon getBasePokemon();
 
-    public abstract void setBasePokemon(Pokemon pokemon);
+    public abstract Pokemon getWrappedPokemon();
+
+    public abstract void setWrappedPokemon(Pokemon pokemon);
 
     public abstract boolean isType(EleType type);
 
@@ -43,11 +49,7 @@ public abstract class Pokemon {
 
     public abstract void runPreBattleStates();
 
-    public abstract void runPreBattleStates(Pokemon pokemon);
-
     public abstract void runPostBattleStates();
-
-    public abstract void runPostBattleStates(Pokemon pokemon);
 
     public abstract AttackState getAttackState();
 
@@ -82,6 +84,8 @@ public abstract class Pokemon {
     public abstract int getSPC();
 
     public abstract void loseHP(int HPLoss);
+
+    public abstract void loseHP(int HPLoss, Move move);
 
     public abstract void gainHP(int HPGain);
 

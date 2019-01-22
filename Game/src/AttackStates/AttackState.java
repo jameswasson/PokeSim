@@ -10,9 +10,7 @@ import Pokemons.Pokemon;
 public abstract class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
 
-    public void execute(Pokemon ourSelves, Pokemon opponent) {
-        logger.println("Move not implemented");
-    }
+    public abstract void execute(Pokemon ourSelves, Pokemon opponent);
 
     protected void sayWeUsedMove(Pokemon us) {
         logger.println(us.getName() + " used " + getName(this.getClass()) + "!");

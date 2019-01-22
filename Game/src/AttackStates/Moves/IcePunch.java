@@ -1,7 +1,5 @@
 package AttackStates.Moves;
 
-import AttackStates.Move;
-
-public class IcePunch extends Move {
-    //todo
+public class IcePunch extends Blizzard {
+    //does the same thing as Blizzard
 }
