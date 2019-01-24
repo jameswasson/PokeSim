@@ -1,4 +1,4 @@
-package AttackStates;
+package attack_states;
 
 public enum DamageCategory {
     physical,

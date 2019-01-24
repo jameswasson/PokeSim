@@ -1,13 +1,15 @@
-package AttackStates;
+package attack_states;
 
-import BattleStates.SemiInvulnerable;
-import Pokemons.EleType;
-import Pokemons.Movedex;
-import Pokemons.Pokemon;
-import Pokemons.TypesHelper;
-import Utils.RNG;
+
+import battle_states.SemiInvulnerable;
+import pokemons.EleType;
+import pokemons.Movedex;
+import pokemons.Pokemon;
+import pokemons.TypesHelper;
+import utils.RNG;
 
 import java.util.List;
+
 
 public class Move extends AttackState {
     protected EleType type;

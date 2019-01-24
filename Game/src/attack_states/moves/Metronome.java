@@ -1,8 +1,8 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import attack_states.Move;
+import pokemons.Pokemon;
+import utils.RNG;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class Metronome extends Move {
 
     private static List<Class> findMoves() {
         String moveHeadder = Metronome.class.getName().replaceAll(Metronome.class.getSimpleName(), "");
-        File folder = new File("Game/src/AttackStates/Moves");
+        File folder = new File("Game/src/AttackStates/Moves");//todo make file_manager handle this
         List<String> pickableMoveNames = new ArrayList<>();
         List<Class> pickableMoveClasses = new ArrayList<>();
         File[] listOfFiles = folder.listFiles();

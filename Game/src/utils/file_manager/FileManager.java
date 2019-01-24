@@ -1,4 +1,4 @@
-package Utils.FileManager;
+package utils.file_manager;
 
 public class FileManager extends AFileManager {
     protected void setPaths() {

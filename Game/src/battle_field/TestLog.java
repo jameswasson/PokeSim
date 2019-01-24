@@ -1,4 +1,4 @@
-package BattleField;
+package battle_field;
 
 public class TestLog extends MasterLog {
     private String log = "";

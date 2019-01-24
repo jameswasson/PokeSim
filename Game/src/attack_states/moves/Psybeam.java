@@ -1,9 +1,9 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import BattleStates.pre.Confused;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import attack_states.Move;
+import battle_states.pre.Confused;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class Psybeam extends Move {
     @Override

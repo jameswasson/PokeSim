@@ -1,8 +1,8 @@
-package BattleStates.pre;
+package battle_states.pre;
 
-import AttackStates.Wrapper.ParalyzedAttack;
-import BattleStates.BattleState;
-import Pokemons.Pokemon;
+import attack_states.wrapper.ParalyzedAttack;
+import battle_states.BattleState;
+import pokemons.Pokemon;
 
 public class Paralyzed extends BattleState {
     public static void tryToParalyze(Pokemon pokemon) {

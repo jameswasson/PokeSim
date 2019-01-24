@@ -1,9 +1,9 @@
-package BattleStates.pre;
+package battle_states.pre;
 
-import AttackStates.Wrapper.ConfusedAttack;
-import BattleStates.BattleState;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import attack_states.wrapper.ConfusedAttack;
+import battle_states.BattleState;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class Confused extends BattleState {
     private int turnsTillNotConfused;

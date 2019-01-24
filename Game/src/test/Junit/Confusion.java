@@ -1,7 +1,6 @@
 package Junit;
 
 import AttackStates.Moves.ConfuseRay;
-import AttackStates.Moves.Tackle;
 import BattleStates.pre.Confused;
 import Utils.RNG;
 import org.junit.Test;

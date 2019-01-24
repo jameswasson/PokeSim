@@ -1,8 +1,8 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import Pokemons.Pokemon;
-import Pokemons.TransformedPokemon;
+import attack_states.Move;
+import pokemons.Pokemon;
+import pokemons.TransformedPokemon;
 
 //If a transformed pokemon receives a critical hit, it's original stats are used, this requires a wrapper.
 public class Transform extends Move {

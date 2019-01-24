@@ -1,10 +1,10 @@
-package BattleStates.pre;
+package battle_states.pre;
 
-import AttackStates.AttackState;
-import AttackStates.Wrapper.AsleepAttack;
-import BattleStates.BattleState;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import attack_states.AttackState;
+import attack_states.wrapper.AsleepAttack;
+import battle_states.BattleState;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class Asleep extends BattleState {
     public int turnsAsleep;

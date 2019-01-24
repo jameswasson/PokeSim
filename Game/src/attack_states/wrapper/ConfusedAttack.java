@@ -1,13 +1,13 @@
-package AttackStates.Wrapper;
+package attack_states.wrapper;
 
-import AttackStates.AttackState;
-import AttackStates.AttackWrapper;
-import AttackStates.DamageCategory;
-import AttackStates.Move;
-import BattleStates.pre.Confused;
-import Pokemons.EleType;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import attack_states.AttackState;
+import attack_states.AttackWrapper;
+import attack_states.DamageCategory;
+import attack_states.Move;
+import battle_states.pre.Confused;
+import pokemons.EleType;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class ConfusedAttack extends AttackWrapper {
     private boolean shouldSnapOut;

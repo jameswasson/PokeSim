@@ -1,9 +1,10 @@
-package AttackStates.Wrapper;
+package attack_states.wrapper;
 
-import AttackStates.AttackState;
-import AttackStates.AttackWrapper;
-import Pokemons.Pokemon;
-import Utils.RNG;
+
+import attack_states.AttackState;
+import attack_states.AttackWrapper;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class ParalyzedAttack extends AttackWrapper {
 

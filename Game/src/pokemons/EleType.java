@@ -1,4 +1,4 @@
-package Pokemons;
+package pokemons;
 
 public enum EleType {
     Normal,

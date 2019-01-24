@@ -1,10 +1,10 @@
-package AttackStates.Wrapper;
+package attack_states.wrapper;
 
-import AttackStates.AttackState;
-import AttackStates.AttackWrapper;
-import BattleStates.pre.Asleep;
-import Pokemons.Pokemon;
 
+import attack_states.AttackState;
+import attack_states.AttackWrapper;
+import battle_states.pre.Asleep;
+import pokemons.Pokemon;
 
 public class AsleepAttack extends AttackWrapper {
     boolean shouldWakeUp;

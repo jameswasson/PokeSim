@@ -1,6 +1,7 @@
-package Pokemons;
+package pokemons;
 
-import Utils.PokedexParser;
+
+import utils.PokedexParser;
 
 import java.util.HashMap;
 import java.util.List;

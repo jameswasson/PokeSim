@@ -1,8 +1,8 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import BattleStates.pre.Paralyzed;
-import Pokemons.Pokemon;
+import attack_states.Move;
+import battle_states.pre.Paralyzed;
+import pokemons.Pokemon;
 
 public class Glare extends Move {
     @Override

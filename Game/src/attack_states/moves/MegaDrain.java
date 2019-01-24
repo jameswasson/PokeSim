@@ -1,7 +1,7 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import Pokemons.Pokemon;
+import attack_states.Move;
+import pokemons.Pokemon;
 
 public class MegaDrain extends Move {
     public void attack(Pokemon ourselves, Pokemon opponent, int damage) {

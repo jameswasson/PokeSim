@@ -1,7 +1,8 @@
-package Utils.SelectMove;
+package utils.select_move;
 
-import BattleField.IBattleLogger;
-import Facade.FacadeFactory;
+
+import battle_field.IBattleLogger;
+import facade.FacadeFactory;
 
 import java.util.List;
 

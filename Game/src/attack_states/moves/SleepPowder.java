@@ -1,8 +1,8 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import BattleStates.pre.Asleep;
-import Pokemons.Pokemon;
+import attack_states.Move;
+import battle_states.pre.Asleep;
+import pokemons.Pokemon;
 
 public class SleepPowder extends Move {
     @Override

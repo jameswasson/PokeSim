@@ -1,10 +1,12 @@
-package Pokemons;
+package pokemons;
 
-import AttackStates.AttackState;
-import AttackStates.Move;
-import BattleStates.BattleState;
+
+import attack_states.AttackState;
+import attack_states.Move;
+import battle_states.BattleState;
 
 import java.util.List;
+
 
 public class WrapperPokemon extends Pokemon {
 

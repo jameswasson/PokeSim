@@ -1,7 +1,7 @@
-package BattleStates.pre;
+package battle_states.pre;
 
-import BattleStates.BattleState;
-import Pokemons.Pokemon;
+import battle_states.BattleState;
+import pokemons.Pokemon;
 
 public class Digging extends BattleState {
     public static boolean isDigging(Pokemon pokemon) {

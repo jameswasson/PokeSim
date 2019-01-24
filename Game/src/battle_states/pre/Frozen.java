@@ -1,11 +1,12 @@
-package BattleStates.pre;
+package battle_states.pre;
 
-import AttackStates.AttackState;
-import AttackStates.Wrapper.FrozenAttack;
-import BattleStates.BattleState;
-import Pokemons.FrozenPokemon;
-import Pokemons.Pokemon;
-import Pokemons.WrapperPokemon;
+
+import attack_states.AttackState;
+import attack_states.wrapper.FrozenAttack;
+import battle_states.BattleState;
+import pokemons.FrozenPokemon;
+import pokemons.Pokemon;
+import pokemons.WrapperPokemon;
 
 public class Frozen extends BattleState {
 

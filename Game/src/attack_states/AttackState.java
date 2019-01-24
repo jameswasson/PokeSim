@@ -1,11 +1,11 @@
-package AttackStates;
+package attack_states;
 
-import AttackStates.Moves.NotImplemented;
-import AttackStates.Moves.Swift;
-import BattleField.IBattleLogger;
-import Facade.FacadeFactory;
-import Pokemons.EleType;
-import Pokemons.Pokemon;
+import attack_states.moves.NotImplemented;
+import attack_states.moves.Swift;
+import battle_field.IBattleLogger;
+import facade.FacadeFactory;
+import pokemons.EleType;
+import pokemons.Pokemon;
 
 public abstract class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);

@@ -1,8 +1,8 @@
-package BattleField;
+package battle_field;
 
-import Facade.FacadeFactory;
-import Pokemons.Pokedex;
-import Pokemons.Pokemon;
+import facade.FacadeFactory;
+import pokemons.Pokedex;
+import pokemons.Pokemon;
 
 public class BattleField {
     private static void endl() {

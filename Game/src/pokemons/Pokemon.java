@@ -1,10 +1,11 @@
-package Pokemons;
+package pokemons;
 
-import AttackStates.AttackState;
-import AttackStates.Move;
-import BattleField.IBattleLogger;
-import BattleStates.BattleState;
-import Facade.FacadeFactory;
+
+import attack_states.AttackState;
+import attack_states.Move;
+import battle_field.IBattleLogger;
+import battle_states.BattleState;
+import facade.FacadeFactory;
 
 import java.util.List;
 

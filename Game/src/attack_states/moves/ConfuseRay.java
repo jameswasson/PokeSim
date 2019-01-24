@@ -1,8 +1,8 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import BattleStates.pre.Confused;
-import Pokemons.Pokemon;
+import attack_states.Move;
+import battle_states.pre.Confused;
+import pokemons.Pokemon;
 
 public class ConfuseRay extends Move {
     @Override

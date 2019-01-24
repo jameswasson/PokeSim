@@ -1,9 +1,9 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import AttackStates.Wrapper.FlinchedAttack;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import attack_states.Move;
+import attack_states.wrapper.FlinchedAttack;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class Stomp extends Move {
     @Override

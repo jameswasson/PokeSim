@@ -1,6 +1,6 @@
-package Utils.SelectMove;
+package utils.select_move;
 
-import Utils.Helpers;
+import utils.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;

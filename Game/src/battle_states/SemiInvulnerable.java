@@ -1,8 +1,9 @@
-package BattleStates;
+package battle_states;
 
-import BattleStates.pre.Digging;
-import BattleStates.pre.Flying;
-import Pokemons.Pokemon;
+
+import battle_states.pre.Digging;
+import battle_states.pre.Flying;
+import pokemons.Pokemon;
 
 public class SemiInvulnerable {
     public static boolean isSemiInvulnerable(Pokemon pokemon) {

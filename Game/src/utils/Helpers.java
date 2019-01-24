@@ -1,7 +1,8 @@
-package Utils;
+package utils;
 
-import BattleField.IBattleLogger;
-import Facade.FacadeFactory;
+
+import battle_field.IBattleLogger;
+import facade.FacadeFactory;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,9 +1,10 @@
-package AttackStates;
+package attack_states;
 
-import BattleStates.post.Burn;
-import Pokemons.Pokemon;
-import Pokemons.TypesHelper;
-import Utils.RNG;
+
+import battle_states.post.Burn;
+import pokemons.Pokemon;
+import pokemons.TypesHelper;
+import utils.RNG;
 
 public class DamageCalculator {
 

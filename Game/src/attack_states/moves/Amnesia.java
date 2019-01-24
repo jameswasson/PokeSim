@@ -1,7 +1,7 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import Pokemons.Pokemon;
+import attack_states.Move;
+import pokemons.Pokemon;
 
 public class Amnesia extends Move {
     @Override

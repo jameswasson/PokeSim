@@ -1,4 +1,4 @@
-package Utils.SelectMove;
+package utils.select_move;
 
 import java.util.List;
 

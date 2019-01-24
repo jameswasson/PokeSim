@@ -1,4 +1,4 @@
-package BattleField;
+package battle_field;
 
 abstract class MasterLog implements IBattleLogger {
 

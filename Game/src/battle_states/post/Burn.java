@@ -1,7 +1,7 @@
-package BattleStates.post;
+package battle_states.post;
 
-import BattleStates.BattleState;
-import Pokemons.Pokemon;
+import battle_states.BattleState;
+import pokemons.Pokemon;
 
 public class Burn extends BattleState {
     public static void tryToBurn(Pokemon pokemon) {

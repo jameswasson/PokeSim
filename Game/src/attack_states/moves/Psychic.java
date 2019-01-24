@@ -1,8 +1,8 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import attack_states.Move;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class Psychic extends Move {
     @Override

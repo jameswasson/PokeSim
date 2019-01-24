@@ -1,6 +1,6 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
+import attack_states.Move;
 
 public class FireSpin extends Move {
     //todo

@@ -1,4 +1,4 @@
-package BattleField;
+package battle_field;
 
 public interface IBattleLogger {
     void print(String s);

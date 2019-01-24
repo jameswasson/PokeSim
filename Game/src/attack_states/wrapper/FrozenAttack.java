@@ -1,8 +1,8 @@
-package AttackStates.Wrapper;
+package attack_states.wrapper;
 
-import AttackStates.AttackState;
-import AttackStates.AttackWrapper;
-import Pokemons.Pokemon;
+import attack_states.AttackState;
+import attack_states.AttackWrapper;
+import pokemons.Pokemon;
 
 public class FrozenAttack extends AttackWrapper {
     public FrozenAttack(AttackState attackState) {

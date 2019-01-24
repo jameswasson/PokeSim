@@ -1,8 +1,8 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import BattleStates.post.BadPoison;
-import Pokemons.Pokemon;
+import attack_states.Move;
+import battle_states.post.BadPoison;
+import pokemons.Pokemon;
 
 public class Toxic extends Move {
     @Override

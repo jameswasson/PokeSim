@@ -1,7 +1,7 @@
-package BattleStates.post;
+package battle_states.post;
 
-import BattleStates.BattleState;
-import Pokemons.Pokemon;
+import battle_states.BattleState;
+import pokemons.Pokemon;
 
 public class Poison extends BattleState {
     public static void tryToPoison(Pokemon pokemon) {

@@ -1,8 +1,8 @@
-package Utils;
+package utils;
 
-import Facade.FacadeFactory;
-import Pokemons.Movedex;
-import Utils.FileManager.IFileManager;
+import facade.FacadeFactory;
+import pokemons.Movedex;
+import utils.file_manager.IFileManager;
 
 import java.io.File;
 import java.util.ArrayList;

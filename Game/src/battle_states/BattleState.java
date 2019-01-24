@@ -1,13 +1,13 @@
-package BattleStates;
+package battle_states;
 
-import BattleField.IBattleLogger;
-import BattleStates.post.BadPoison;
-import BattleStates.post.Burn;
-import BattleStates.post.Poison;
-import BattleStates.pre.Asleep;
-import BattleStates.pre.Paralyzed;
-import Facade.FacadeFactory;
-import Pokemons.Pokemon;
+import battle_field.IBattleLogger;
+import battle_states.post.BadPoison;
+import battle_states.post.Burn;
+import battle_states.post.Poison;
+import battle_states.pre.Asleep;
+import battle_states.pre.Paralyzed;
+import facade.FacadeFactory;
+import pokemons.Pokemon;
 
 import java.util.List;
 

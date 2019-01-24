@@ -1,8 +1,8 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import BattleStates.post.Poison;
-import Pokemons.Pokemon;
+import attack_states.Move;
+import battle_states.post.Poison;
+import pokemons.Pokemon;
 
 public class PoisonGas extends Move {
     @Override

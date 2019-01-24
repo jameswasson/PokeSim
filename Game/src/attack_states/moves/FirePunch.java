@@ -1,9 +1,9 @@
-package AttackStates.Moves;
+package attack_states.moves;
 
-import AttackStates.Move;
-import BattleStates.post.Burn;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import attack_states.Move;
+import battle_states.post.Burn;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class FirePunch extends Move {
     @Override

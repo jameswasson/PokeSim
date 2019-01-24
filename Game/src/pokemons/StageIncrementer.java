@@ -1,7 +1,8 @@
-package Pokemons;
+package pokemons;
 
-import BattleField.IBattleLogger;
-import Facade.FacadeFactory;
+
+import battle_field.IBattleLogger;
+import facade.FacadeFactory;
 
 public class StageIncrementer {
     public static int incrementBy(String type, int currentStage, int stageIncrement, String pokemonName) {

@@ -1,4 +1,4 @@
-package Utils.FileManager;
+package utils.file_manager;
 
 public class TestFileManager extends FileManager {
     protected void setPaths() {

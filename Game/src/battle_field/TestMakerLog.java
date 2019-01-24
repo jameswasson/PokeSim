@@ -1,4 +1,4 @@
-package BattleField;
+package battle_field;
 
 public class TestMakerLog extends MasterLog {
     IBattleLogger testLog = new TestLog();

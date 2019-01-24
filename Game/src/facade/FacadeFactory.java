@@ -1,15 +1,16 @@
-package Facade;
+package facade;
 
-import BattleField.BattleLog;
-import BattleField.IBattleLogger;
-import BattleField.TestLog;
-import BattleField.TestMakerLog;
-import Utils.FileManager.FileManager;
-import Utils.FileManager.IFileManager;
-import Utils.FileManager.TestFileManager;
-import Utils.SelectMove.IChooseMove;
-import Utils.SelectMove.TestChooseMove;
-import Utils.SelectMove.UserChooseMove;
+
+import battle_field.BattleLog;
+import battle_field.IBattleLogger;
+import battle_field.TestLog;
+import battle_field.TestMakerLog;
+import utils.file_manager.FileManager;
+import utils.file_manager.IFileManager;
+import utils.file_manager.TestFileManager;
+import utils.select_move.IChooseMove;
+import utils.select_move.TestChooseMove;
+import utils.select_move.UserChooseMove;
 
 import java.util.HashMap;
 import java.util.Map;

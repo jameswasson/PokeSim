@@ -1,7 +1,8 @@
-package Pokemons;
+package pokemons;
 
-import AttackStates.AttackState;
-import AttackStates.Move;
+
+import attack_states.AttackState;
+import attack_states.Move;
 
 import java.util.ArrayList;
 import java.util.List;

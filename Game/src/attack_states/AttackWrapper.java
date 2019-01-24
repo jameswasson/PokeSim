@@ -1,7 +1,8 @@
-package AttackStates;
+package attack_states;
 
-import Pokemons.EleType;
-import Pokemons.Pokemon;
+
+import pokemons.EleType;
+import pokemons.Pokemon;
 
 public abstract class AttackWrapper extends AttackState {
     protected AttackState nextAttack;
