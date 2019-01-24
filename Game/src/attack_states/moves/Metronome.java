@@ -28,13 +28,12 @@ public class Metronome extends Move {
         List<Class> pickableMoveClasses = new ArrayList<>();
         File[] listOfFiles = folder.listFiles();
 
-        for (File curFile : listOfFiles)
-            if (curFile.isFile()) {
-                if (curFile.getName().contains(".java")) {
-                    if (!curFile.getName().contains("Struggle") && !curFile.getName().contains("Metronome"))
-                        pickableMoveNames.add(moveHeadder + curFile.getName().replace(".java", ""));
-                }
-            }
+        if (listOfFiles != null)
+            for (File curFile : listOfFiles)
+                if (curFile.isFile() && curFile.getName().contains(".java") &&
+                        !curFile.getName().contains("Struggle") && !curFile.getName().contains("Metronome"))
+                    pickableMoveNames.add(moveHeadder + curFile.getName().replace(".java", ""));
+
 
         try {
             for (String s : pickableMoveNames)

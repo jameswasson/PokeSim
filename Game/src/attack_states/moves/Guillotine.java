@@ -9,7 +9,7 @@ public class Guillotine extends Move {
         if (ourselves.getLevel() < opponent.getLevel() || ourselves.getCurSPD() < opponent.getCurSPD())
             return 0;
         else
-            return ourselves.getLevel() - opponent.getLevel() + 30;
+            return (double) (ourselves.getLevel() - opponent.getLevel() + 30);
     }
 
     @Override

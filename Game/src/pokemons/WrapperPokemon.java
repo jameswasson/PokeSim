@@ -15,7 +15,7 @@ public class WrapperPokemon extends Pokemon {
     public WrapperPokemon() {
     }
 
-    public WrapperPokemon(BasePokemon pokemon) {
+     WrapperPokemon(BasePokemon pokemon) {
         wrappedPokemon = pokemon;
         wrappedPokemon.setHead(this);
     }

@@ -2,8 +2,6 @@ package battle_field;
 
 abstract class MasterLog implements IBattleLogger {
 
-    @Override
-    abstract public void print(String s);
 
     @Override
     public void println(String s) {
@@ -19,12 +17,6 @@ abstract class MasterLog implements IBattleLogger {
     public void println(int i) {
         println("" + i);
     }
-
-    @Override
-    abstract public String getLogInfo();
-
-    @Override
-    abstract public void reset();
 
     @Override
     public void printLogInfo() {

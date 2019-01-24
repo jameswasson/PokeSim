@@ -3,6 +3,7 @@ package utils;
 import java.util.Random;
 
 public class RNG {
+    private RNG(){}
     private static Random random;
 
     public static void setSeed(long seed) {

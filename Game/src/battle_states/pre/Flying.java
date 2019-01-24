@@ -10,6 +10,6 @@ public class Flying extends BattleState {
     }
 
     public void execute(Pokemon pokemon) {
-
+        //need to implement
     }
 }

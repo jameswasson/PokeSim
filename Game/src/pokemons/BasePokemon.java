@@ -12,31 +12,31 @@ import java.util.List;
 
 public class BasePokemon extends Pokemon {
 
-    Pokemon head;
-    IChooseMove moveGetter;
-    boolean shouldSelectMove;
-    List<BattleState> preBattleStates;
-    AttackState attackState;
-    List<BattleState> postBattleStates;
-    List<Move> moves;
+    private Pokemon head;
+    private IChooseMove moveGetter;
+    private boolean shouldSelectMove;
+    private List<BattleState> preBattleStates;
+    private AttackState attackState;
+    private List<BattleState> postBattleStates;
+    private List<Move> moves;
 
-    int pokedexNo;
-    String name;
-    EleType type1;
-    EleType type2;
-    int HP;
-    int ATK;
-    int SPD;
-    int DEF;
-    int SPC;
-    int curHP;
-    int ATKStage;
-    int SPDStage;
-    int DEFStage;
-    int SPCStage;
-    int ACCStage;
-    int EVAStage;
-    int critBonus;
+    private int pokedexNo;
+    private String name;
+    private EleType type1;
+    private EleType type2;
+    private int HP;
+    private int ATK;
+    private int SPD;
+    private int DEF;
+    private int SPC;
+    private int curHP;
+    private int ATKStage;
+    private int SPDStage;
+    private int DEFStage;
+    private int SPCStage;
+    private int ACCStage;
+    private int EVAStage;
+    private int critBonus;
 
     public BasePokemon(String name) {
         List<String> pokeInfo = Pokedex.getPokemonInfo(name);

@@ -6,11 +6,11 @@ import attack_states.AttackWrapper;
 import pokemons.Pokemon;
 
 public class FlinchedAttack extends AttackWrapper {
-    public FlinchedAttack(AttackState attack) {
+    private FlinchedAttack(AttackState attack) {
         nextAttack = attack;
     }
 
-    public static boolean isFlinched(Pokemon pokemon) {
+    private static boolean isFlinched(Pokemon pokemon) {
         AttackState state = pokemon.getAttackState();
         return state instanceof FlinchedAttack;
     }

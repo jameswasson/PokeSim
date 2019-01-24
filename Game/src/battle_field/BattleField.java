@@ -16,11 +16,12 @@ public class BattleField {
         try {
             runBattle(pokemon1, pokemon2, turns);
         } catch (PokemonFainted e) {
+            //empty
         }
     }
 
-    public static void runBattle(Pokemon pokemon1, Pokemon pokemon2, int num_of_turns) throws PokemonFainted {
-        for (int i = 0; i < num_of_turns; i++) {
+    private static void runBattle(Pokemon pokemon1, Pokemon pokemon2, int numOfTurns) throws PokemonFainted {
+        for (int i = 0; i < numOfTurns; i++) {
             displayHealth(pokemon1);
             displayHealth(pokemon2);
             pokemon1.selectMove();
@@ -33,9 +34,9 @@ public class BattleField {
                 pokemon2.attack(pokemon1);
                 checkIfFainted(pokemon1, pokemon2);
             } else {
-                pokemon1.attack(pokemon2);
-                checkIfFainted(pokemon1, pokemon2);
                 pokemon2.attack(pokemon1);
+                checkIfFainted(pokemon1, pokemon2);
+                pokemon1.attack(pokemon2);
                 checkIfFainted(pokemon1, pokemon2);
             }
             pokemon1.runPostBattleStates();
@@ -57,7 +58,7 @@ public class BattleField {
         return pokemon1.getCurSPD() > pokemon2.getCurSPD();
     }
 
-    public static void displayHealth(Pokemon pokemon) {
+    private static void displayHealth(Pokemon pokemon) {
         IBattleLogger log = FacadeFactory.getInstance(IBattleLogger.class);
         log.print(pokemon.getName() + "\nHP: ");
         int barLength = 45;

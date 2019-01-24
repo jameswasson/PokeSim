@@ -56,7 +56,7 @@ public class Move extends AttackState {
         if (noEffect(opponent.getType1(), opponent.getType2()))
             logger.println("But it had no effect on " + opponent.getName() + "!");
         else if (willMiss(ourselves, opponent)) {
-            onMiss(ourselves, opponent);
+            onMiss(ourselves);
         } else {
             int damage;
             if (basePower == -1)
@@ -67,25 +67,25 @@ public class Move extends AttackState {
         }
     }
 
-    public void onMiss(Pokemon ourselves, Pokemon opponent) {
+    public void onMiss(Pokemon ourselves) {
         if (damageCategory == DamageCategory.status)
             logger.println("But it failed!");
         else
             logger.println("But it missed!");
     }
 
-    public boolean canHitSemiInvulnerable(Pokemon opponent) {
+    private boolean canHitSemiInvulnerable(Pokemon opponent) {
         return !SemiInvulnerable.isSemiInvulnerable(opponent);
     }
 
-    public boolean willMiss(Pokemon ourselves, Pokemon opponent) {
+    private boolean willMiss(Pokemon ourselves, Pokemon opponent) {
         if (!canHitSemiInvulnerable(opponent))
             return true;
         double getHitChance = getChanceOfHitting(ourselves, opponent);
         return RNG.random() > getHitChance;
     }
 
-    public double getChanceOfHitting(Pokemon ourselves, Pokemon opponent) {
+    private double getChanceOfHitting(Pokemon ourselves, Pokemon opponent) {
         if (baseAccuracy == -1)
             return 1.0;//will always hit
         double moveAccuracy = getAccuracy(ourselves, opponent) / 100.0;
@@ -94,12 +94,12 @@ public class Move extends AttackState {
         return moveAccuracy * ourAccuracy * theirAccuracy;
     }
 
-    public double getChanceOfCrit(Pokemon ourselves) {
+    private double getChanceOfCrit(Pokemon ourselves) {
         double baseSpeed = ourselves.getBaseSPD();
         return (baseSpeed + 76) / 1024;
     }
 
-    public boolean noEffect(EleType type1, EleType type2) {
+    private boolean noEffect(EleType type1, EleType type2) {
         if (damageCategory == DamageCategory.status)
             return false; // can effect
         return TypesHelper.hasNoEffect(getEleType(), type1) || TypesHelper.hasNoEffect(getEleType(), type2);
@@ -113,7 +113,7 @@ public class Move extends AttackState {
 
     @Override
     public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
-        dealDamage(ourselves, opponent, damage);
+        dealDamage(opponent, damage);
     }
 
     @Override
@@ -163,7 +163,7 @@ public class Move extends AttackState {
         return 1;//default: no bonus
     }
 
-    protected void dealDamage(Pokemon ourselves, Pokemon opponent, int damage) {
+    protected void dealDamage(Pokemon opponent, int damage) {
         if (damage == -1)
             logger.println("-1 damage was dealt!");
         opponent.loseHP(damage, this);

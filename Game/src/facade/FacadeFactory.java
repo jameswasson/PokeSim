@@ -75,11 +75,9 @@ public class FacadeFactory {
                 e.printStackTrace();
             }
         }
-        if (obj != null) {
-            if (!klass.isInstance(obj)) {
-                interfaceToInstance.put(intf, null);
-                return _getInstance(intf);
-            }
+        if (obj != null && !klass.isInstance(obj)) {
+            interfaceToInstance.put(intf, null);
+            return _getInstance(intf);
         }
         return obj;
     }
@@ -98,9 +96,5 @@ public class FacadeFactory {
 
     public static void createTestMakerEnvironment() {
         interfaceToClass = testMakerClasses();
-    }
-
-    public int eh() {
-        return 0;
     }
 }

@@ -1,4 +1,4 @@
 package battle_field;
 
-public class PokemonFainted extends Exception {
+class PokemonFainted extends Exception {
 }

@@ -51,4 +51,9 @@ public abstract class AttackWrapper extends AttackState {
     protected double getAccuracy(Pokemon ourselves, Pokemon opponent) {
         return nextAttack.getAccuracy(ourselves, opponent);
     }
+
+    @Override
+    void attack(Pokemon ourselves, Pokemon opponent, int damage) {
+        nextAttack.attack(ourselves, opponent, damage);
+    }
 }

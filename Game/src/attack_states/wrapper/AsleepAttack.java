@@ -7,7 +7,7 @@ import battle_states.pre.Asleep;
 import pokemons.Pokemon;
 
 public class AsleepAttack extends AttackWrapper {
-    boolean shouldWakeUp;
+    private boolean shouldWakeUp;
 
     public AsleepAttack(AttackState nextAttack, boolean shouldWakeUp) {
         this.nextAttack = nextAttack;

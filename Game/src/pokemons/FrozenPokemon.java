@@ -9,6 +9,7 @@ import battle_states.pre.Frozen;
 
 public class FrozenPokemon extends WrapperPokemon {
 
+    @Override
     public void loseHP(int HPLoss, Move move) {
         boolean canBurn = move instanceof FireBlast ||
                 move instanceof FirePunch ||

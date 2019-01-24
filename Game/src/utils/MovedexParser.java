@@ -16,7 +16,7 @@ public class MovedexParser extends CSVParser {
         new MovedexParser().getCSV(movedex);
     }
 
-    public List<String> processLine(String line) {
+    public void processLine(String line) {
         List<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(line);
         scnr.useDelimiter(",");
@@ -28,7 +28,7 @@ public class MovedexParser extends CSVParser {
         toReturn.add(scnr.next());// pp
         toReturn.add(scnr.next());// base power
         toReturn.add(scnr.next());// accuracy
+        scnr.close();
         Movedex.loadDex(toReturn);
-        return new ArrayList<>();
     }
 }

@@ -18,7 +18,7 @@ public class TransformedPokemon extends WrapperPokemon {
      * opponent.def and opponent.spc must be stored somehow
      * we should not store opponent anywhere in the case opponent changes (transform, substitue, light screen, etc)
      * */
-    public TransformedPokemon(Pokemon ourselves, Pokemon opponent) {
+    private TransformedPokemon(Pokemon ourselves, Pokemon opponent) {
         wrappedPokemon = ourselves.getBasePokemon();
 
         //copies moves

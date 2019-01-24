@@ -1,7 +1,7 @@
 package Junit;
 
-import Pokemons.Pokedex;
 import org.junit.Test;
+import pokemons.Pokedex;
 
 /**
  * Titled AAA because Junit runs tests in order of filename

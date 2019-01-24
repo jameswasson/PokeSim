@@ -35,6 +35,7 @@ public class ConfusedAttack extends AttackWrapper {
 
             @Override
             protected void sayWeUsedMove(Pokemon us) {
+                //empty because we should not declare that we used a move
             }
         }
         HurtConfusion hurtConfusion = new HurtConfusion();

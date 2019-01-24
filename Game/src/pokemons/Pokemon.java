@@ -10,7 +10,7 @@ import facade.FacadeFactory;
 import java.util.List;
 
 public abstract class Pokemon {
-    public static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
+    public static final IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
 
     public Pokemon() {
     }

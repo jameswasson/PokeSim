@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public abstract class CSVParser {
 
-    public abstract List<String> processLine(String line);
+    public abstract void processLine(String line);
 
     public void getCSV(File file) {
         boolean firstIter = true;

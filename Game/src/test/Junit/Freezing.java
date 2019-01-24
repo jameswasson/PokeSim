@@ -1,12 +1,13 @@
 package Junit;
 
-import AttackStates.Moves.FireBlast;
-import AttackStates.Moves.FirePunch;
-import AttackStates.Moves.Flamethrower;
-import AttackStates.Moves.IceBeam;
-import BattleStates.pre.Frozen;
-import Utils.RNG;
+
+import attack_states.moves.FireBlast;
+import attack_states.moves.FirePunch;
+import attack_states.moves.Flamethrower;
+import attack_states.moves.IceBeam;
+import battle_states.pre.Frozen;
 import org.junit.Test;
+import utils.RNG;
 
 public class Freezing extends Move {
     @Test

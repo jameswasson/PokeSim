@@ -16,7 +16,7 @@ public class PokedexParser extends CSVParser {
         new PokedexParser().getCSV(pokedexFile);
     }
 
-    public List<String> processLine(String line) {
+    public void processLine(String line) {
         List<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(line);
         scnr.useDelimiter(",");
@@ -35,8 +35,8 @@ public class PokedexParser extends CSVParser {
             if (!moveName.equals(""))
                 toReturn.add(moveName);
         }
+        scnr.close();
 
         Pokedex.addPokemon(name, toReturn);
-        return new ArrayList<>();
     }
 }

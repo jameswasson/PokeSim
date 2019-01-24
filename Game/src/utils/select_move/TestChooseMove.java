@@ -9,7 +9,7 @@ import java.util.List;
 public class TestChooseMove implements IChooseMove {
     private int[] listOfMoves;
 
-    public int getMove(int num_of_moves_available, List<Integer> cannotChoose) {
+    public int getMove(int numOfMovesAvailable, List<Integer> cannotChoose) {
         if (listOfMoves.length == 1)
             return listOfMoves[0];
         int toReturn = listOfMoves[0];

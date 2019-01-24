@@ -3,8 +3,8 @@ package utils.file_manager;
 import java.io.File;
 
 abstract class AFileManager implements IFileManager {
-    public String POKEDEX_PATH;
-    public String MOVEDEX_PATH;
+     String POKEDEX_PATH;
+     String MOVEDEX_PATH;
 
     protected abstract void setPaths();
 
@@ -18,7 +18,7 @@ abstract class AFileManager implements IFileManager {
         return new File(MOVEDEX_PATH);
     }
 
-    public File checkPath(String fileName) {
+    private File checkPath(String fileName) {
         File file = new File(fileName);
         if (file.exists())
             return file;

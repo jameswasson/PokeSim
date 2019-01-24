@@ -1,9 +1,9 @@
 package Junit;
 
-import AttackStates.Moves.ConfuseRay;
-import BattleStates.pre.Confused;
-import Utils.RNG;
+import attack_states.moves.ConfuseRay;
+import battle_states.pre.Confused;
 import org.junit.Test;
+import utils.RNG;
 
 public class Confusion extends Move {
     @Test

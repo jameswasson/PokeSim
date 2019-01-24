@@ -4,7 +4,7 @@ import battle_states.BattleState;
 import pokemons.Pokemon;
 
 public class BadPoison extends BattleState {
-    int turnCount;
+    private int turnCount;
 
     private BadPoison() {
         turnCount = 0;

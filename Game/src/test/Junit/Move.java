@@ -1,18 +1,18 @@
 package Junit;
 
-import BattleField.IBattleLogger;
-import Facade.FacadeFactory;
-import Pokemons.Pokedex;
-import Pokemons.Pokemon;
-import Utils.RNG;
+import battle_field.IBattleLogger;
+import facade.FacadeFactory;
 import org.junit.After;
 import org.junit.Before;
+import pokemons.Pokedex;
+import pokemons.Pokemon;
+import utils.RNG;
 
 public class Move {
     public IBattleLogger logger;
     public Pokemon Caterpie;
     public Pokemon Magikarp;
-    public AttackStates.Move tackle;
+    public attack_states.Move tackle;
 
     @Before
     public void prepareEnvironment() {
@@ -21,7 +21,7 @@ public class Move {
         RNG.setSeed(0);
         Caterpie = Pokedex.getPokemon("Caterpie");
         Magikarp = Pokedex.getPokemon("Magikarp");
-        tackle = new AttackStates.Moves.Tackle();
+        tackle = new attack_states.moves.Tackle();
     }
 
     @After

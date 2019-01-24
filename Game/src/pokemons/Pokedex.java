@@ -23,7 +23,7 @@ public class Pokedex {
         return pokedex;
     }
 
-    public static List<String> getPokemonInfo(String name) {
+    static List<String> getPokemonInfo(String name) {
         return getPokedex()._getPokemonInfo(name);
     }
 

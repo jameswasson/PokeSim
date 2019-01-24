@@ -12,26 +12,27 @@ public abstract class AttackState {
 
     //returns appropriate name of move from class
     public static String getName(Class moveClass) {
-        String name = "";
         String className = moveClass.getSimpleName();
         String[] separated = className.split("(?=\\p{Upper})");
+        StringBuilder sb = new StringBuilder("");
         for (int i = 0; i < separated.length - 1; i++) {
-            name += separated[i] + " ";
+            sb.append(separated[i]);
+            sb.append(" ");
         }
-        name += separated[separated.length - 1];
-        return name;
+        sb.append(separated[separated.length - 1]);
+        return sb.toString();
     }
 
-    //reverse of above function, returns class associated with provided name;
-    public static Class<?> getClass(String s) {
+    //reverse of above function, returns class associated with provided name
+    static Class<?> getClass(String s) {
         Class<?> dummyClass = Swift.class;
-        String BaseDirectory = dummyClass.getName();
+        String baseDirectory = dummyClass.getName();
         String toRemoveName = dummyClass.getSimpleName();
         String nothing = "";
         String whiteSpace = "\\s+";
         s = s.replaceAll(whiteSpace, nothing);
-        BaseDirectory = BaseDirectory.replaceAll(toRemoveName, nothing);
-        String classFullName = BaseDirectory + s;
+        baseDirectory = baseDirectory.replaceAll(toRemoveName, nothing);
+        String classFullName = baseDirectory + s;
         Class<?> toReturn;
         try {
             toReturn = Class.forName(classFullName);
@@ -48,9 +49,7 @@ public abstract class AttackState {
         logger.println(us.getName() + " used " + getName(this.getClass()) + "!");
     }
 
-    public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
-        logger.println(getName(this.getClass()) + ".attack() not implemented!");
-    }
+    abstract void attack(Pokemon ourselves, Pokemon opponent, int damage);
 
     abstract DamageCategory getDamageCategory();
 
@@ -64,7 +63,7 @@ public abstract class AttackState {
 
     abstract int getPower();
 
-    abstract protected double getAccuracy(Pokemon ourselves, Pokemon opponent);
+    protected abstract double getAccuracy(Pokemon ourselves, Pokemon opponent);
 
     public abstract boolean wasCritical();
 

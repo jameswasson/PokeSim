@@ -7,9 +7,9 @@ import pokemons.Pokemon;
 import utils.RNG;
 
 public class Asleep extends BattleState {
-    public int turnsAsleep;
+    private int turnsAsleep;
 
-    public Asleep(int turnsAsleep) {
+    private Asleep(int turnsAsleep) {
         this.turnsAsleep = turnsAsleep;
     }
 
