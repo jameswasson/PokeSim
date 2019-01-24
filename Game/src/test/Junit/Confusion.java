@@ -30,10 +30,10 @@ public class Confusion extends Move {
     }
 
     @Test
-    public void removeConfusion(){
+    public void removeConfusion() {
         attack();
         Confused.removeConfusion(Magikarp);
-        assert(!Confused.isConfused(Magikarp));
+        assert (!Confused.isConfused(Magikarp));
     }
 
     public void attack() {

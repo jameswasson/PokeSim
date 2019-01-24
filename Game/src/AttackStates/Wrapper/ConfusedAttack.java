@@ -17,22 +17,6 @@ public class ConfusedAttack extends AttackWrapper {
         this.shouldSnapOut = shouldSnapOut;
     }
 
-    public void execute(Pokemon us, Pokemon them) {
-        if (shouldSnapOut) {
-            Confused.removeConfusion(us);
-            logger.println(us.getName() + " snapped out of confusion!");
-            nextAttack.execute(us, them);
-            return;
-        }
-        logger.println(us.getName() + " is confused!");
-        if (RNG.random() < 0.5)
-            nextAttack.execute(us, them);
-        else {
-            logger.println("It hurt itself in its confusion!");
-            hurtSelf(us);
-        }
-    }
-
     private static void hurtSelf(Pokemon pokemon) {
         //attack self with a typeless 40 damage hit with no chance of crit.
         class HurtConfusion extends Move {
@@ -55,5 +39,21 @@ public class ConfusedAttack extends AttackWrapper {
         }
         HurtConfusion hurtConfusion = new HurtConfusion();
         hurtConfusion.execute(pokemon, pokemon);
+    }
+
+    public void execute(Pokemon us, Pokemon them) {
+        if (shouldSnapOut) {
+            Confused.removeConfusion(us);
+            logger.println(us.getName() + " snapped out of confusion!");
+            nextAttack.execute(us, them);
+            return;
+        }
+        logger.println(us.getName() + " is confused!");
+        if (RNG.random() < 0.5)
+            nextAttack.execute(us, them);
+        else {
+            logger.println("It hurt itself in its confusion!");
+            hurtSelf(us);
+        }
     }
 }

@@ -32,6 +32,21 @@ public class Move extends AttackState {
         baseAccuracy = Integer.valueOf(allInfo.get(6));
     }
 
+    //returns new instance from move by name
+    public static Move getMove(String s) {
+        Class<?> classOfMove = getClass(s);
+        try {
+            return (Move) classOfMove.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Move copyMove(Move m) {
+        return getMove(getName(m.getClass()));
+    }
+
     @Override
     public void execute(Pokemon ourselves, Pokemon opponent) {
         sayWeUsedMove(ourselves);
@@ -162,27 +177,12 @@ public class Move extends AttackState {
         return currentPowerPoints;
     }
 
-    public int getPowerPoints() {
-        return powerPoints;
-    }
-
-    //returns new instance from move by name
-    public static Move getMove(String s) {
-        Class<?> classOfMove = getClass(s);
-        try {
-            return (Move) classOfMove.getDeclaredConstructor().newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static Move copyMove(Move m) {
-        return getMove(getName(m.getClass()));
-    }
-
     public void setCurrentPowerPoints(int currentPowerPoints) {
         this.currentPowerPoints = currentPowerPoints;
+    }
+
+    public int getPowerPoints() {
+        return powerPoints;
     }
 
     public String getDisplayText() {

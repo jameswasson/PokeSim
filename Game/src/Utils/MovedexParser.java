@@ -11,6 +11,11 @@ import java.util.Scanner;
 
 public class MovedexParser extends CSVParser {
 
+    public static void loadMoves() {
+        File movedex = FacadeFactory.getInstance(IFileManager.class).getMovedexFile();
+        new MovedexParser().getCSV(movedex);
+    }
+
     public List<String> processLine(String line) {
         List<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(line);
@@ -25,10 +30,5 @@ public class MovedexParser extends CSVParser {
         toReturn.add(scnr.next());// accuracy
         Movedex.loadDex(toReturn);
         return new ArrayList<>();
-    }
-
-    public static void loadMoves() {
-        File movedex = FacadeFactory.getInstance(IFileManager.class).getMovedexFile();
-        new MovedexParser().getCSV(movedex);
     }
 }

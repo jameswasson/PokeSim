@@ -9,11 +9,6 @@ public class FlinchedAttack extends AttackWrapper {
         nextAttack = attack;
     }
 
-    @Override
-    public void execute(Pokemon ourSelves, Pokemon opponent) {
-        logger.println(ourSelves.getName() + " flinched!");
-    }
-
     public static boolean isFlinched(Pokemon pokemon) {
         AttackState state = pokemon.getAttackState();
         return state instanceof FlinchedAttack;
@@ -24,5 +19,10 @@ public class FlinchedAttack extends AttackWrapper {
             FlinchedAttack wrapper = new FlinchedAttack(pokemon.getAttackState());
             pokemon.setAttackState(wrapper);
         }
+    }
+
+    @Override
+    public void execute(Pokemon ourSelves, Pokemon opponent) {
+        logger.println(ourSelves.getName() + " flinched!");
     }
 }

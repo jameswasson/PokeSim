@@ -13,13 +13,6 @@ public class Asleep extends BattleState {
         this.turnsAsleep = turnsAsleep;
     }
 
-    public void execute(Pokemon pokemon) {
-        AttackState nextAttack = pokemon.getAttackState();
-        boolean shouldWakeUp = turnsAsleep <= 0;
-        pokemon.setAttackState(new AsleepAttack(nextAttack, shouldWakeUp));
-        turnsAsleep--;
-    }
-
     public static void tryToPutToSleep(Pokemon pokemon) {
         tryToPutToSleep(pokemon, RNG.randomInt(1, 3));
     }
@@ -42,5 +35,12 @@ public class Asleep extends BattleState {
 
     public static void wakeUp(Pokemon pokemon) {
         new Asleep(0).removeState(pokemon);
+    }
+
+    public void execute(Pokemon pokemon) {
+        AttackState nextAttack = pokemon.getAttackState();
+        boolean shouldWakeUp = turnsAsleep <= 0;
+        pokemon.setAttackState(new AsleepAttack(nextAttack, shouldWakeUp));
+        turnsAsleep--;
     }
 }

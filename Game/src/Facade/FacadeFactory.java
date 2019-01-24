@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FacadeFactory {
+    private static Map<Class<?>, Class<?>> interfaceToClass;
+    private static Map<Class<?>, Object> interfaceToInstance;
+
     private static Map<Class<?>, Class<?>> defaultClasses() {
         Map<Class<?>, Class<?>> implMap = new HashMap<>();
         implMap.put(IBattleLogger.class, BattleLog.class);
@@ -42,9 +45,6 @@ public class FacadeFactory {
     private static Map<Class<?>, Object> defaultInstances() {
         return new HashMap<>();
     }
-
-    private static Map<Class<?>, Class<?>> interfaceToClass;
-    private static Map<Class<?>, Object> interfaceToInstance;
 
     /*
      * Returns the instance of specified interface

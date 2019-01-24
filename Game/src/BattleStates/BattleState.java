@@ -15,8 +15,6 @@ public abstract class BattleState {
 
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
 
-    abstract public void execute(Pokemon pokemon);
-
     public static boolean isNonVolatile(Pokemon pokemon) {
         /*returns true if Pokemon is any of the following:
             burned
@@ -31,12 +29,14 @@ public abstract class BattleState {
                 Asleep.isAsleep(pokemon);
     }
 
+    abstract public void execute(Pokemon pokemon);
+
     public void removeState(Pokemon pokemon) {
         removeFromStates(pokemon, pokemon.getPreBattleStates());
         removeFromStates(pokemon, pokemon.getPostBattleStates());
     }
 
-    private void removeFromStates(Pokemon pokemon, List<BattleState> list){
+    private void removeFromStates(Pokemon pokemon, List<BattleState> list) {
         BattleState state = null;
         for (BattleState bs : list) {
             if (this.getClass().isInstance(bs)) {

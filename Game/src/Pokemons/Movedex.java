@@ -10,6 +10,11 @@ import java.util.Map;
 public class Movedex {
 
     private static Movedex myMovedex;
+    private Map<String, List<String>> dex;
+
+    private Movedex() {
+        dex = new HashMap<>();
+    }
 
     private static Movedex getMovedex() {
         if (myMovedex == null) {
@@ -19,22 +24,16 @@ public class Movedex {
         return myMovedex;
     }
 
-    private Map<String, List<String>> dex;
-
-    private Movedex() {
-        dex = new HashMap<>();
-    }
-
     public static List<String> getMove(String name) {
         return getMovedex()._getMove(name);
     }
 
-    private List<String> _getMove(String name) {
-        return dex.get(name);
-    }
-
     public static void loadDex(List<String> allInfo) {
         getMovedex()._loadDex(allInfo);
+    }
+
+    private List<String> _getMove(String name) {
+        return dex.get(name);
     }
 
     private void _loadDex(List<String> allInfo) {

@@ -2,7 +2,6 @@ package Pokemons;
 
 import AttackStates.AttackState;
 import AttackStates.Move;
-import BattleField.IBattleLogger;
 import BattleStates.BattleState;
 import Facade.FacadeFactory;
 import Utils.SelectMove.IChooseMove;
@@ -38,9 +37,31 @@ public class BasePokemon extends Pokemon {
     int EVAStage;
     int critBonus;
 
-    @Override
-    public void setWrappedPokemon(Pokemon pokemon) {
-        logger.println("ERROR! BASEPOKEMON TOLD TO setWrappedPokemon");
+    public BasePokemon(String name) {
+        List<String> pokeInfo = Pokedex.getPokemonInfo(name);
+        this.type1 = TypesHelper.enumOf(pokeInfo.get(1));
+        this.type2 = TypesHelper.enumOf(pokeInfo.get(2));
+        this.HP = Integer.valueOf(pokeInfo.get(3));
+        this.ATK = Integer.valueOf(pokeInfo.get(4));
+        this.DEF = Integer.valueOf(pokeInfo.get(5));
+        this.SPC = Integer.valueOf(pokeInfo.get(6));
+        this.SPD = Integer.valueOf(pokeInfo.get(7));
+        this.moves = new ArrayList<>();
+        for (int i = 8; i < pokeInfo.size(); i++) {
+            this.moves.add(Move.getMove(pokeInfo.get(i)));
+        }
+
+        this.name = name;
+        this.curHP = this.HP;
+        this.ATKStage = 0;
+        this.DEFStage = 0;
+        this.SPCStage = 0;
+        this.SPDStage = 0;
+        this.critBonus = 1;
+        this.preBattleStates = new ArrayList<>();
+        this.postBattleStates = new ArrayList<>();
+        this.shouldSelectMove = true;
+        this.moveGetter = FacadeFactory.getInstance(IChooseMove.class);
     }
 
     @Override
@@ -49,12 +70,17 @@ public class BasePokemon extends Pokemon {
         return null;
     }
 
-    public void setHead(Pokemon head) {
-        this.head = head;
+    @Override
+    public void setWrappedPokemon(Pokemon pokemon) {
+        logger.println("ERROR! BASEPOKEMON TOLD TO setWrappedPokemon");
     }
 
-    public Pokemon getHead(){
+    public Pokemon getHead() {
         return head;
+    }
+
+    public void setHead(Pokemon head) {
+        this.head = head;
     }
 
     public int getLevel() {
@@ -89,8 +115,16 @@ public class BasePokemon extends Pokemon {
         return type1;
     }
 
+    public void setType1(EleType type1) {
+        this.type1 = type1;
+    }
+
     public EleType getType2() {
         return type2;
+    }
+
+    public void setType2(EleType type2) {
+        this.type2 = type2;
     }
 
     public void loseHP(int HPLoss) {
@@ -98,7 +132,7 @@ public class BasePokemon extends Pokemon {
         curHP = Math.max(0, curHP);//if negative, make zero
     }
 
-    public void loseHP(int HPLoss, Move move){
+    public void loseHP(int HPLoss, Move move) {
         loseHP(HPLoss);
     }
 
@@ -192,41 +226,6 @@ public class BasePokemon extends Pokemon {
         return type == type1 || type == type2;
     }
 
-    public void setType1(EleType type1) {
-        this.type1 = type1;
-    }
-
-    public void setType2(EleType type2) {
-        this.type2 = type2;
-    }
-
-    public BasePokemon(String name) {
-        List<String> pokeInfo = Pokedex.getPokemonInfo(name);
-        this.type1 = TypesHelper.enumOf(pokeInfo.get(1));
-        this.type2 = TypesHelper.enumOf(pokeInfo.get(2));
-        this.HP = Integer.valueOf(pokeInfo.get(3));
-        this.ATK = Integer.valueOf(pokeInfo.get(4));
-        this.DEF = Integer.valueOf(pokeInfo.get(5));
-        this.SPC = Integer.valueOf(pokeInfo.get(6));
-        this.SPD = Integer.valueOf(pokeInfo.get(7));
-        this.moves = new ArrayList<>();
-        for (int i = 8; i < pokeInfo.size(); i++) {
-            this.moves.add(Move.getMove(pokeInfo.get(i)));
-        }
-
-        this.name = name;
-        this.curHP = this.HP;
-        this.ATKStage = 0;
-        this.DEFStage = 0;
-        this.SPCStage = 0;
-        this.SPDStage = 0;
-        this.critBonus = 1;
-        this.preBattleStates = new ArrayList<>();
-        this.postBattleStates = new ArrayList<>();
-        this.shouldSelectMove = true;
-        this.moveGetter = FacadeFactory.getInstance(IChooseMove.class);
-    }
-
     public BasePokemon getBasePokemon() {
         return this;
     }
@@ -281,16 +280,16 @@ public class BasePokemon extends Pokemon {
         return attackState;
     }
 
+    public void setAttackState(AttackState attackState) {
+        this.attackState = attackState;
+    }
+
     public void setAttackState(Class<?> attackStateClass) {
         try {
             attackState = (AttackState) attackStateClass.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void setAttackState(AttackState attackState) {
-        this.attackState = attackState;
     }
 
     public void addPostBattleState(BattleState battleState) {
@@ -321,8 +320,16 @@ public class BasePokemon extends Pokemon {
         return ATK;
     }
 
+    public void setATK(int ATK) {
+        this.ATK = ATK;
+    }
+
     public int getSPD() {
         return SPD;
+    }
+
+    public void setSPD(int SPD) {
+        this.SPD = SPD;
     }
 
     public int getDEF(AttackState move) {
@@ -333,20 +340,12 @@ public class BasePokemon extends Pokemon {
         return SPC;
     }
 
-    public void setATK(int ATK) {
-        this.ATK = ATK;
-    }
-
-    public void setSPD(int SPD) {
-        this.SPD = SPD;
+    public void setSPC(int SPC) {
+        this.SPC = SPC;
     }
 
     public void setDEF(int DEF) {
         this.DEF = DEF;
-    }
-
-    public void setSPC(int SPC) {
-        this.SPC = SPC;
     }
 
     public double getCritBonus() {

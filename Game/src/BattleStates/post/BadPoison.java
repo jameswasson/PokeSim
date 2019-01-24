@@ -1,8 +1,6 @@
 package BattleStates.post;
 
-import BattleField.IBattleLogger;
 import BattleStates.BattleState;
-import Facade.FacadeFactory;
 import Pokemons.Pokemon;
 
 public class BadPoison extends BattleState {
@@ -10,13 +8,6 @@ public class BadPoison extends BattleState {
 
     private BadPoison() {
         turnCount = 0;
-    }
-
-    public void execute(Pokemon pokemon) {
-        //lose (1/8 * turnCount)th of health
-        turnCount++;
-        pokemon.loseHP(pokemon.getBaseHP() / 8 * turnCount);
-        logger.println(pokemon.getName() + " is hurt by its poison!");
     }
 
     public static void tryToBadlyPoison(Pokemon pokemon) {
@@ -32,5 +23,12 @@ public class BadPoison extends BattleState {
 
     public static boolean isBadlyPoisoned(Pokemon pokemon) {
         return new BadPoison().containsState(pokemon);
+    }
+
+    public void execute(Pokemon pokemon) {
+        //lose (1/8 * turnCount)th of health
+        turnCount++;
+        pokemon.loseHP(pokemon.getBaseHP() / 8 * turnCount);
+        logger.println(pokemon.getName() + " is hurt by its poison!");
     }
 }

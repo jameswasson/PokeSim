@@ -21,9 +21,6 @@ LeechSeed -             Puts opponent in seeded state + more
 Wrap -                  Puts opponent in wrap
 Clamp -                 Puts opponent in clamp
 FireSpin -              Puts opponent in fire vortex
-IceBeam -               Freezes
-IcePunch -              Freezes
-Blizzard -              Freezes
 SolarBeam -             2 turn move
 SkullBash -             2 turn move
 SkyAttack -             2 turn move

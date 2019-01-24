@@ -12,13 +12,6 @@ public class Confused extends BattleState {
         turnsTillNotConfused = RNG.randomInt(1, 3);
     }
 
-    @Override
-    public void execute(Pokemon pokemon) {
-        boolean shouldSnapOut = turnsTillNotConfused <= 0;
-        pokemon.setAttackState(new ConfusedAttack(pokemon.getAttackState(), shouldSnapOut));
-        turnsTillNotConfused--;
-    }
-
     public static boolean isConfused(Pokemon pokemon) {
         return new Confused().containsState(pokemon);
     }
@@ -35,5 +28,12 @@ public class Confused extends BattleState {
 
     public static void removeConfusion(Pokemon pokemon) {
         new Confused().removeState(pokemon);
+    }
+
+    @Override
+    public void execute(Pokemon pokemon) {
+        boolean shouldSnapOut = turnsTillNotConfused <= 0;
+        pokemon.setAttackState(new ConfusedAttack(pokemon.getAttackState(), shouldSnapOut));
+        turnsTillNotConfused--;
     }
 }

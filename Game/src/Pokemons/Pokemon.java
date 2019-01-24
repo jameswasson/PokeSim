@@ -10,12 +10,13 @@ import java.util.List;
 
 public abstract class Pokemon {
     public static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
+
     public Pokemon() {
     }
 
-    public abstract void setHead(Pokemon head);
-
     public abstract Pokemon getHead();
+
+    public abstract void setHead(Pokemon head);
 
     public abstract int getLevel();
 
@@ -25,7 +26,11 @@ public abstract class Pokemon {
 
     public abstract EleType getType1();
 
+    public abstract void setType1(EleType type1);
+
     public abstract EleType getType2();
+
+    public abstract void setType2(EleType type2);
 
     public abstract BasePokemon getBasePokemon();
 
@@ -34,10 +39,6 @@ public abstract class Pokemon {
     public abstract void setWrappedPokemon(Pokemon pokemon);
 
     public abstract boolean isType(EleType type);
-
-    public abstract void setType1(EleType type1);
-
-    public abstract void setType2(EleType type2);
 
     public abstract void selectMove();
 
@@ -50,6 +51,8 @@ public abstract class Pokemon {
     public abstract void runPostBattleStates();
 
     public abstract AttackState getAttackState();
+
+    public abstract void setAttackState(Class<?> attackStateClass);
 
     public abstract void setAttackState(AttackState attackState);
 
@@ -65,8 +68,6 @@ public abstract class Pokemon {
 
     public abstract void setMoves(List<Move> moves);
 
-    public abstract void setAttackState(Class<?> attackStateClass);
-
     public abstract boolean hasFainted();
 
     public abstract double getCritBonus();
@@ -75,11 +76,17 @@ public abstract class Pokemon {
 
     public abstract int getATK();
 
+    public abstract void setATK(int ATK);
+
     public abstract int getSPD();
+
+    public abstract void setSPD(int SPD);
 
     public abstract int getDEF(AttackState move);
 
     public abstract int getSPC();
+
+    public abstract void setSPC(int SPC);
 
     public abstract void loseHP(int HPLoss);
 
@@ -87,13 +94,7 @@ public abstract class Pokemon {
 
     public abstract void gainHP(int HPGain);
 
-    public abstract void setATK(int ATK);
-
-    public abstract void setSPD(int SPD);
-
     public abstract void setDEF(int DEF);
-
-    public abstract void setSPC(int SPC);
 
     public abstract int getBaseHP();
 

@@ -10,16 +10,6 @@ import Pokemons.Pokemon;
 public abstract class AttackState {
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
 
-    public abstract void execute(Pokemon ourSelves, Pokemon opponent);
-
-    protected void sayWeUsedMove(Pokemon us) {
-        logger.println(us.getName() + " used " + getName(this.getClass()) + "!");
-    }
-
-    public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
-        logger.println(getName(this.getClass()) + ".attack() not implemented!");
-    }
-
     //returns appropriate name of move from class
     public static String getName(Class moveClass) {
         String name = "";
@@ -52,9 +42,21 @@ public abstract class AttackState {
         return toReturn;
     }
 
+    public abstract void execute(Pokemon ourSelves, Pokemon opponent);
+
+    protected void sayWeUsedMove(Pokemon us) {
+        logger.println(us.getName() + " used " + getName(this.getClass()) + "!");
+    }
+
+    public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
+        logger.println(getName(this.getClass()) + ".attack() not implemented!");
+    }
+
     abstract DamageCategory getDamageCategory();
 
     abstract double getCriticalEffect();
+
+    abstract void setCriticalEffect(double effect);
 
     public abstract EleType getEleType();
 
@@ -65,8 +67,6 @@ public abstract class AttackState {
     abstract protected double getAccuracy(Pokemon ourselves, Pokemon opponent);
 
     public abstract boolean wasCritical();
-
-    abstract void setCriticalEffect(double effect);
 
     abstract boolean willBeCritical(Pokemon pokemon);
 }

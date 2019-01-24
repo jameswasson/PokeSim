@@ -11,6 +11,11 @@ import java.util.Scanner;
 
 public class PokedexParser extends CSVParser {
 
+    public static void loadPokedex() {
+        File pokedexFile = FacadeFactory.getInstance(IFileManager.class).getPokedexFile();
+        new PokedexParser().getCSV(pokedexFile);
+    }
+
     public List<String> processLine(String line) {
         List<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(line);
@@ -33,10 +38,5 @@ public class PokedexParser extends CSVParser {
 
         Pokedex.addPokemon(name, toReturn);
         return new ArrayList<>();
-    }
-
-    public static void loadPokedex() {
-        File pokedexFile = FacadeFactory.getInstance(IFileManager.class).getPokedexFile();
-        new PokedexParser().getCSV(pokedexFile);
     }
 }

@@ -46,6 +46,10 @@ public class TransformedPokemon extends WrapperPokemon {
         opponentBaseDEF = opponent.getBaseDEF(null);
     }
 
+    public static void transform(Pokemon ourselves, Pokemon opponent) {
+        ourselves.setWrappedPokemon(new TransformedPokemon(ourselves, opponent));
+    }
+
     @Override
     public int getBaseSPC(AttackState move) {
         if (move == null)
@@ -64,9 +68,5 @@ public class TransformedPokemon extends WrapperPokemon {
             return wrappedPokemon.getBaseDEF(null);
         else
             return opponentBaseDEF;
-    }
-
-    public static void transform(Pokemon ourselves, Pokemon opponent){
-        ourselves.setWrappedPokemon(new TransformedPokemon(ourselves, opponent));
     }
 }

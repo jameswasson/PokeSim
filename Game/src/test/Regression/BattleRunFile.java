@@ -4,15 +4,15 @@ import Utils.Helpers;
 import Utils.myGson;
 
 public class BattleRunFile {
+    private static String TestFolder = "";
+    private static String runFileExtension = ".rfe";
+    private static String correctOutputExtension = ".coe";
     long seed;
     String pokemon1;
     String pokemon2;
     int[] moveSelection;
     private String correctOutputFileName;
     private String id;
-    private static String TestFolder = "";
-    private static String runFileExtension = ".rfe";
-    private static String correctOutputExtension = ".coe";
 
     private BattleRunFile(long seed, String pokemon1, String pokemon2, int[] moveSelection) {
         this.seed = seed;

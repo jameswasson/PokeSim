@@ -5,7 +5,7 @@ import AttackStates.AttackWrapper;
 import Pokemons.Pokemon;
 
 public class FrozenAttack extends AttackWrapper {
-    public FrozenAttack(AttackState attackState){
+    public FrozenAttack(AttackState attackState) {
         nextAttack = attackState;
     }
 

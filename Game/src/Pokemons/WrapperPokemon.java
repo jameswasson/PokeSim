@@ -10,51 +10,50 @@ public class WrapperPokemon extends Pokemon {
 
     Pokemon wrappedPokemon;
 
-    public static void wrap(Pokemon toWrap, WrapperPokemon wrapper){
-        Pokemon inner = toWrap.getWrappedPokemon();
-        wrapper.setWrappedPokemon(inner);
-        toWrap.setWrappedPokemon(wrapper);
-    }
-
-    public void setHead(Pokemon head){
-        wrappedPokemon.setHead(head);
-    }
-
-    public Pokemon getHead(){
-        return wrappedPokemon.getHead();
-    }
-
-    public void removeSelf(){
-        Pokemon cur = wrappedPokemon.getHead();
-        while (cur.getWrappedPokemon() != this && cur.getWrappedPokemon() != null){
-            cur = cur.getWrappedPokemon();
-        }
-        if (cur.getWrappedPokemon() == null){
-            logger.println("Self not found!");
-        }
-        else{
-            cur.setWrappedPokemon(getWrappedPokemon());
-        }
-    }
-
-    public void setWrappedPokemon(Pokemon pokemon) {
-        this.wrappedPokemon = pokemon;
-    }
-
-    public Pokemon getWrappedPokemon(){
-        return wrappedPokemon;
-    }
-
-    public BasePokemon getBasePokemon() {
-        return wrappedPokemon.getBasePokemon();
-    }
-
     public WrapperPokemon() {
     }
 
     public WrapperPokemon(BasePokemon pokemon) {
         wrappedPokemon = pokemon;
         wrappedPokemon.setHead(this);
+    }
+
+    public static void wrap(Pokemon toWrap, WrapperPokemon wrapper) {
+        Pokemon inner = toWrap.getWrappedPokemon();
+        wrapper.setWrappedPokemon(inner);
+        toWrap.setWrappedPokemon(wrapper);
+    }
+
+    public Pokemon getHead() {
+        return wrappedPokemon.getHead();
+    }
+
+    public void setHead(Pokemon head) {
+        wrappedPokemon.setHead(head);
+    }
+
+    public void removeSelf() {
+        Pokemon cur = wrappedPokemon.getHead();
+        while (cur.getWrappedPokemon() != this && cur.getWrappedPokemon() != null) {
+            cur = cur.getWrappedPokemon();
+        }
+        if (cur.getWrappedPokemon() == null) {
+            logger.println("Self not found!");
+        } else {
+            cur.setWrappedPokemon(getWrappedPokemon());
+        }
+    }
+
+    public Pokemon getWrappedPokemon() {
+        return wrappedPokemon;
+    }
+
+    public void setWrappedPokemon(Pokemon pokemon) {
+        this.wrappedPokemon = pokemon;
+    }
+
+    public BasePokemon getBasePokemon() {
+        return wrappedPokemon.getBasePokemon();
     }
 
     public int getLevel() {
@@ -89,15 +88,23 @@ public class WrapperPokemon extends Pokemon {
         return wrappedPokemon.getType1();
     }
 
+    public void setType1(EleType type1) {
+        wrappedPokemon.setType1(type1);
+    }
+
     public EleType getType2() {
         return wrappedPokemon.getType2();
+    }
+
+    public void setType2(EleType type2) {
+        wrappedPokemon.setType2(type2);
     }
 
     public void loseHP(int HPLoss) {
         wrappedPokemon.loseHP(HPLoss);
     }
 
-    public void loseHP(int HPLoss, Move move){
+    public void loseHP(int HPLoss, Move move) {
         wrappedPokemon.loseHP(HPLoss, move);
     }
 
@@ -189,14 +196,6 @@ public class WrapperPokemon extends Pokemon {
         return wrappedPokemon.isType(type);
     }
 
-    public void setType1(EleType type1) {
-        wrappedPokemon.setType1(type1);
-    }
-
-    public void setType2(EleType type2) {
-        wrappedPokemon.setType2(type2);
-    }
-
     public void selectMove() {
         wrappedPokemon.selectMove();
     }
@@ -223,6 +222,10 @@ public class WrapperPokemon extends Pokemon {
 
     public AttackState getAttackState() {
         return wrappedPokemon.getAttackState();
+    }
+
+    public void setAttackState(Class<?> attackStateClass) {
+        wrappedPokemon.setAttackState(attackStateClass);
     }
 
     public void setAttackState(AttackState attackState) {
@@ -257,8 +260,16 @@ public class WrapperPokemon extends Pokemon {
         return wrappedPokemon.getATK();
     }
 
+    public void setATK(int ATK) {
+        wrappedPokemon.setATK(ATK);
+    }
+
     public int getSPD() {
         return wrappedPokemon.getSPD();
+    }
+
+    public void setSPD(int SPD) {
+        wrappedPokemon.setSPD(SPD);
     }
 
     public int getDEF(AttackState move) {
@@ -269,24 +280,12 @@ public class WrapperPokemon extends Pokemon {
         return wrappedPokemon.getSPC();
     }
 
-    public void setATK(int ATK) {
-        wrappedPokemon.setATK(ATK);
-    }
-
-    public void setSPD(int SPD) {
-        wrappedPokemon.setSPD(SPD);
-    }
-
-    public void setDEF(int DEF) {
-        wrappedPokemon.setDEF(DEF);
-    }
-
     public void setSPC(int SPC) {
         wrappedPokemon.setSPC(SPC);
     }
 
-    public void setAttackState(Class<?> attackStateClass) {
-        wrappedPokemon.setAttackState(attackStateClass);
+    public void setDEF(int DEF) {
+        wrappedPokemon.setDEF(DEF);
     }
 
     public double getCritBonus() {
