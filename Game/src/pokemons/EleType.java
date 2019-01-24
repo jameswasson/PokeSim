@@ -1,20 +1,20 @@
 package pokemons;
 
 public enum EleType {
-    Normal,
-    Electric,
-    Fighting,
-    Psychic,
-    Dragon,
-    Ice,
-    Poison,
-    Flying,
-    Ground,
-    Grass,
-    Fire,
-    None,
-    Water,
-    Bug,
-    Rock,
-    Ghost
+    NORMAL,
+    ELECTRIC,
+    FIGHTING,
+    PSYCHIC,
+    DRAGON,
+    ICE,
+    POISON,
+    FLYING,
+    GROUND,
+    GRASS,
+    FIRE,
+    NONE,
+    WATER,
+    BUG,
+    ROCK,
+    GHOST
 }

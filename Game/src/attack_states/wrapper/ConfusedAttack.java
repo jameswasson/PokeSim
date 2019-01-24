@@ -23,8 +23,8 @@ public class ConfusedAttack extends AttackWrapper {
             public HurtConfusion() {
                 basePower = 40;
                 powerPoints = 40;
-                damageCategory = DamageCategory.physical;
-                type = EleType.None;
+                damageCategory = DamageCategory.PHYSICAL;
+                type = EleType.NONE;
                 baseAccuracy = -1;
             }
 

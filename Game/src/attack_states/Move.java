@@ -27,7 +27,7 @@ public class Move extends AttackState {
         if (allInfo == null)
             return;
         type = TypesHelper.enumOf(allInfo.get(1));
-        damageCategory = DamageCategory.valueOf(allInfo.get(2).toLowerCase());
+        damageCategory = DamageCategory.valueOf(allInfo.get(2));
         powerPoints = Integer.valueOf(allInfo.get(4));
         currentPowerPoints = powerPoints;
         basePower = Integer.valueOf(allInfo.get(5));
@@ -68,7 +68,7 @@ public class Move extends AttackState {
     }
 
     public void onMiss(Pokemon ourselves) {
-        if (damageCategory == DamageCategory.status)
+        if (damageCategory == DamageCategory.STATUS)
             logger.println("But it failed!");
         else
             logger.println("But it missed!");
@@ -100,7 +100,7 @@ public class Move extends AttackState {
     }
 
     private boolean noEffect(EleType type1, EleType type2) {
-        if (damageCategory == DamageCategory.status)
+        if (damageCategory == DamageCategory.STATUS)
             return false; // can effect
         return TypesHelper.hasNoEffect(getEleType(), type1) || TypesHelper.hasNoEffect(getEleType(), type2);
     }
