@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class PokedexParser extends CSVParser {
 
     public static void loadPokedex() {
-        File pokedexFile = FacadeFactory.getInstance(IFileManager.class).getPokedexFile();
+        File pokedexFile = FacadeFactory.getInstance(IFileManager.class).getFile("Pokedex.csv");
         new PokedexParser().getCSV(pokedexFile);
     }
 

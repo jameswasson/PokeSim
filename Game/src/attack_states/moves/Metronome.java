@@ -1,8 +1,10 @@
 package attack_states.moves;
 
 import attack_states.Move;
+import facade.FacadeFactory;
 import pokemons.Pokemon;
 import utils.RNG;
+import utils.file_manager.IFileManager;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class Metronome extends Move {
 
     private static List<Class> findMoves() {
         String moveHeadder = Metronome.class.getName().replaceAll(Metronome.class.getSimpleName(), "");
-        File folder = new File("Game/src/AttackStates/Moves");//todo make file_manager handle this
+        File folder = FacadeFactory.getInstance(IFileManager.class).getFile("src/attack_states/moves");
         List<String> pickableMoveNames = new ArrayList<>();
         List<Class> pickableMoveClasses = new ArrayList<>();
         File[] listOfFiles = folder.listFiles();

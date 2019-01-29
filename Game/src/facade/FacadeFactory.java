@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FacadeFactory {
+    private FacadeFactory(){}
+
     private static Map<Class<?>, Class<?>> interfaceToClass;
     private static Map<Class<?>, Object> interfaceToInstance;
 
@@ -43,51 +45,30 @@ public class FacadeFactory {
         return implMap;
     }
 
-    private static Map<Class<?>, Object> defaultInstances() {
-        return new HashMap<>();
-    }
-
     /*
      * Returns the instance of specified interface
      * Creates the instance for each time this is first called
      */
-    private static <K> K _getInstance(Class<K> intf) {
-        Class klass = interfaceToClass.get(intf);
-
-        if (klass == null)
-            return null;
-
-        K obj = null;
-        if (interfaceToInstance.containsKey(intf)) {
-            obj = (K) interfaceToInstance.get(intf);
-        }
-
-        if (obj == null) {
-            try {
-//                obj = (K) klass.getDeclaredConstructor.newInstance();
-                obj = (K) klass.newInstance();
-                interfaceToInstance.put(intf, obj);
-            } catch (IllegalAccessException e) {
-                System.out.println("Cannot access instance of " + klass.getCanonicalName());
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                System.out.println("Cannot make instance of " + klass.getCanonicalName());
-                e.printStackTrace();
-            }
-        }
-        if (obj != null && !klass.isInstance(obj)) {
-            interfaceToInstance.put(intf, null);
-            return _getInstance(intf);
-        }
-        return obj;
-    }
-
-    public static <K> K getInstance(Class<K> intf) {
+    public static <K> K getInstance(Class<K> interfaceKlass) {
+        RunCounter.countAsRun();
         if (interfaceToClass == null)
             interfaceToClass = defaultClasses();
         if (interfaceToInstance == null)
-            interfaceToInstance = defaultInstances();
-        return _getInstance(intf);
+            interfaceToInstance = new HashMap<>();
+
+        if (interfaceToInstance.containsKey(interfaceKlass)) {
+            return interfaceKlass.cast(interfaceToInstance.get(interfaceKlass));
+        }
+
+        try {
+            Class<?> klass = interfaceToClass.get(interfaceKlass);
+            K obj = interfaceKlass.cast(klass.getDeclaredConstructor().newInstance());
+            interfaceToInstance.put(interfaceKlass, obj);
+            return obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static void createTestingEnvironment() {

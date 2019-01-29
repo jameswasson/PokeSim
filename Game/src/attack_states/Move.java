@@ -15,11 +15,11 @@ public class Move extends AttackState {
     protected EleType type;
     protected DamageCategory damageCategory;
     protected int powerPoints;
-    protected int currentPowerPoints;
+    private int currentPowerPoints;
     protected int basePower;
     protected int baseAccuracy;
-    protected boolean wasCritical;
-    protected double criticalEffect;
+    private boolean wasCritical;
+    private double criticalEffect;
 
     public Move() {
         criticalEffect = 1;
@@ -67,6 +67,7 @@ public class Move extends AttackState {
         }
     }
 
+    @SuppressWarnings("Unused method parameter")
     public void onMiss(Pokemon ourselves) {
         if (damageCategory == DamageCategory.STATUS)
             logger.println("But it failed!");
@@ -163,7 +164,7 @@ public class Move extends AttackState {
         return 1;//default: no bonus
     }
 
-    protected void dealDamage(Pokemon opponent, int damage) {
+    private void dealDamage(Pokemon opponent, int damage) {
         if (damage == -1)
             logger.println("-1 damage was dealt!");
         opponent.loseHP(damage, this);

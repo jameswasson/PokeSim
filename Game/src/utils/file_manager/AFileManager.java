@@ -3,19 +3,12 @@ package utils.file_manager;
 import java.io.File;
 
 abstract class AFileManager implements IFileManager {
-     String POKEDEX_PATH;
-     String MOVEDEX_PATH;
 
-    protected abstract void setPaths();
+    public abstract String getPathExtension();
 
-    public File getPokedexFile() {
-        setPaths();
-        return checkPath(POKEDEX_PATH);
-    }
-
-    public File getMovedexFile() {
-        setPaths();
-        return new File(MOVEDEX_PATH);
+    public File getFile(String path){
+        String fullPath = getPathExtension() + path;
+        return checkPath(fullPath);
     }
 
     private File checkPath(String fileName) {

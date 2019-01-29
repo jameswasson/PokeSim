@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class MovedexParser extends CSVParser {
 
     public static void loadMoves() {
-        File movedex = FacadeFactory.getInstance(IFileManager.class).getMovedexFile();
+        File movedex = FacadeFactory.getInstance(IFileManager.class).getFile("Movedex.csv");
         new MovedexParser().getCSV(movedex);
     }
 
