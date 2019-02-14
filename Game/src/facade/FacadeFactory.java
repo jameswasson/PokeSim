@@ -66,8 +66,7 @@ public class FacadeFactory {
             interfaceToInstance.put(interfaceKlass, obj);
             return obj;
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException("Invalid Interface");
         }
     }
 

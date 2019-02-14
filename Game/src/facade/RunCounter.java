@@ -12,15 +12,13 @@ class RunCounter {
     static void countAsRun(){
         if (!hasRun) {
             hasRun = true;
-            System.out.println("I've run");
 
             String filename= "src/facade/Count";
             File countFile = FacadeFactory.getInstance(IFileManager.class).getFile(filename);
-            FileWriter fw;
             try
             {
                 String goodFilePath = countFile.getCanonicalPath();
-                fw = new FileWriter(goodFilePath,true);
+                FileWriter fw = new FileWriter(goodFilePath,true);
                 fw.write("x");//appends the string to the file
                 fw.close();
             }
