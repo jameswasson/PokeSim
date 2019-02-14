@@ -100,7 +100,7 @@ public class Move extends AttackState {
         return (baseSpeed + 76) / 1024;
     }
 
-    private boolean noEffect(EleType type1, EleType type2) {
+    protected boolean noEffect(EleType type1, EleType type2) {
         if (damageCategory == DamageCategory.STATUS)
             return false; // can effect
         return TypesHelper.hasNoEffect(getEleType(), type1) || TypesHelper.hasNoEffect(getEleType(), type2);

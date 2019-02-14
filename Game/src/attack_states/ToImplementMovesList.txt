@@ -15,8 +15,6 @@ Disable -               Disables move
 DreamEater -            substitute case
 LightScreen -           Changes SPC
 Reflect -               Changes DEF
-SeismicToss -           can hurt ghost type, but is fighting/physical
-NightShade -            hurts normal+psycic but is ghost
 LeechSeed -             Puts opponent in seeded state + more
 Wrap -                  Puts opponent in wrap
 Clamp -                 Puts opponent in clamp
