@@ -26,6 +26,17 @@ public class WrapperPokemon extends Pokemon {
         toWrap.setWrappedPokemon(wrapper);
     }
 
+    public static boolean containsWrapped(Pokemon wrappedPokemon, Class wrapperExtension){
+        //never need to check for the head pokemon
+        Pokemon cur = wrappedPokemon.getHead().getWrappedPokemon();
+        while (cur != null) {
+            if (cur.getClass() == wrapperExtension)
+                return true;
+            cur = cur.getWrappedPokemon();
+        }
+        return false;
+    }
+
     public Pokemon getHead() {
         return wrappedPokemon.getHead();
     }
@@ -36,14 +47,14 @@ public class WrapperPokemon extends Pokemon {
 
     public void removeSelf() {
         Pokemon cur = wrappedPokemon.getHead();
-        while (cur.getWrappedPokemon() != this && cur.getWrappedPokemon() != null) {
+        while (cur.getWrappedPokemon() != null) {
+            if (cur.getWrappedPokemon() == this) {
+                cur.setWrappedPokemon(getWrappedPokemon());
+                return;
+            }
             cur = cur.getWrappedPokemon();
         }
-        if (cur.getWrappedPokemon() == null) {
-            logger.println("Self not found!");
-        } else {
-            cur.setWrappedPokemon(getWrappedPokemon());
-        }
+        throw new RuntimeException("Self not found!");
     }
 
     public Pokemon getWrappedPokemon() {
