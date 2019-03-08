@@ -30,7 +30,7 @@ public class RNG {
     private static Random getRandom() {
         if (random == null)
             //regular battle between human players, make the seed random
-            random = new Random((long) (Math.random() * 1000000));
+            setSeed((long)(Math.random() * 1000000));
         return random;
     }
 }
