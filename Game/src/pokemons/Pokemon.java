@@ -23,8 +23,6 @@ public abstract class Pokemon {
 
     public abstract String getName();
 
-    public abstract int getPokedexNo();
-
     public abstract EleType getType1();
 
     public abstract void setType1(EleType type1);

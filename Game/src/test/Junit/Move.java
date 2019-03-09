@@ -12,6 +12,7 @@ public class Move {
     public IBattleLogger logger;
     public Pokemon Caterpie;
     public Pokemon Magikarp;
+    public Pokemon Gengar;
     public attack_states.Move tackle;
 
     @Before
@@ -21,6 +22,7 @@ public class Move {
         RNG.setSeed(0);
         Caterpie = Pokedex.getPokemon("Caterpie");
         Magikarp = Pokedex.getPokemon("Magikarp");
+        Gengar = Pokedex.getPokemon("Gengar");
         tackle = new attack_states.moves.Tackle();
     }
 

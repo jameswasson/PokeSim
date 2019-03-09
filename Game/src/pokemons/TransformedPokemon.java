@@ -22,23 +22,18 @@ public class TransformedPokemon extends WrapperPokemon {
         wrappedPokemon = ourselves.getBasePokemon();
 
         //copies moves
-        List<Move> opponentMoves = opponent.getMoves();
         List<Move> ourNewMoves = new ArrayList<>();
-        for (Move move : opponentMoves) {
-            Move newMove = Move.copyMove(move);
+        for (Move move : opponent.getMoves()) {
+            Move newMove = Move.getMove(Move.getName(move.getClass()));
             int pp = newMove.getPowerPoints();
             newMove.setCurrentPowerPoints(Math.min(5, pp));
-            ourNewMoves.add(Move.copyMove(newMove));
+            ourNewMoves.add(newMove);
         }
         wrappedPokemon.setMoves(ourNewMoves);
 
         //copies type
-        EleType type1;
-        EleType type2;
-        type1 = opponent.getType1();
-        type2 = opponent.getType2();
-        wrappedPokemon.setType1(type1);
-        wrappedPokemon.setType2(type2);
+        wrappedPokemon.setType1(opponent.getType1());
+        wrappedPokemon.setType2(opponent.getType2());
 
         //copies stats
         wrappedPokemon.setATK(opponent.getBaseATK());

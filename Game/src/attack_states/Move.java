@@ -45,10 +45,6 @@ public class Move extends AttackState {
         }
     }
 
-    public static Move copyMove(Move m) {
-        return getMove(getName(m.getClass()));
-    }
-
     @Override
     public void execute(Pokemon ourselves, Pokemon opponent) {
         sayWeUsedMove(ourselves);

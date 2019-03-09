@@ -20,7 +20,6 @@ public class BasePokemon extends Pokemon {
     private List<BattleState> postBattleStates;
     private List<Move> moves;
 
-    private int pokedexNo;
     private String name;
     private EleType type1;
     private EleType type2;
@@ -169,10 +168,6 @@ public class BasePokemon extends Pokemon {
 
     public void changeEVA(int stage) {
         EVAStage = StageIncrementer.incrementBy("Evasiveness", EVAStage, stage, name);
-    }
-
-    public int getPokedexNo() {
-        return pokedexNo;
     }
 
     public int getBaseHP() {

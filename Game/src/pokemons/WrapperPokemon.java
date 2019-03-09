@@ -153,10 +153,6 @@ public class WrapperPokemon extends Pokemon {
         wrappedPokemon.changeEVA(stage);
     }
 
-    public int getPokedexNo() {
-        return wrappedPokemon.getPokedexNo();
-    }
-
     public int getBaseHP() {
         return wrappedPokemon.getBaseHP();
     }
