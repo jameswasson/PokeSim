@@ -5,7 +5,6 @@ import battle_states.SemiInvulnerable;
 import pokemons.EleType;
 import pokemons.Movedex;
 import pokemons.Pokemon;
-import pokemons.TypesHelper;
 import utils.RNG;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public class Move extends AttackState {
         List<String> allInfo = Movedex.getMove(getName(this.getClass()));
         if (allInfo == null)
             return;
-        type = TypesHelper.enumOf(allInfo.get(1));
+        type = EleType.enumOf(allInfo.get(1));
         damageCategory = DamageCategory.valueOf(allInfo.get(2));
         powerPoints = Integer.valueOf(allInfo.get(4));
         currentPowerPoints = powerPoints;
@@ -36,11 +35,10 @@ public class Move extends AttackState {
 
     //returns new instance from move by name
     public static Move getMove(String s) {
-        Class<?> classOfMove = getClass(s);
+        Class<? extends Move> classOfMove = getClass(s);
         try {
-            return (Move) classOfMove.getDeclaredConstructor().newInstance();
+            return classOfMove.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }
@@ -99,7 +97,7 @@ public class Move extends AttackState {
     protected boolean noEffect(EleType type1, EleType type2) {
         if (damageCategory == DamageCategory.STATUS)
             return false; // can effect
-        return TypesHelper.hasNoEffect(getEleType(), type1) || TypesHelper.hasNoEffect(getEleType(), type2);
+        return EleType.hasNoEffect(getEleType(), type1) || EleType.hasNoEffect(getEleType(), type2);
     }
 
     @Override

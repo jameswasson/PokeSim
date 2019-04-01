@@ -39,8 +39,8 @@ public class BasePokemon extends Pokemon {
 
     public BasePokemon(String name) {
         List<String> pokeInfo = Pokedex.getPokemonInfo(name);
-        this.type1 = TypesHelper.enumOf(pokeInfo.get(1));
-        this.type2 = TypesHelper.enumOf(pokeInfo.get(2));
+        this.type1 = EleType.enumOf(pokeInfo.get(1));
+        this.type2 = EleType.enumOf(pokeInfo.get(2));
         this.HP = Integer.valueOf(pokeInfo.get(3));
         this.ATK = Integer.valueOf(pokeInfo.get(4));
         this.DEF = Integer.valueOf(pokeInfo.get(5));
@@ -66,7 +66,6 @@ public class BasePokemon extends Pokemon {
 
     @Override
     public Pokemon getWrappedPokemon() {
-        logger.println("ERROR! BASEPOKEMON TOLD TO getWrappedPokemon");
         return null;
     }
 

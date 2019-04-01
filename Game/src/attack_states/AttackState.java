@@ -24,7 +24,7 @@ public abstract class AttackState {
     }
 
     //reverse of above function, returns class associated with provided name
-    static Class<?> getClass(String s) {
+    public static Class<? extends Move> getClass(String s) {
         Class<?> dummyClass = Swift.class;
         String baseDirectory = dummyClass.getName();
         String toRemoveName = dummyClass.getSimpleName();
@@ -33,12 +33,11 @@ public abstract class AttackState {
         s = s.replaceAll(whiteSpace, nothing);
         baseDirectory = baseDirectory.replaceAll(toRemoveName, nothing);
         String classFullName = baseDirectory + s;
-        Class<?> toReturn;
+        Class<? extends Move> toReturn;
         try {
-            toReturn = Class.forName(classFullName);
+            toReturn = Class.forName(classFullName).asSubclass(Move.class);
         } catch (Exception e) {
-            e.printStackTrace();
-            toReturn = NotImplemented.class;
+            toReturn = null;
         }
         return toReturn;
     }

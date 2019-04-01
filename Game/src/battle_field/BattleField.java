@@ -11,7 +11,7 @@ public class BattleField {
 
     public static void main(String[] args) {
         Pokemon pokemon2 = Pokedex.getPokemon("Raichu");
-        Pokemon pokemon1 = Pokedex.getPokemon("Magmar");
+        Pokemon pokemon1 = Pokedex.getPokemon("Pikachu");
         int turns = 100;
         try {
             runBattle(pokemon1, pokemon2, turns);

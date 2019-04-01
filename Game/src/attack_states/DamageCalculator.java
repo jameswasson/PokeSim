@@ -2,8 +2,8 @@ package attack_states;
 
 
 import battle_states.post.Burn;
+import pokemons.EleType;
 import pokemons.Pokemon;
-import pokemons.TypesHelper;
 import utils.RNG;
 
 class DamageCalculator {
@@ -70,13 +70,13 @@ class DamageCalculator {
 
     private static double getType(AttackState move, Pokemon opponent) {
         double attackBonus = 1;
-        if (TypesHelper.isWeakAgainst(move.getEleType(), opponent.getType1()))
+        if (EleType.isWeakAgainst(move.getEleType(), opponent.getType1()))
             attackBonus *= 2;
-        if (TypesHelper.isWeakAgainst(move.getEleType(), opponent.getType2()))
+        if (EleType.isWeakAgainst(move.getEleType(), opponent.getType2()))
             attackBonus *= 2;
-        if (TypesHelper.hasResistanceAgainst(move.getEleType(), opponent.getType1()))
+        if (EleType.hasResistanceAgainst(move.getEleType(), opponent.getType1()))
             attackBonus /= 2;
-        if (TypesHelper.hasResistanceAgainst(move.getEleType(), opponent.getType2()))
+        if (EleType.hasResistanceAgainst(move.getEleType(), opponent.getType2()))
             attackBonus /= 2;
 
         move.setCriticalEffect(attackBonus);
