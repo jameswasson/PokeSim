@@ -1,7 +1,7 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import battle_states.pre.Frozen;
+import pokemons.FrozenPokemon;
 import pokemons.Pokemon;
 import utils.RNG;
 
@@ -10,6 +10,6 @@ public class Blizzard extends Move {
     public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
         super.attack(ourselves, opponent, damage);
         if (RNG.random() < .1)
-            Frozen.tryToFreeze(opponent);
+            FrozenPokemon.tryToFreeze(opponent);
     }
 }

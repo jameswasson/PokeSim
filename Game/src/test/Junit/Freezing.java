@@ -5,17 +5,22 @@ import attack_states.moves.FireBlast;
 import attack_states.moves.FirePunch;
 import attack_states.moves.Flamethrower;
 import attack_states.moves.IceBeam;
-import battle_states.pre.Frozen;
 import org.junit.Test;
+import pokemons.FrozenPokemon;
 import utils.RNG;
 
 public class Freezing extends Move {
     @Test
     public void canFreeze() {
-        Frozen.tryToFreeze(Magikarp);
-        assert (Frozen.isFrozen(Magikarp));
-        Frozen.removeFreeze(Magikarp);
-        assert (!Frozen.isFrozen(Magikarp));
+        FrozenPokemon.tryToFreeze(Magikarp);
+        assert (FrozenPokemon.isFrozen(Magikarp));
+    }
+
+    @Test
+    public void canUnFreeze() {
+        FrozenPokemon.tryToFreeze(Magikarp);
+        FrozenPokemon.removeFreeze(Magikarp);
+        assert (!FrozenPokemon.isFrozen(Magikarp));
     }
 
     @Test
@@ -23,14 +28,14 @@ public class Freezing extends Move {
         RNG.setSeed(11);
         Caterpie.selectMove(IceBeam.class);
         Caterpie.attack(Magikarp);
-        assert (Frozen.isFrozen(Magikarp));
+        assert (FrozenPokemon.isFrozen(Magikarp));
     }
 
     @Test
     public void freezingStopsAttack() {
         RNG.setSeed(0);
         Caterpie.selectMove(IceBeam.class);
-        Frozen.tryToFreeze(Caterpie);
+        FrozenPokemon.tryToFreeze(Caterpie);
         Caterpie.attack(Magikarp);
         assert (Magikarp.getBaseHP() - Magikarp.getCurHP() == 0);
     }
@@ -51,10 +56,10 @@ public class Freezing extends Move {
     }
 
     public void burningMoveUnfreezes(Class moveKlass) {
-        Frozen.tryToFreeze(Magikarp);
-        assert (Frozen.isFrozen(Magikarp));
+        FrozenPokemon.tryToFreeze(Magikarp);
+        assert (FrozenPokemon.isFrozen(Magikarp));
         Caterpie.selectMove(moveKlass);
         Caterpie.attack(Magikarp);
-        assert (!Frozen.isFrozen(Magikarp));
+        assert (!FrozenPokemon.isFrozen(Magikarp));
     }
 }
