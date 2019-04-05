@@ -5,8 +5,8 @@ import battle_states.post.BadPoison;
 import battle_states.post.Burn;
 import battle_states.post.Poison;
 import battle_states.pre.Asleep;
-import battle_states.pre.Paralyzed;
 import facade.FacadeFactory;
+import pokemons.ParalyzedPokemon;
 import pokemons.Pokemon;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public abstract class BattleState {
 
     protected static IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
 
-    protected static boolean isNonVolatile(Pokemon pokemon) {
+    public static boolean isNonVolatile(Pokemon pokemon) {
         /*returns true if Pokemon is any of the following:
             burned
             frozen
@@ -24,7 +24,7 @@ public abstract class BattleState {
             badly poisoned
             asleep*/
         //todo add check for frozen
-        return Burn.isBurned(pokemon) || Paralyzed.isParalyzed(pokemon) ||
+        return Burn.isBurned(pokemon) || ParalyzedPokemon.isParalyzed(pokemon) ||
                 Poison.isPoisoned(pokemon) || BadPoison.isBadlyPoisoned(pokemon) ||
                 Asleep.isAsleep(pokemon);
     }
