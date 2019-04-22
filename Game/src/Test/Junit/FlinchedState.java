@@ -1,30 +1,37 @@
 package Junit;
 
 import attack_states.moves.Tackle;
-import attack_states.wrapper.Flinch;
 import org.junit.Test;
+import pokemons.FlinchedPokemon;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class FlinchedState extends Move {
     @Test
     public void canFindFlinch(){
-        Flinch.makeFlinch(Caterpie);
-        assert(Flinch.isFlinched(Caterpie));
+        FlinchedPokemon.makeFlinch(Caterpie);
+        assert(FlinchedPokemon.isFlinched(Caterpie));
+    }
+    @Test
+    public void removeFlichAfterTurn(){
+        FlinchedPokemon.makeFlinch(Caterpie);
+        Caterpie.runPostBattleStates();
+        assertFalse(FlinchedPokemon.isFlinched(Caterpie));
     }
     @Test
     public void canRemoveFlinch(){
         Caterpie.selectMove(Tackle.class);
-        Flinch.makeFlinch(Caterpie);
+        FlinchedPokemon.makeFlinch(Caterpie);
         Caterpie.attack(Magikarp);
         Caterpie.runPostBattleStates();
         Caterpie.selectMove(Tackle.class);
-        assert(!Flinch.isFlinched(Caterpie));
+        assert(!FlinchedPokemon.isFlinched(Caterpie));
     }
     @Test
     public void flinchPreventsAttack(){
         Caterpie.selectMove(Tackle.class);
-        Flinch.makeFlinch(Caterpie);
+        FlinchedPokemon.makeFlinch(Caterpie);
         Caterpie.attack(Magikarp);
         assertEquals(Magikarp.getCurHP(), Magikarp.getBaseHP());
     }
