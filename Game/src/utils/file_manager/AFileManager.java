@@ -6,7 +6,7 @@ abstract class AFileManager implements IFileManager {
 
     public abstract String getPathExtension();
 
-    public File getFile(String path){
+    public File getFile(String path) {
         String fullPath = getPathExtension() + path;
         return checkPath(fullPath);
     }

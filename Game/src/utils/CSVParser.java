@@ -2,7 +2,6 @@ package utils;
 
 
 import java.io.File;
-import java.util.List;
 import java.util.Scanner;
 
 public abstract class CSVParser {

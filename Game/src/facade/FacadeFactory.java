@@ -16,7 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FacadeFactory {
-    private FacadeFactory(){}
+    private FacadeFactory() {
+    }
 
     private static Map<Class<?>, Class<?>> interfaceToClass;
     private static Map<Class<?>, Object> interfaceToInstance;

@@ -11,7 +11,8 @@ public class Movedex {
 
     private static Map<String, List<String>> dex;
 
-    private Movedex() {}
+    private Movedex() {
+    }
 
     public static List<String> getMove(String name) {
         if (dex == null) {

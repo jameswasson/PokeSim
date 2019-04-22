@@ -11,7 +11,7 @@ public class Pokedex {
     private static Map<String, List<String>> dexName;
 
     public static Pokemon getPokemon(String name) {
-        if (dexName == null){
+        if (dexName == null) {
             dexName = new HashMap<>();
             PokedexParser.loadPokedex();
         }

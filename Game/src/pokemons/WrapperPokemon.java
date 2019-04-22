@@ -15,7 +15,7 @@ public class WrapperPokemon extends Pokemon {
     public WrapperPokemon() {
     }
 
-     WrapperPokemon(BasePokemon pokemon) {
+    WrapperPokemon(BasePokemon pokemon) {
         wrappedPokemon = pokemon;
         wrappedPokemon.setHead(this);
     }
@@ -26,11 +26,11 @@ public class WrapperPokemon extends Pokemon {
         toWrap.setWrappedPokemon(wrapper);
     }
 
-    public static boolean containsWrapped(Pokemon wrappedPokemon, Class<? extends WrapperPokemon> wrapperExtension){
+    public static boolean containsWrapped(Pokemon wrappedPokemon, Class<? extends WrapperPokemon> wrapperExtension) {
         return getWrapped(wrappedPokemon, wrapperExtension) != null;
     }
 
-    public static WrapperPokemon getWrapped(Pokemon wrappedPokemon, Class<? extends WrapperPokemon> wrapperExtension){
+    public static WrapperPokemon getWrapped(Pokemon wrappedPokemon, Class<? extends WrapperPokemon> wrapperExtension) {
         Pokemon cur = wrappedPokemon.getHead().getWrappedPokemon();
         while (cur != null) {
             if (cur.getClass() == wrapperExtension)

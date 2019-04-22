@@ -11,13 +11,13 @@ import static org.junit.Assert.assertNotEquals;
 
 public class Paralyzing extends Move {
     @Test
-    public void canParalyze(){
+    public void canParalyze() {
         ParalyzedPokemon.tryToParalyze(Magikarp);
-        assert(ParalyzedPokemon.isParalyzed(Magikarp));
+        assert (ParalyzedPokemon.isParalyzed(Magikarp));
     }
 
     @Test
-    public void paralyzeCanPreventAttack(){
+    public void paralyzeCanPreventAttack() {
         RNG.setSeed(0);
         ParalyzedPokemon.tryToParalyze(Magikarp);
         Magikarp.selectMove(tackle.getClass());
@@ -26,7 +26,7 @@ public class Paralyzing extends Move {
     }
 
     @Test
-    public void paralyzedCanAllowAttack(){
+    public void paralyzedCanAllowAttack() {
         RNG.setSeed(4096);
         Pokemon Rapidash = Pokedex.getPokemon("Rapidash");
         ParalyzedPokemon.tryToParalyze(Rapidash);

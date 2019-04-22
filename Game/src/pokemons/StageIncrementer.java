@@ -5,8 +5,10 @@ import battle_field.IBattleLogger;
 import facade.FacadeFactory;
 
 class StageIncrementer {
-    private StageIncrementer(){}
-     static int incrementBy(String type, int currentStage, int stageIncrement, String pokemonName) {
+    private StageIncrementer() {
+    }
+
+    static int incrementBy(String type, int currentStage, int stageIncrement, String pokemonName) {
         IBattleLogger logger = FacadeFactory.getInstance(IBattleLogger.class);
         int bound = Math.max(-6, Math.min(6, currentStage + stageIncrement));
         switch (bound - currentStage) {
@@ -32,12 +34,12 @@ class StageIncrementer {
         return bound;
     }
 
-     static double getStatMultiplier(int stage) {
+    static double getStatMultiplier(int stage) {
         double[] stageMultiplier = {.25, .28, .33, .40, .50, .66, 1, 1.50, 2, 2.5, 3, 3.5, 4};
         return stageMultiplier[stage + 6];
     }
 
-     static double getStatMultiplierAccEva(int stage) {
+    static double getStatMultiplierAccEva(int stage) {
         double[] stageMultiplier = {.33, .36, .43, .5, .66, .75, 1, 1.33, 1.66, 2, 2.33, 2.66, 3};
         return stageMultiplier[stage + 6];
     }

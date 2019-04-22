@@ -3,7 +3,9 @@ package utils;
 import java.util.Random;
 
 public class RNG {
-    private RNG(){}
+    private RNG() {
+    }
+
     private static Random random;
 
     public static void setSeed(long seed) {
@@ -30,7 +32,7 @@ public class RNG {
     private static Random getRandom() {
         if (random == null)
             //regular battle between human players, make the seed random
-            setSeed((long)(Math.random() * 1000000));
+            setSeed((long) (Math.random() * 1000000));
         return random;
     }
 }

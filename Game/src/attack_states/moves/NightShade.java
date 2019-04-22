@@ -2,7 +2,6 @@ package attack_states.moves;
 
 import attack_states.Move;
 import pokemons.EleType;
-import pokemons.Pokedex;
 import pokemons.Pokemon;
 
 public class NightShade extends Move {

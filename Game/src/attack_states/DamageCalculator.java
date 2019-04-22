@@ -8,7 +8,8 @@ import utils.RNG;
 
 class DamageCalculator {
 
-    private DamageCalculator(){}
+    private DamageCalculator() {
+    }
 
     //Reference: https://bulbapedia.bulbagarden.net/wiki/Damage
     public static int getDamage(Pokemon ourselves, Pokemon opponent, AttackState move) {

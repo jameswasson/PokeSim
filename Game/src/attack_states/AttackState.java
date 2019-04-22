@@ -1,6 +1,5 @@
 package attack_states;
 
-import attack_states.moves.NotImplemented;
 import attack_states.moves.Swift;
 import battle_field.IBattleLogger;
 import facade.FacadeFactory;

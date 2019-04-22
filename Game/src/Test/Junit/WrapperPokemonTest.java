@@ -24,7 +24,7 @@ public class WrapperPokemonTest extends Move {
     }
 
     @Test
-    public void testContains(){
+    public void testContains() {
         Pokemon p = Pokedex.getPokemon("Caterpie");
         WrapperPokemon.wrap(p, new FlinchedPokemon());
         assert (WrapperPokemon.containsWrapped(p, FlinchedPokemon.class));

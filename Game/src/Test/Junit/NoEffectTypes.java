@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class NoEffectTypes extends Move {
     @Test
-    public void ghostMove(){
+    public void ghostMove() {
         Pokemon Gengar = Pokedex.getPokemon("Gengar");
         Magikarp.selectMove(1);
         Magikarp.attack(Gengar);

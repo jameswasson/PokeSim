@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNotEquals;
 
 public class Transforming extends Move {
     @Test
-    public void transform(){
+    public void transform() {
         Caterpie.selectMove(Transform.class);
         Caterpie.attack(Gengar);
 
@@ -21,7 +21,7 @@ public class Transforming extends Move {
         assertEquals(Caterpie.getBaseDEF(null), Gengar.getBaseDEF(null));
         assertEquals(Caterpie.getBaseSPC(null), Gengar.getBaseSPC(null));
 
-        for (int i = 0; i < Caterpie.getMoves().size(); i++){
+        for (int i = 0; i < Caterpie.getMoves().size(); i++) {
             assertEquals(Caterpie.getMoves().get(i).getClass(), Gengar.getMoves().get(i).getClass());
             assertEquals(5, Caterpie.getMoves().get(i).getCurrentPowerPoints());
         }

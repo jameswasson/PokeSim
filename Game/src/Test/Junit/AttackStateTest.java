@@ -13,12 +13,12 @@ public class AttackStateTest {
     String sTackle = "Tackle";
 
     @Before
-    public void init(){
+    public void init() {
         FacadeFactory.createTestingEnvironment();
     }
 
     @Test
-    public void getClassTest(){
+    public void getClassTest() {
         Class x = AttackState.getClass(sTackle);
         assertEquals(x, cTackle);
         x = AttackState.getClass("invalid");
@@ -26,7 +26,7 @@ public class AttackStateTest {
     }
 
     @Test
-    public void getNameTest(){
+    public void getNameTest() {
         String x = AttackState.getName(cTackle);
         assertEquals(x, sTackle);
     }
