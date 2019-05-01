@@ -4,10 +4,10 @@ import battle_field.IBattleLogger;
 import battle_states.post.BadPoison;
 import battle_states.post.Burn;
 import battle_states.post.Poison;
-import battle_states.pre.Asleep;
 import facade.FacadeFactory;
 import pokemons.ParalyzedPokemon;
 import pokemons.Pokemon;
+import pokemons.SleepingPokemon;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public abstract class BattleState {
         //todo add check for frozen
         return Burn.isBurned(pokemon) || ParalyzedPokemon.isParalyzed(pokemon) ||
                 Poison.isPoisoned(pokemon) || BadPoison.isBadlyPoisoned(pokemon) ||
-                Asleep.isAsleep(pokemon);
+                SleepingPokemon.isAsleep(pokemon);
     }
 
     public abstract void execute(Pokemon pokemon);
