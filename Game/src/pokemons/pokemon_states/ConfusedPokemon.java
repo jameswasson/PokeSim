@@ -1,7 +1,10 @@
-package pokemons;
+package pokemons.pokemon_states;
 
 import attack_states.DamageCategory;
 import attack_states.Move;
+import pokemons.EleType;
+import pokemons.Pokemon;
+import pokemons.WrapperPokemon;
 import utils.RNG;
 
 public class ConfusedPokemon extends WrapperPokemon {

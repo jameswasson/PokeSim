@@ -2,7 +2,7 @@ package Junit;
 
 import attack_states.moves.Tackle;
 import org.junit.Test;
-import pokemons.FlinchedPokemon;
+import pokemons.pokemon_states.FlinchedPokemon;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -2,7 +2,7 @@ package attack_states.moves;
 
 import attack_states.Move;
 import pokemons.EleType;
-import pokemons.ParalyzedPokemon;
+import pokemons.pokemon_states.ParalyzedPokemon;
 import pokemons.Pokemon;
 
 public class ThunderWave extends Move {

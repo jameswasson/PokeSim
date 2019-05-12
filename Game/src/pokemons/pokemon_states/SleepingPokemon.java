@@ -1,6 +1,8 @@
-package pokemons;
+package pokemons.pokemon_states;
 
 import battle_states.BattleState;
+import pokemons.Pokemon;
+import pokemons.WrapperPokemon;
 import utils.RNG;
 
 public class SleepingPokemon extends WrapperPokemon {

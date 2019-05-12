@@ -1,4 +1,7 @@
-package pokemons;
+package pokemons.pokemon_states;
+
+import pokemons.Pokemon;
+import pokemons.WrapperPokemon;
 
 public class FlinchedPokemon extends WrapperPokemon {
     @Override

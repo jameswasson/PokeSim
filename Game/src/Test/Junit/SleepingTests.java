@@ -1,7 +1,7 @@
 package Junit;
 
 import org.junit.Test;
-import pokemons.SleepingPokemon;
+import pokemons.pokemon_states.SleepingPokemon;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;

@@ -1,7 +1,7 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.FrozenPokemon;
+import pokemons.pokemon_states.FrozenPokemon;
 import pokemons.Pokemon;
 import utils.RNG;
 

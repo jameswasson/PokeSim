@@ -10,7 +10,7 @@ import java.util.List;
 
 public class WrapperPokemon extends Pokemon {
 
-    Pokemon wrappedPokemon;
+    protected Pokemon wrappedPokemon;
 
     public WrapperPokemon() {
     }
@@ -250,10 +250,6 @@ public class WrapperPokemon extends Pokemon {
 
     public void setShouldSelectMove(boolean shouldSelectMove) {
         wrappedPokemon.setShouldSelectMove(shouldSelectMove);
-    }
-
-    public List<BattleState> getPreBattleStates() {
-        return wrappedPokemon.getPreBattleStates();
     }
 
     public List<BattleState> getPostBattleStates() {

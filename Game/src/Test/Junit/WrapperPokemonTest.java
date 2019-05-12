@@ -1,7 +1,7 @@
 package Junit;
 
 import org.junit.Test;
-import pokemons.FlinchedPokemon;
+import pokemons.pokemon_states.FlinchedPokemon;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
 import pokemons.WrapperPokemon;

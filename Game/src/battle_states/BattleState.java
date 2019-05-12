@@ -5,9 +5,9 @@ import battle_states.post.BadPoison;
 import battle_states.post.Burn;
 import battle_states.post.Poison;
 import facade.FacadeFactory;
-import pokemons.ParalyzedPokemon;
+import pokemons.pokemon_states.ParalyzedPokemon;
 import pokemons.Pokemon;
-import pokemons.SleepingPokemon;
+import pokemons.pokemon_states.SleepingPokemon;
 
 import java.util.List;
 
@@ -31,25 +31,8 @@ public abstract class BattleState {
 
     public abstract void execute(Pokemon pokemon);
 
-    public void removeState(Pokemon pokemon) {
-        removeFromStates(pokemon.getPreBattleStates());
-        removeFromStates(pokemon.getPostBattleStates());
-    }
-
-    private void removeFromStates(List<BattleState> list) {
-        BattleState state = null;
-        for (BattleState bs : list) {
-            if (this.getClass().isInstance(bs)) {
-                state = bs;
-                break;
-            }
-        }
-        if (state != null)
-            list.remove(state);
-    }
-
     public boolean containsState(Pokemon pokemon) {
-        for (BattleState bs : pokemon.getPreBattleStates()) {
+        for (BattleState bs : pokemon.getPostBattleStates()) {
             if (this.getClass().isInstance(bs))
                 return true;
         }

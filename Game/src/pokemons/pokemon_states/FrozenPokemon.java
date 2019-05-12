@@ -1,10 +1,12 @@
-package pokemons;
+package pokemons.pokemon_states;
 
 
 import attack_states.Move;
 import attack_states.moves.FireBlast;
 import attack_states.moves.FirePunch;
 import attack_states.moves.Flamethrower;
+import pokemons.Pokemon;
+import pokemons.WrapperPokemon;
 
 public class FrozenPokemon extends WrapperPokemon {
 

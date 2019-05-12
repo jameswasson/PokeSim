@@ -59,8 +59,6 @@ public abstract class Pokemon {
 
     public abstract void setShouldSelectMove(boolean shouldSelectMove);
 
-    public abstract List<BattleState> getPreBattleStates();
-
     public abstract List<BattleState> getPostBattleStates();
 
     public abstract List<Move> getMoves();

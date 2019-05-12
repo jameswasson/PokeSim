@@ -6,7 +6,7 @@ import attack_states.moves.FirePunch;
 import attack_states.moves.Flamethrower;
 import attack_states.moves.IceBeam;
 import org.junit.Test;
-import pokemons.FrozenPokemon;
+import pokemons.pokemon_states.FrozenPokemon;
 import utils.RNG;
 
 public class Freezing extends Move {

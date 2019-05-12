@@ -1,7 +1,7 @@
 package Junit;
 
 import org.junit.Test;
-import pokemons.ParalyzedPokemon;
+import pokemons.pokemon_states.ParalyzedPokemon;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
 import utils.RNG;

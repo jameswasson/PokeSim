@@ -15,7 +15,6 @@ public class BasePokemon extends Pokemon {
     private Pokemon head;
     private IChooseMove moveGetter;
     private boolean shouldSelectMove;
-    private List<BattleState> preBattleStates;
     private AttackState attackState;
     private List<BattleState> postBattleStates;
     private List<Move> moves;
@@ -58,7 +57,6 @@ public class BasePokemon extends Pokemon {
         this.SPCStage = 0;
         this.SPDStage = 0;
         this.critBonus = 1;
-        this.preBattleStates = new ArrayList<>();
         this.postBattleStates = new ArrayList<>();
         this.shouldSelectMove = true;
         this.moveGetter = FacadeFactory.getInstance(IChooseMove.class);
@@ -253,17 +251,11 @@ public class BasePokemon extends Pokemon {
     }
 
     public void attack(Pokemon toAttack) {
-        runPreBattleStates();
         attackState.execute(head, toAttack);
     }
 
     public String getName() {
         return name;
-    }
-
-    private void runPreBattleStates() {
-        for (BattleState preState : preBattleStates)
-            preState.execute(head);
     }
 
     public void runPostBattleStates() {
@@ -293,10 +285,6 @@ public class BasePokemon extends Pokemon {
 
     public void setShouldSelectMove(boolean shouldSelectMove) {
         this.shouldSelectMove = shouldSelectMove;
-    }
-
-    public List<BattleState> getPreBattleStates() {
-        return preBattleStates;
     }
 
     public List<BattleState> getPostBattleStates() {

@@ -1,7 +1,7 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.ParalyzedPokemon;
+import pokemons.pokemon_states.ParalyzedPokemon;
 import pokemons.Pokemon;
 import utils.RNG;
 

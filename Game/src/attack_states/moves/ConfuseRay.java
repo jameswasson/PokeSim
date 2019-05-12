@@ -1,7 +1,7 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.ConfusedPokemon;
+import pokemons.pokemon_states.ConfusedPokemon;
 import pokemons.Pokemon;
 
 public class ConfuseRay extends Move {

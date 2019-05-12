@@ -2,7 +2,7 @@ package attack_states.moves;
 
 import attack_states.Move;
 import pokemons.Pokemon;
-import pokemons.SleepingPokemon;
+import pokemons.pokemon_states.SleepingPokemon;
 
 public class Rest extends Move {
     @Override

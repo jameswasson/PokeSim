@@ -1,7 +1,7 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.FlinchedPokemon;
+import pokemons.pokemon_states.FlinchedPokemon;
 import pokemons.Pokemon;
 import utils.RNG;
 

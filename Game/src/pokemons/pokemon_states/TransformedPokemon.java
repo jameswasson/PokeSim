@@ -1,8 +1,10 @@
-package pokemons;
+package pokemons.pokemon_states;
 
 
 import attack_states.AttackState;
 import attack_states.Move;
+import pokemons.Pokemon;
+import pokemons.WrapperPokemon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +27,11 @@ public class TransformedPokemon extends WrapperPokemon {
         List<Move> ourNewMoves = new ArrayList<>();
         for (Move move : opponent.getMoves()) {
             Move newMove = Move.getMove(Move.getName(move.getClass()));
-            int pp = newMove.getPowerPoints();
-            newMove.setCurrentPowerPoints(Math.min(5, pp));
-            ourNewMoves.add(newMove);
+            if (newMove != null) {
+                int pp = newMove.getPowerPoints();
+                newMove.setCurrentPowerPoints(Math.min(5, pp));
+                ourNewMoves.add(newMove);
+            }
         }
         wrappedPokemon.setMoves(ourNewMoves);
 
