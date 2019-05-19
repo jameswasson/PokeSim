@@ -24,4 +24,3 @@ SkullBash -             2 turn move
 SkyAttack -             2 turn move
 HyperBeam -             2 turn move
 Dig -                   2 turn move + semi-invulnerable
-Fly -                   2 turn move + semi-invulnerable
