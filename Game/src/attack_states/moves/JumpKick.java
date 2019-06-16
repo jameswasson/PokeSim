@@ -8,6 +8,6 @@ public class JumpKick extends Move {
     public void onMiss(Pokemon ourselves) {
         super.onMiss(ourselves);
         ourselves.loseHP(ourselves.getBaseHP() / 2);
-        logger.println(ourselves.getName() + " is hit with recoil!");
+        logger.println(ourselves.getName() + " kept going and crashed!");
     }
 }
