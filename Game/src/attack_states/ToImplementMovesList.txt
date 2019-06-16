@@ -22,4 +22,3 @@ FireSpin -              Puts opponent in fire vortex
 SolarBeam -             2 turn move
 SkullBash -             2 turn move
 SkyAttack -             2 turn move
-HyperBeam -             2 turn move
