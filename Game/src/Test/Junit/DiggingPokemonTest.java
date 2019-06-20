@@ -4,6 +4,9 @@ import attack_states.moves.Dig;
 import battle_states.SemiInvulnerable;
 import org.junit.Before;
 import org.junit.Test;
+import pokemons.Pokedex;
+import pokemons.Pokemon;
+import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
 import static org.junit.Assert.*;
@@ -55,5 +58,44 @@ public class DiggingPokemonTest extends Move {
         RNG.setSeed(0);
         Magikarp.attack(Caterpie);
         assertNotEquals(Caterpie.getBaseHP(), Caterpie.getCurHP());
+    }
+    @Test
+    public void deductsOnePP(){
+        Pokemon Sandslash = Pokedex.getPokemon("Sandslash");
+        int startPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
+        Sandslash.selectMove(1);
+        Sandslash.attack(Magikarp);
+        Sandslash.runPostBattleStates();
+        Sandslash.selectMove();
+        Sandslash.attack(Magikarp);
+        int currentPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
+        assertEquals(startPP - 1, currentPP);
+    }
+    @Test
+    public void deductsZeroPPOnCancel(){
+        Pokemon Sandslash = Pokedex.getPokemon("Sandslash");
+        ConfusedPokemon.tryToConfuse(Sandslash);
+        int startPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
+        Sandslash.selectMove(1);
+        Sandslash.attack(Magikarp);
+        Sandslash.runPostBattleStates();
+        RNG.setSeed(0);
+        Sandslash.selectMove();
+        Sandslash.attack(Magikarp);
+        int currentPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
+        assertEquals(startPP, currentPP);
+    }
+    @Test
+    public void CanBeCanceled(){
+        Pokemon Sandslash = Pokedex.getPokemon("Sandslash");
+        ConfusedPokemon.tryToConfuse(Sandslash);
+        int startPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
+        Sandslash.selectMove(1);
+        Sandslash.attack(Magikarp);
+        Sandslash.runPostBattleStates();
+        RNG.setSeed(0);
+        Sandslash.selectMove();
+        Sandslash.attack(Magikarp);
+        assertFalse(SemiInvulnerable.isSemiInvulnerable(Sandslash));
     }
 }

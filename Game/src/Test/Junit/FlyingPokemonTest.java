@@ -4,6 +4,9 @@ import attack_states.moves.Fly;
 import attack_states.moves.Tackle;
 import battle_states.SemiInvulnerable;
 import org.junit.Test;
+import pokemons.Pokedex;
+import pokemons.Pokemon;
+import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
 import static org.junit.Assert.*;
@@ -54,5 +57,44 @@ public class FlyingPokemonTest extends Move {
         RNG.setSeed(0);
         Magikarp.attack(Caterpie);
         assertNotEquals(Caterpie.getBaseHP(), Caterpie.getCurHP());
+    }
+    @Test
+    public void deductsOnePP(){
+        Pokemon Dodrio = Pokedex.getPokemon("Dodrio");
+        int startPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
+        Dodrio.selectMove(1);
+        Dodrio.attack(Magikarp);
+        Dodrio.runPostBattleStates();
+        Dodrio.selectMove();
+        Dodrio.attack(Magikarp);
+        int currentPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
+        assertEquals(startPP - 1, currentPP);
+    }
+    @Test
+    public void deductsZeroPPOnCancel(){
+        Pokemon Dodrio = Pokedex.getPokemon("Dodrio");
+        ConfusedPokemon.tryToConfuse(Dodrio);
+        int startPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
+        Dodrio.selectMove(1);
+        Dodrio.attack(Magikarp);
+        Dodrio.runPostBattleStates();
+        RNG.setSeed(0);
+        Dodrio.selectMove();
+        Dodrio.attack(Magikarp);
+        int currentPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
+        assertEquals(startPP, currentPP);
+    }
+    @Test
+    public void CanBeCanceled(){
+        Pokemon Dodrio = Pokedex.getPokemon("Dodrio");
+        ConfusedPokemon.tryToConfuse(Dodrio);
+        int startPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
+        Dodrio.selectMove(1);
+        Dodrio.attack(Magikarp);
+        Dodrio.runPostBattleStates();
+        RNG.setSeed(0);
+        Dodrio.selectMove();
+        Dodrio.attack(Magikarp);
+        assertFalse(SemiInvulnerable.isSemiInvulnerable(Dodrio));
     }
 }

@@ -23,8 +23,10 @@ public class ConfusedPokemon extends WrapperPokemon {
             logger.println(getName() + " is confused!");
             if (RNG.random() < .5)
                 super.attack(toAttack);
-            else
+            else {
                 hurtSelf(getHead());
+                logger.println("It hurt itself in its confusion!");
+            }
         }
     }
     @Override
@@ -51,6 +53,10 @@ public class ConfusedPokemon extends WrapperPokemon {
             @Override
             protected void sayWeUsedMove(Pokemon us) {
                 //empty because we should not declare that we used a move
+            }
+            @Override
+            protected boolean canHitSemiInvulnerable(Pokemon opponent) {
+                return true;
             }
         }
         HurtConfusion hurtConfusion = new HurtConfusion();

@@ -69,7 +69,7 @@ public class Move extends AttackState {
             logger.println("But it missed!");
     }
 
-    private boolean canHitSemiInvulnerable(Pokemon opponent) {
+    protected boolean canHitSemiInvulnerable(Pokemon opponent) {
         return !SemiInvulnerable.isSemiInvulnerable(opponent);
     }
 
