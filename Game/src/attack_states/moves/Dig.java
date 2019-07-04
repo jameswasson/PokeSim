@@ -27,6 +27,6 @@ public class Dig extends Move {
     }
 
     public static boolean isDigging(Pokemon pokemon){
-        return WrapperPokemon.containsWrapped(pokemon, DiggingPokemon.class);
+        return pokemon.containsState(DiggingPokemon.class);
     }
 }

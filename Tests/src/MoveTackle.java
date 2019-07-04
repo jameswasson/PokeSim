@@ -1,8 +1,6 @@
-package Junit;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
-
-public class Tackle extends Move {
+public class MoveTackle extends MoveTest {
     @Test
     public void damageTest() {
         //general test, does Move.attack work?

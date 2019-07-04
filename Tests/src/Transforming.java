@@ -1,19 +1,17 @@
-package Junit;
-
 import attack_states.moves.Transform;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pokemons.Pokemon;
 import utils.RNG;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class Transforming extends Move {
+public class Transforming extends MoveTest {
+
     @Test
     public void transform() {
         Caterpie.selectMove(Transform.class);
         Caterpie.attack(Gengar);
-
         assertEquals(Caterpie.getType1(), Gengar.getType1());
         assertEquals(Caterpie.getType2(), Gengar.getType2());
         assertEquals(Caterpie.getBaseATK(), Gengar.getBaseATK());

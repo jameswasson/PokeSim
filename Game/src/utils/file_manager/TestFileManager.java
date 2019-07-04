@@ -4,6 +4,6 @@ public class TestFileManager extends AFileManager {
 
     @Override
     public String getPathExtension() {
-        return "";
+        return "../Game/";
     }
 }

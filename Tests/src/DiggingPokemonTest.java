@@ -1,19 +1,18 @@
-package Junit;
-
 import attack_states.moves.Dig;
+import attack_states.moves.Tackle;
 import battle_states.SemiInvulnerable;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
 import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class DiggingPokemonTest extends Move {
+public class DiggingPokemonTest extends MoveTest {
 
-    @Before
+    @BeforeEach
     public void selectStartingMove(){
         Caterpie.selectMove(Dig.class);
     }

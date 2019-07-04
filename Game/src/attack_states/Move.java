@@ -85,8 +85,8 @@ public class Move extends AttackState {
             return 1.0;//will always hit
         double moveAccuracy = getAccuracy(ourselves, opponent) / 100.0;
         double ourAccuracy = ourselves.getCurACC();
-        double theirAccuracy = opponent.getCurACC();
-        return moveAccuracy * ourAccuracy * theirAccuracy;
+        double theirEvasion = opponent.getCurEVA();
+        return moveAccuracy * ourAccuracy / theirEvasion;
     }
 
     private double getChanceOfCrit(Pokemon ourselves) {

@@ -38,14 +38,6 @@ public class FacadeFactory {
         return implMap;
     }
 
-    private static Map<Class<?>, Class<?>> testMakerClasses() {
-        Map<Class<?>, Class<?>> implMap = new HashMap<>();
-        implMap.put(IBattleLogger.class, TestMakerLog.class);
-        implMap.put(IChooseMove.class, UserChooseMove.class);
-        implMap.put(IFileManager.class, FileManager.class);
-        return implMap;
-    }
-
     /*
      * Returns the instance of specified interface
      * Creates the instance for each time this is first called
@@ -73,9 +65,5 @@ public class FacadeFactory {
 
     public static void createTestingEnvironment() {
         interfaceToClass = testClasses();
-    }
-
-    public static void createTestMakerEnvironment() {
-        interfaceToClass = testMakerClasses();
     }
 }

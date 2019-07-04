@@ -63,6 +63,11 @@ public class BasePokemon extends Pokemon {
     }
 
     @Override
+    public boolean containsState(Class<? extends WrapperPokemon> klass) {
+        return false;
+    }
+
+    @Override
     public Pokemon getWrappedPokemon() {
         return null;
     }

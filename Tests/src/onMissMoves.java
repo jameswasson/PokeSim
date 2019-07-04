@@ -1,14 +1,12 @@
-package Junit;
-
 import attack_states.moves.HighJumpKick;
 import attack_states.moves.JumpKick;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import utils.RNG;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class onMissMoves extends Move {
+public class onMissMoves extends MoveTest {
     Class move1 = HighJumpKick.class;
     Class move2 = JumpKick.class;
 

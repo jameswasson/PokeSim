@@ -1,12 +1,10 @@
-package Junit;
-
 import attack_states.moves.NightShade;
 import attack_states.moves.SeismicToss;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
 
-public class NightShade_SeismicToss extends Move {
+public class NightShade_SeismicToss extends MoveTest {
     @Test
     public void canHitNightShade() {
         Pokemon Gengar = Pokedex.getPokemon("Gengar");

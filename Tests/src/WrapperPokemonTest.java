@@ -1,12 +1,10 @@
-package Junit;
-
-import org.junit.Test;
-import pokemons.pokemon_states.FlinchedPokemon;
+import org.junit.jupiter.api.Test;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
 import pokemons.WrapperPokemon;
+import pokemons.pokemon_states.FlinchedPokemon;
 
-public class WrapperPokemonTest extends Move {
+public class WrapperPokemonTest extends MoveTest {
     @Test
     public void testWrap() {
         WrapperPokemon wrapperPokemon = new WrapperPokemon();

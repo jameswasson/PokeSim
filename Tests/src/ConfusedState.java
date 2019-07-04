@@ -1,11 +1,10 @@
-package Junit;
-
 import attack_states.moves.ConfuseRay;
-import org.junit.Test;
+import attack_states.moves.Tackle;
+import org.junit.jupiter.api.Test;
 import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
-public class Confusion extends Move {
+public class ConfusedState extends MoveTest {
     @Test
     public void allowAttack() {
         RNG.setSeed(1);

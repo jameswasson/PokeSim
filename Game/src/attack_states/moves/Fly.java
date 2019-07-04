@@ -28,6 +28,6 @@ public class Fly extends Move {
     }
 
     public static boolean isFlying(Pokemon pokemon){
-        return WrapperPokemon.containsWrapped(pokemon, FlyingPokemon.class);
+        return pokemon.containsState(FlyingPokemon.class);
     }
 }

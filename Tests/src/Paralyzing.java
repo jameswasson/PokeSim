@@ -1,15 +1,13 @@
-package Junit;
-
-import org.junit.Test;
-import pokemons.pokemon_states.ParalyzedPokemon;
+import org.junit.jupiter.api.Test;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
+import pokemons.pokemon_states.ParalyzedPokemon;
 import utils.RNG;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class Paralyzing extends Move {
+public class Paralyzing extends MoveTest {
     @Test
     public void canParalyze() {
         ParalyzedPokemon.tryToParalyze(Magikarp);

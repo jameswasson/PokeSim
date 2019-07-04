@@ -1,17 +1,15 @@
-package Junit;
-
 import attack_states.moves.Fly;
 import attack_states.moves.Tackle;
 import battle_states.SemiInvulnerable;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
 import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class FlyingPokemonTest extends Move {
+public class FlyingPokemonTest extends MoveTest {
     @Test
     public void noDamageFirstTurn(){
         Caterpie.selectMove(Fly.class);

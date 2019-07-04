@@ -15,6 +15,8 @@ public abstract class Pokemon {
     public Pokemon() {
     }
 
+    public abstract boolean containsState(Class<? extends WrapperPokemon> klass);
+
     public abstract Pokemon getHead();
 
     public abstract void setHead(Pokemon head);

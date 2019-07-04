@@ -20,6 +20,11 @@ public class WrapperPokemon extends Pokemon {
         wrappedPokemon.setHead(this);
     }
 
+    @Override
+    public boolean containsState(Class<? extends WrapperPokemon> klass) {
+        return containsWrapped(this, klass);
+    }
+
     public static void wrap(Pokemon toWrap, WrapperPokemon wrapper) {
         Pokemon inner = toWrap.getWrappedPokemon();
         wrapper.setWrappedPokemon(inner);

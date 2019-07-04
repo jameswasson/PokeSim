@@ -1,12 +1,9 @@
-package Junit;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pokemons.pokemon_states.SleepingPokemon;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class SleepingTests extends Move {
+public class SleepingTests extends MoveTest {
     @Test
     public void canAddSleep(){
         assertFalse(SleepingPokemon.isAsleep(Caterpie));

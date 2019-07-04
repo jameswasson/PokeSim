@@ -1,21 +1,20 @@
-package Junit;
-
+import attack_states.Move;
 import battle_field.IBattleLogger;
 import facade.FacadeFactory;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
 import utils.RNG;
 
-public class Move {
-    public IBattleLogger logger;
-    public Pokemon Caterpie;
-    public Pokemon Magikarp;
-    public Pokemon Gengar;
-    public attack_states.Move tackle;
+public class MoveTest {
+    IBattleLogger logger;
+    Pokemon Caterpie;
+    Pokemon Magikarp;
+    Pokemon Gengar;
+    Move tackle;
 
-    @Before
+    @BeforeEach
     public void prepareEnvironment() {
         FacadeFactory.createTestingEnvironment();
         logger = FacadeFactory.getInstance(IBattleLogger.class);
@@ -26,7 +25,7 @@ public class Move {
         tackle = new attack_states.moves.Tackle();
     }
 
-    @After
+    @AfterEach
     public void resetEnvironment() {
         logger.reset();
     }
