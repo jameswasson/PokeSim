@@ -36,7 +36,7 @@ public class FrozenPokemon extends WrapperPokemon {
     }
 
     public static boolean isFrozen(Pokemon pokemon) {
-        return WrapperPokemon.containsWrapped(pokemon, FrozenPokemon.class);
+        return pokemon.containsState(FrozenPokemon.class);
     }
 
     public static void removeFreeze(Pokemon pokemon) {

@@ -63,7 +63,7 @@ public class ConfusedPokemon extends WrapperPokemon {
         hurtConfusion.execute(pokemon, pokemon);
     }
     public static boolean isConfused(Pokemon pokemon){
-        return WrapperPokemon.containsWrapped(pokemon, ConfusedPokemon.class);
+        return pokemon.containsState(ConfusedPokemon.class);
     }
     public static void tryToConfuse(Pokemon pokemon) {
         if (isConfused(pokemon)) {

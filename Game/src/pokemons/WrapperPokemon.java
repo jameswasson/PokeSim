@@ -22,17 +22,14 @@ public class WrapperPokemon extends Pokemon {
 
     @Override
     public boolean containsState(Class<? extends WrapperPokemon> klass) {
-        return containsWrapped(this, klass);
+        return getWrapped(this, klass) != null;
+
     }
 
     public static void wrap(Pokemon toWrap, WrapperPokemon wrapper) {
         Pokemon inner = toWrap.getWrappedPokemon();
         wrapper.setWrappedPokemon(inner);
         toWrap.setWrappedPokemon(wrapper);
-    }
-
-    public static boolean containsWrapped(Pokemon wrappedPokemon, Class<? extends WrapperPokemon> wrapperExtension) {
-        return getWrapped(wrappedPokemon, wrapperExtension) != null;
     }
 
     public static WrapperPokemon getWrapped(Pokemon wrappedPokemon, Class<? extends WrapperPokemon> wrapperExtension) {

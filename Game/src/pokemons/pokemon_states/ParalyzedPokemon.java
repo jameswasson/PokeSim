@@ -15,7 +15,7 @@ public class ParalyzedPokemon extends WrapperPokemon {
     }
 
     public static boolean isParalyzed(Pokemon pokemon) {
-        return WrapperPokemon.containsWrapped(pokemon, ParalyzedPokemon.class);
+        return pokemon.containsState(ParalyzedPokemon.class);
     }
 
     public static void tryToParalyze(Pokemon pokemon) {

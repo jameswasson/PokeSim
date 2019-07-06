@@ -17,7 +17,7 @@ public class FlinchedPokemon extends WrapperPokemon {
     }
 
     public static boolean isFlinched(Pokemon pokemon) {
-        return WrapperPokemon.containsWrapped(pokemon, FlinchedPokemon.class);
+        return pokemon.containsState(FlinchedPokemon.class);
     }
 
     public static void makeFlinch(Pokemon pokemon) {

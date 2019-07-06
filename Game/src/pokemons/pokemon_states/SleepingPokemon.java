@@ -31,7 +31,7 @@ public class SleepingPokemon extends WrapperPokemon {
     }
 
     public static boolean isAsleep(Pokemon pokemon){
-        return WrapperPokemon.containsWrapped(pokemon, SleepingPokemon.class);
+        return pokemon.containsState(SleepingPokemon.class);
     }
 
     public static void tryToPutToSleep(Pokemon pokemon, int turnsAsleep){
