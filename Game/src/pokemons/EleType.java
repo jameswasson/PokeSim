@@ -20,92 +20,45 @@ public enum EleType {
     ROCK,
     GHOST;
 
+    static EleType[] typeEffectOrder() {
+        return new EleType[]
+                {NORMAL,FIGHTING,FLYING,POISON,GROUND,ROCK,BUG,GHOST,FIRE,WATER,GRASS,ELECTRIC,PSYCHIC,ICE,DRAGON};
+    }
+    //info pulled from https://bulbapedia.bulbagarden.net/wiki/Type/Type_chart#Generation_I
+    static double[][] typeEffect = {
+            { 1, 1, 1, 1, 1,.5, 1, 0, 1, 1, 1, 1, 1, 1, 1}, //normal
+            { 2, 1,.5,.5, 1, 2,.5, 0, 1, 1, 1, 1,.5, 2, 1}, //fighting
+            { 1, 2, 1, 1, 1,.5, 2, 1, 1, 1, 2,.5, 1, 1, 1}, //flying
+            { 1, 1, 1,.5,.5,.5, 2,.5, 1, 1, 2, 1, 1, 1, 1}, //poison
+            { 1, 1, 0, 2, 1, 2,.5, 1, 2, 1,.5, 2, 1, 1, 1}, //ground
+            { 1,.5, 2, 1,.5, 1, 2, 1,.5, 2, 1, 1, 1, 2, 1}, //rock
+            { 1,.5,.5, 2, 1, 1, 1,.5,.5, 1, 2, 1, 2, 1, 1}, //bug
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 0, 1, 1}, //ghost
+            { 1, 1, 1, 1, 1,.5, 2, 1,.5,.5, 2, 1, 1, 2,.5}, //fire
+            { 1, 1, 1, 1, 2, 2, 1, 1, 2,.5,.5, 1, 1, 1,.5}, //water
+            { 1, 1,.5,.5, 2, 2,.5, 1,.5, 2,.5, 1, 1, 1,.5}, //grass
+            { 1, 1, 2, 1, 0, 1, 1, 1, 1, 2,.5,.5, 1, 1,.5}, //electric
+            { 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1,.5, 1, 1}, //psychic
+            { 1, 1, 2, 1, 2, 1, 1, 1, 1,.5, 2, 1, 1,.5, 2}, //ice
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2} //dragon
+            };
+
+    public static double getTypeEffectiveness(EleType offence, EleType defence){
+        if (offence == NONE || defence == NONE || offence == null || defence == null)
+            return 1;
+        int offenceIndex;
+        int defenceIndex;
+        offenceIndex = Arrays.asList(typeEffectOrder()).indexOf(offence);
+        defenceIndex = Arrays.asList(typeEffectOrder()).indexOf(defence);
+        return typeEffect[offenceIndex][defenceIndex];
+    }
+
     public static EleType enumOf(String s) {
-        if (s.equals(""))
-            return EleType.NONE;
-        return EleType.valueOf(s);
+        if (s.isBlank())
+            return NONE;
+        return valueOf(s);
     }
-
-    public static boolean hasResistanceAgainst(EleType offence, EleType defence) {
-        if (defence == EleType.DRAGON)
-            return Arrays.asList(EleType.FIRE, EleType.WATER, EleType.ELECTRIC, EleType.GRASS).contains(offence);
-        if (defence == EleType.GHOST)
-            return Arrays.asList(EleType.POISON, EleType.BUG).contains(offence);
-        if (defence == EleType.ROCK)
-            return Arrays.asList(EleType.NORMAL, EleType.FIRE, EleType.POISON, EleType.FLYING).contains(offence);
-        if (defence == EleType.BUG)
-            return Arrays.asList(EleType.GRASS, EleType.FIGHTING, EleType.GROUND).contains(offence);
-        if (defence == EleType.PSYCHIC)
-            return Arrays.asList(EleType.FIGHTING, EleType.PSYCHIC).contains(offence);
-        if (defence == EleType.FLYING)
-            return Arrays.asList(EleType.GRASS, EleType.FIGHTING, EleType.BUG).contains(offence);
-        if (defence == EleType.GROUND)
-            return Arrays.asList(EleType.POISON, EleType.ROCK).contains(offence);
-        if (defence == EleType.POISON)
-            return Arrays.asList(EleType.FIGHTING, EleType.GRASS, EleType.POISON).contains(offence);
-        if (defence == EleType.FIGHTING)
-            return Arrays.asList(EleType.BUG, EleType.ROCK).contains(offence);
-        if (defence == EleType.ICE)
-            return offence == EleType.ICE;
-        if (defence == EleType.GRASS)
-            return Arrays.asList(EleType.WATER, EleType.GRASS, EleType.ELECTRIC, EleType.GROUND).contains(offence);
-        if (defence == EleType.ELECTRIC)
-            return Arrays.asList(EleType.ELECTRIC, EleType.FLYING).contains(offence);
-        if (defence == EleType.WATER)
-            return Arrays.asList(EleType.WATER, EleType.FIRE, EleType.ICE).contains(offence);
-        if (defence == EleType.FIRE)
-            return Arrays.asList(EleType.GRASS, EleType.FIRE, EleType.BUG).contains(offence);
-        return false;
-    }
-
-    public static boolean isWeakAgainst(EleType offence, EleType defence) {
-        if (defence == EleType.NORMAL)
-            return offence == EleType.FIGHTING;
-        if (defence == EleType.ELECTRIC)
-            return offence == EleType.GROUND;
-        if (defence == EleType.PSYCHIC)
-            return offence == EleType.BUG;
-        if (defence == EleType.GHOST)
-            return offence == EleType.GHOST;
-        if (defence == EleType.FIRE)
-            return Arrays.asList(EleType.WATER, EleType.GROUND, EleType.ROCK).contains(offence);
-        if (defence == EleType.WATER)
-            return Arrays.asList(EleType.ELECTRIC, EleType.GRASS).contains(offence);
-        if (defence == EleType.GRASS)
-            return Arrays.asList(EleType.FIRE, EleType.ICE, EleType.POISON, EleType.FLYING, EleType.BUG).contains(offence);
-        if (defence == EleType.ICE)
-            return Arrays.asList(EleType.FIRE, EleType.FIGHTING, EleType.ROCK).contains(offence);
-        if (defence == EleType.FIGHTING)
-            return Arrays.asList(EleType.FLYING, EleType.PSYCHIC).contains(offence);
-        if (defence == EleType.POISON)
-            return Arrays.asList(EleType.GROUND, EleType.PSYCHIC, EleType.BUG).contains(offence);
-        if (defence == EleType.GROUND)
-            return Arrays.asList(EleType.WATER, EleType.GRASS, EleType.ICE).contains(offence);
-        if (defence == EleType.FLYING)
-            return Arrays.asList(EleType.ELECTRIC, EleType.ICE, EleType.ROCK).contains(offence);
-        if (defence == EleType.BUG)
-            return Arrays.asList(EleType.FIRE, EleType.POISON, EleType.FLYING, EleType.ROCK).contains(offence);
-        if (defence == EleType.ROCK)
-            return Arrays.asList(EleType.WATER, EleType.GRASS, EleType.FIGHTING, EleType.GROUND).contains(offence);
-        if (defence == EleType.DRAGON)
-            return Arrays.asList(EleType.ICE, EleType.DRAGON).contains(offence);
-        return false;
-    }
-
     public static boolean hasNoEffect(EleType offence, EleType defence) {
-        if (offence == EleType.NORMAL && defence == EleType.GHOST)
-            return true;
-        else if (offence == EleType.ELECTRIC && defence == EleType.GROUND)
-            return true;
-        else if (offence == EleType.GROUND && defence == EleType.FLYING)
-            return true;
-        else if (offence == EleType.GHOST && defence == EleType.NORMAL)
-            return true;
-        else if (offence == EleType.GHOST && defence == EleType.PSYCHIC)
-            return true;
-        else if (offence == EleType.FIGHTING && defence == EleType.GHOST)
-            return true;
-        else
-            return false;
+            return getTypeEffectiveness(offence, defence) == 0;
     }
 }

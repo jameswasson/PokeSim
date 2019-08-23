@@ -1,4 +1,8 @@
 import org.junit.jupiter.api.Test;
+import pokemons.EleType;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 public class MoveTackle extends MoveTest {
     @Test
@@ -12,6 +16,15 @@ public class MoveTackle extends MoveTest {
         int magikarpHealthLoss = Magikarp.getBaseHP() - Magikarp.getCurHP();
         assert (caterpieHealthLoss == 21);
         assert (magikarpHealthLoss == 24);
+    }
+
+    @Test
+    public void normalCannotHitGhostTest(){
+        EleType GhostType = EleType.GHOST;
+        EleType AnyType = EleType.NONE;
+        when(CaterpieMock.getType1()).thenReturn(GhostType);
+        when(CaterpieMock.getType2()).thenReturn(AnyType);
+        assertTrue(tackle.noEffect(CaterpieMock));
     }
 
     @Test

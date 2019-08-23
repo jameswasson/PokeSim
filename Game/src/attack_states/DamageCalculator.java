@@ -70,16 +70,7 @@ class DamageCalculator {
     }
 
     private static double getType(AttackState move, Pokemon opponent) {
-        double attackBonus = 1;
-        if (EleType.isWeakAgainst(move.getEleType(), opponent.getType1()))
-            attackBonus *= 2;
-        if (EleType.isWeakAgainst(move.getEleType(), opponent.getType2()))
-            attackBonus *= 2;
-        if (EleType.hasResistanceAgainst(move.getEleType(), opponent.getType1()))
-            attackBonus /= 2;
-        if (EleType.hasResistanceAgainst(move.getEleType(), opponent.getType2()))
-            attackBonus /= 2;
-
+        double attackBonus = EleType.getTypeEffectiveness(move.getEleType(), opponent.getType1()) * EleType.getTypeEffectiveness(move.getEleType(), opponent.getType2());
         move.setCriticalEffect(attackBonus);
         return attackBonus;
     }

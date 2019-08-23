@@ -11,7 +11,7 @@ public class NightShade extends Move {
     }
 
     @Override
-    protected boolean noEffect(EleType type1, EleType type2) {
+    public boolean noEffect(Pokemon opponent) {
         return false;
     }
 }

@@ -47,7 +47,7 @@ public class Move extends AttackState {
     public void execute(Pokemon ourselves, Pokemon opponent) {
         sayWeUsedMove(ourselves);
         currentPowerPoints--;
-        if (noEffect(opponent.getType1(), opponent.getType2()))
+        if (noEffect(opponent))
             logger.println("But it had no effect on " + opponent.getName() + "!");
         else if (willMiss(ourselves, opponent)) {
             onMiss(ourselves);
@@ -94,7 +94,9 @@ public class Move extends AttackState {
         return (baseSpeed + 76) / 1024;
     }
 
-    protected boolean noEffect(EleType type1, EleType type2) {
+    public boolean noEffect(Pokemon opponent) {
+        EleType type1 = opponent.getType1();
+        EleType type2 = opponent.getType2();
         if (damageCategory == DamageCategory.STATUS)
             return false; // can effect
         return EleType.hasNoEffect(getEleType(), type1) || EleType.hasNoEffect(getEleType(), type2);

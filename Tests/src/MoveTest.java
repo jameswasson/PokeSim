@@ -5,10 +5,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import pokemons.Pokedex;
 import pokemons.Pokemon;
+import pokemons.WrapperPokemon;
 import utils.RNG;
+
+import static org.mockito.Mockito.mock;
 
 public class MoveTest {
     IBattleLogger logger;
+    Pokemon CaterpieMock;
+    Pokemon MagikarpMock;
     Pokemon Caterpie;
     Pokemon Magikarp;
     Pokemon Gengar;
@@ -19,6 +24,8 @@ public class MoveTest {
         FacadeFactory.createTestingEnvironment();
         logger = FacadeFactory.getInstance(IBattleLogger.class);
         RNG.setSeed(0);
+        CaterpieMock = mock(Pokemon.class);
+        MagikarpMock = mock(Pokemon.class);
         Caterpie = Pokedex.getPokemon("Caterpie");
         Magikarp = Pokedex.getPokemon("Magikarp");
         Gengar = Pokedex.getPokemon("Gengar");
