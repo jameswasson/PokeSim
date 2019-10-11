@@ -8,93 +8,105 @@ import pokemons.Pokemon;
 import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.verify;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class DiggingPokemonTest extends MoveTest {
 
     @BeforeEach
-    public void selectStartingMove(){
+    public void selectStartingMove() {
         Caterpie.selectMove(Dig.class);
+        MoveTest.customMoveMiss(Caterpie.getSelectedMove(), false);
     }
 
     @Test
-    public void noDamageFirstTurn(){
-        Caterpie.attack(Magikarp);
-        assertEquals(Caterpie.getBaseHP(), Caterpie.getCurHP());
+    public void noDamageFirstTurn() {
+        Caterpie.attack(MagikarpMock);
+        verify(MagikarpMock, times(0)).loseHP(anyInt(), any());
     }
+
     @Test
-    public void damageSecondTurn(){
-        Caterpie.attack(Magikarp);
+    public void damageSecondTurn() {
+        Caterpie.attack(MagikarpMock);
         Caterpie.runPostBattleStates();
         Caterpie.selectMove();
-        RNG.setSeed(0);
-        Caterpie.attack(Magikarp);
-        assertNotEquals(Magikarp.getBaseHP(), Magikarp.getCurHP());
+        Caterpie.attack(MagikarpMock);
+        verify(MagikarpMock, times(1)).loseHP(anyInt(), any());
     }
+
     @Test
-    public void invulnerable(){
+    public void invulnerable() {
         assertFalse(Dig.isDigging((Caterpie)));
         assertFalse(SemiInvulnerable.isSemiInvulnerable(Caterpie));
-        Caterpie.attack(Magikarp);
-        assert(Dig.isDigging(Caterpie));
-        assert(SemiInvulnerable.isSemiInvulnerable(Caterpie));
+        Caterpie.attack(MagikarpMock);
+        assert (Dig.isDigging(Caterpie));
+        assert (SemiInvulnerable.isSemiInvulnerable(Caterpie));
     }
+
     @Test
-    public void noHurtDuringFly(){
+    public void noHurtDuringDig() {
         Caterpie.attack(Magikarp);
         Magikarp.selectMove(Tackle.class);
-        RNG.setSeed(0);
         Magikarp.attack(Caterpie);
         assertEquals(Caterpie.getBaseHP(), Caterpie.getCurHP());
     }
+
     @Test
-    public void canHurtAfterFly(){
-        Caterpie.attack(Magikarp);
+    public void canHurtAfterDig() {
+        Caterpie.attack(MagikarpMock);
         Caterpie.runPostBattleStates();
         Caterpie.selectMove();
-        Caterpie.attack(Magikarp);
-        Magikarp.selectMove(Tackle.class);
-        RNG.setSeed(0);
-        Magikarp.attack(Caterpie);
-        assertNotEquals(Caterpie.getBaseHP(), Caterpie.getCurHP());
+        Caterpie.attack(MagikarpMock);
+        assertFalse(SemiInvulnerable.isSemiInvulnerable(Caterpie));
     }
+
     @Test
-    public void deductsOnePP(){
+    public void deductsOnePP() {
+        RNG.setSeed(0);
         Pokemon Sandslash = Pokedex.getPokemon("Sandslash");
-        int startPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
         Sandslash.selectMove(1);
+        int startPP = Sandslash.getSelectedMove().getCurrentPowerPoints();
         Sandslash.attack(Magikarp);
         Sandslash.runPostBattleStates();
         Sandslash.selectMove();
         Sandslash.attack(Magikarp);
-        int currentPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
+        int currentPP = Sandslash.getSelectedMove().getCurrentPowerPoints();
         assertEquals(startPP - 1, currentPP);
     }
+
     @Test
-    public void deductsZeroPPOnCancel(){
+    public void deductsZeroPPOnCancel() {
+        RNG.setSeed(0);
         Pokemon Sandslash = Pokedex.getPokemon("Sandslash");
         ConfusedPokemon.tryToConfuse(Sandslash);
-        int startPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
         Sandslash.selectMove(1);
+        int startPP = Sandslash.getSelectedMove().getCurrentPowerPoints();
         Sandslash.attack(Magikarp);
         Sandslash.runPostBattleStates();
         RNG.setSeed(0);
         Sandslash.selectMove();
         Sandslash.attack(Magikarp);
-        int currentPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
+        int currentPP = Sandslash.getSelectedMove().getCurrentPowerPoints();
         assertEquals(startPP, currentPP);
     }
+
     @Test
-    public void CanBeCanceled(){
+    public void CanBeCanceled() {
+        RNG.setSeed(0);
         Pokemon Sandslash = Pokedex.getPokemon("Sandslash");
         ConfusedPokemon.tryToConfuse(Sandslash);
         int startPP = Sandslash.getMoves().get(1).getCurrentPowerPoints();
         Sandslash.selectMove(1);
-        Sandslash.attack(Magikarp);
+        Sandslash.attack(MagikarpMock);
         Sandslash.runPostBattleStates();
         RNG.setSeed(0);
         Sandslash.selectMove();
-        Sandslash.attack(Magikarp);
+        Sandslash.attack(MagikarpMock);
         assertFalse(SemiInvulnerable.isSemiInvulnerable(Sandslash));
+        verify(MagikarpMock, times(0)).loseHP(anyInt(), any());
     }
 }

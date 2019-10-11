@@ -1,8 +1,8 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.pokemon_states.FlinchedPokemon;
 import pokemons.Pokemon;
+import pokemons.pokemon_states.FlinchedPokemon;
 import utils.RNG;
 
 public class Stomp extends Move {

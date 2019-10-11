@@ -1,7 +1,6 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.Pokedex;
 import pokemons.Pokemon;
 import pokemons.WrapperPokemon;
 

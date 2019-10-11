@@ -13,8 +13,7 @@ public class Fly extends Move {
             logger.println(ourselves.getName() + " flew up high!");
             WrapperPokemon.wrap(ourselves, new FlyingPokemon());
             ourselves.setShouldSelectMove(false);
-        }
-        else
+        } else
             super.execute(ourselves, opponent);
     }
 
@@ -27,7 +26,7 @@ public class Fly extends Move {
         }
     }
 
-    public static boolean isFlying(Pokemon pokemon){
+    public static boolean isFlying(Pokemon pokemon) {
         return pokemon.containsState(FlyingPokemon.class);
     }
 }

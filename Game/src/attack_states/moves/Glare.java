@@ -1,8 +1,8 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.pokemon_states.ParalyzedPokemon;
 import pokemons.Pokemon;
+import pokemons.pokemon_states.ParalyzedPokemon;
 
 public class Glare extends Move {
     @Override

@@ -48,8 +48,8 @@ public class Metronome extends Move {
 
     @Override
     public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
-        ourselves.setAttackState(getRandomMove());
-        ourselves.attack(opponent);
+        ourselves.selectMove(getRandomMove());
+        ourselves.attack(opponent);//todo check if we should use the base pokemon or not?
     }
 
     @Override

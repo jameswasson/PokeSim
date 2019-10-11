@@ -4,7 +4,6 @@ package facade;
 import battle_field.BattleLog;
 import battle_field.IBattleLogger;
 import battle_field.TestLog;
-import battle_field.TestMakerLog;
 import utils.file_manager.FileManager;
 import utils.file_manager.IFileManager;
 import utils.file_manager.TestFileManager;

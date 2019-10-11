@@ -15,7 +15,7 @@ public class BasePokemon extends Pokemon {
     private Pokemon head;
     private IChooseMove moveGetter;
     private boolean shouldSelectMove;
-    private AttackState attackState;
+    private Move attackState;
     private List<BattleState> postBattleStates;
     private List<Move> moves;
 
@@ -240,19 +240,23 @@ public class BasePokemon extends Pokemon {
                 noPPMoves.add(i + 1);
         }
         int selection = moveGetter.getMove(moves.size(), noPPMoves) - 1;
-        setAttackState(moves.get(selection));
+        selectMove(moves.get(selection));
     }
 
     public void selectMove(int moveIndex) {
         if (!shouldSelectMove)
             return;
         if (moveIndex < moves.size()) {
-            setAttackState(moves.get(moveIndex));
+            selectMove(moves.get(moveIndex));
         }
     }
 
-    public void selectMove(Class<?> moveClass) {
+    public void selectMove(Class<? extends Move> moveClass) {
         attackState = Move.getMove(moveClass.getSimpleName());
+    }
+
+    public void selectMove(Move move) {
+        attackState = move;
     }
 
     public void attack(Pokemon toAttack) {
@@ -268,17 +272,13 @@ public class BasePokemon extends Pokemon {
             postState.execute(head);
     }
 
-    public AttackState getAttackState() {
+    public Move getSelectedMove() {
         return attackState;
     }
 
-    public void setAttackState(AttackState attackState) {
-        this.attackState = attackState;
-    }
-
-    public void setAttackState(Class<?> attackStateClass) {
+    public void setAttackState(Class<? extends Move> attackStateClass) {
         try {
-            attackState = (AttackState) attackStateClass.getDeclaredConstructor().newInstance();
+            attackState = attackStateClass.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }

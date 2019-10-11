@@ -53,8 +53,8 @@ public class BattleField {
     }
 
     private static boolean speedCompare(Pokemon pokemon1, Pokemon pokemon2) {
-        if (pokemon1.getAttackState().getSpeedPriority() != pokemon2.getAttackState().getSpeedPriority())
-            return pokemon1.getAttackState().getSpeedPriority() > pokemon2.getAttackState().getSpeedPriority();
+        if (pokemon1.getSelectedMove().getSpeedPriority() != pokemon2.getSelectedMove().getSpeedPriority())
+            return pokemon1.getSelectedMove().getSpeedPriority() > pokemon2.getSelectedMove().getSpeedPriority();
         return pokemon1.getCurSPD() > pokemon2.getCurSPD();
     }
 

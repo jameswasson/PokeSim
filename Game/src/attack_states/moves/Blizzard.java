@@ -1,8 +1,8 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.pokemon_states.FrozenPokemon;
 import pokemons.Pokemon;
+import pokemons.pokemon_states.FrozenPokemon;
 import utils.RNG;
 
 public class Blizzard extends Move {

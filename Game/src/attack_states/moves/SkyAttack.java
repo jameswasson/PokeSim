@@ -14,13 +14,11 @@ public class SkyAttack extends Move {
             logger.println(ourselves.getName() + " is glowing!");
             WrapperPokemon.wrap(ourselves, new ChargingSkyAttackPokemon());
             ourselves.setShouldSelectMove(false);
-        }
-        else
+        } else
             super.execute(ourselves, opponent);
     }
 
-    public class ChargingSkyAttackPokemon extends WrapperPokemon
-    {
+    public class ChargingSkyAttackPokemon extends WrapperPokemon {
         @Override
         public void attack(Pokemon toAttack) {
             super.attack(toAttack);

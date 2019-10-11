@@ -12,13 +12,11 @@ public class SolarBeam extends Move {
             logger.println(ourselves.getName() + " took in sunlight!");
             WrapperPokemon.wrap(ourselves, new ChargingSolarBeamPokemon());
             ourselves.setShouldSelectMove(false);
-        }
-        else
+        } else
             super.execute(ourselves, opponent);
     }
 
-    public class ChargingSolarBeamPokemon extends WrapperPokemon
-    {
+    public class ChargingSolarBeamPokemon extends WrapperPokemon {
         @Override
         public void attack(Pokemon toAttack) {
             super.attack(toAttack);

@@ -1,4 +1,3 @@
-import attack_states.Move;
 import attack_states.moves.NightShade;
 import attack_states.moves.SeismicToss;
 import org.junit.jupiter.api.Test;

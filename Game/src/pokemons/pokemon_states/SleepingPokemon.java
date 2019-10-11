@@ -24,22 +24,21 @@ public class SleepingPokemon extends WrapperPokemon {
             logger.println(getName() + " woke up!");
             removeSelf();
             super.attack(toAttack);
-        }
-        else{
+        } else {
             logger.println(getName() + " is asleep!");
         }
     }
 
-    public static boolean isAsleep(Pokemon pokemon){
+    public static boolean isAsleep(Pokemon pokemon) {
         return pokemon.containsState(SleepingPokemon.class);
     }
 
-    public static void tryToPutToSleep(Pokemon pokemon, int turnsAsleep){
+    public static void tryToPutToSleep(Pokemon pokemon, int turnsAsleep) {
         if (isAsleep(pokemon))
             logger.println(pokemon.getName() + " is already asleep!");
         else if (BattleState.isNonVolatile(pokemon))
             logger.println("But it failed!");
-        else{
+        else {
             logger.println(pokemon.getName() + " fell asleep!");
             WrapperPokemon.wrap(pokemon, new SleepingPokemon(turnsAsleep));
         }

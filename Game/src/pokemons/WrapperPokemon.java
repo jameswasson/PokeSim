@@ -218,8 +218,12 @@ public class WrapperPokemon extends Pokemon {
         wrappedPokemon.selectMove(moveIndex);
     }
 
-    public void selectMove(Class<?> moveClass) {
+    public void selectMove(Class<? extends Move> moveClass) {
         wrappedPokemon.selectMove(moveClass);
+    }
+
+    public void selectMove(Move move) {
+        wrappedPokemon.selectMove(move);
     }
 
     public void attack(Pokemon toAttack) {
@@ -234,16 +238,8 @@ public class WrapperPokemon extends Pokemon {
         wrappedPokemon.runPostBattleStates();
     }
 
-    public AttackState getAttackState() {
-        return wrappedPokemon.getAttackState();
-    }
-
-    public void setAttackState(Class<?> attackStateClass) {
-        wrappedPokemon.setAttackState(attackStateClass);
-    }
-
-    public void setAttackState(AttackState attackState) {
-        wrappedPokemon.setAttackState(attackState);
+    public Move getSelectedMove() {
+        return wrappedPokemon.getSelectedMove();
     }
 
     public void addPostBattleState(BattleState battleState) {

@@ -8,68 +8,85 @@ import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.verify;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class FlyingPokemonTest extends MoveTest {
     @Test
-    public void noDamageFirstTurn(){
+    public void noDamageFirstTurn() {
         Caterpie.selectMove(Fly.class);
-        Caterpie.attack(Magikarp);
-        assertEquals(Caterpie.getBaseHP(), Caterpie.getCurHP());
+        MoveTest.customMoveMiss(Caterpie.getSelectedMove(), false);
+        Caterpie.attack(MagikarpMock);
+        verify(MagikarpMock, times(0)).loseHP(anyInt(), any());
     }
+
     @Test
-    public void damageSecondTurn(){
+    public void damageSecondTurn() {
         Caterpie.selectMove(Fly.class);
-        Caterpie.attack(Magikarp);
+        MoveTest.customMoveMiss(Caterpie.getSelectedMove(), false);
+        Caterpie.attack(MagikarpMock);
         Caterpie.runPostBattleStates();
         Caterpie.selectMove();
-        RNG.setSeed(0);
-        Caterpie.attack(Magikarp);
-        assertNotEquals(Magikarp.getBaseHP(), Magikarp.getCurHP());
+        Caterpie.attack(MagikarpMock);
+        verify(MagikarpMock, times(1)).loseHP(anyInt(), any());
     }
+
     @Test
-    public void invulnerable(){
+    public void invulnerable() {
         Caterpie.selectMove(Fly.class);
+        MoveTest.customMoveMiss(Caterpie.getSelectedMove(), false);
         assertFalse(Fly.isFlying((Caterpie)));
         assertFalse(SemiInvulnerable.isSemiInvulnerable(Caterpie));
-        Caterpie.attack(Magikarp);
-        assert(Fly.isFlying(Caterpie));
-        assert(SemiInvulnerable.isSemiInvulnerable(Caterpie));
+        Caterpie.attack(MagikarpMock);
+        assert (Fly.isFlying(Caterpie));
+        assert (SemiInvulnerable.isSemiInvulnerable(Caterpie));
     }
+
     @Test
-    public void noHurtDuringFly(){
+    public void noHurtDuringFly() {
         Caterpie.selectMove(Fly.class);
+        MoveTest.customMoveMiss(Caterpie.getSelectedMove(), false);
         Caterpie.attack(Magikarp);
+
         Magikarp.selectMove(Tackle.class);
-        RNG.setSeed(0);
+        MoveTest.customMoveMiss(Magikarp.getSelectedMove(), false);
         Magikarp.attack(Caterpie);
-        assertEquals(Caterpie.getBaseHP(), Caterpie.getCurHP());
+        assertEquals(Caterpie.getCurHP(), Caterpie.getCurHP());
     }
+
     @Test
-    public void canHurtAfterFly(){
+    public void canHurtAfterFly() {
         Caterpie.selectMove(Fly.class);
+        MoveTest.customMoveMiss(Caterpie.getSelectedMove(), false);
         Caterpie.attack(Magikarp);
         Caterpie.runPostBattleStates();
         Caterpie.selectMove();
         Caterpie.attack(Magikarp);
         Magikarp.selectMove(Tackle.class);
-        RNG.setSeed(0);
+        MoveTest.customMoveMiss(Magikarp.getSelectedMove(), false);
         Magikarp.attack(Caterpie);
         assertNotEquals(Caterpie.getBaseHP(), Caterpie.getCurHP());
     }
+
     @Test
-    public void deductsOnePP(){
+    public void deductsOnePP() {
         Pokemon Dodrio = Pokedex.getPokemon("Dodrio");
-        int startPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
         Dodrio.selectMove(1);
+        MoveTest.customMoveMiss(Dodrio.getSelectedMove(), false);
+        int startPP = Dodrio.getSelectedMove().getCurrentPowerPoints();
         Dodrio.attack(Magikarp);
         Dodrio.runPostBattleStates();
         Dodrio.selectMove();
         Dodrio.attack(Magikarp);
-        int currentPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
+        int currentPP = Dodrio.getSelectedMove().getCurrentPowerPoints();
         assertEquals(startPP - 1, currentPP);
     }
+
     @Test
-    public void deductsZeroPPOnCancel(){
+    public void deductsZeroPPOnCancel() {
+        RNG.setSeed(0);
         Pokemon Dodrio = Pokedex.getPokemon("Dodrio");
         ConfusedPokemon.tryToConfuse(Dodrio);
         int startPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
@@ -82,8 +99,10 @@ public class FlyingPokemonTest extends MoveTest {
         int currentPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();
         assertEquals(startPP, currentPP);
     }
+
     @Test
-    public void CanBeCanceled(){
+    public void CanBeCanceled() {
+        RNG.setSeed(0);
         Pokemon Dodrio = Pokedex.getPokemon("Dodrio");
         ConfusedPokemon.tryToConfuse(Dodrio);
         int startPP = Dodrio.getMoves().get(1).getCurrentPowerPoints();

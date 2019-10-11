@@ -12,8 +12,7 @@ public class Dig extends Move {
             logger.println(ourselves.getName() + " burrowed its way under the ground!");
             WrapperPokemon.wrap(ourselves, new DiggingPokemon());
             ourselves.setShouldSelectMove(false);
-        }
-        else
+        } else
             super.execute(ourselves, opponent);
     }
 
@@ -26,7 +25,7 @@ public class Dig extends Move {
         }
     }
 
-    public static boolean isDigging(Pokemon pokemon){
+    public static boolean isDigging(Pokemon pokemon) {
         return pokemon.containsState(DiggingPokemon.class);
     }
 }

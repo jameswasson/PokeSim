@@ -1,8 +1,8 @@
 package attack_states.moves;
 
 import attack_states.Move;
-import pokemons.pokemon_states.ConfusedPokemon;
 import pokemons.Pokemon;
+import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
 public class Confusion extends Move {

@@ -45,17 +45,15 @@ public abstract class Pokemon {
 
     public abstract void selectMove(int moveIndex);
 
-    public abstract void selectMove(Class<?> moveClass);
+    public abstract void selectMove(Class<? extends Move> moveClass);
+
+    public abstract void selectMove(Move move);
 
     public abstract void attack(Pokemon toAttack);
 
     public abstract void runPostBattleStates();
 
-    public abstract AttackState getAttackState();
-
-    public abstract void setAttackState(Class<?> attackStateClass);
-
-    public abstract void setAttackState(AttackState attackState);
+    public abstract Move getSelectedMove();
 
     public abstract void addPostBattleState(BattleState battleState);
 

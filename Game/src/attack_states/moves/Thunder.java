@@ -2,8 +2,8 @@ package attack_states.moves;
 
 import attack_states.Move;
 import pokemons.EleType;
-import pokemons.pokemon_states.ParalyzedPokemon;
 import pokemons.Pokemon;
+import pokemons.pokemon_states.ParalyzedPokemon;
 
 public class Thunder extends Move {
     @Override

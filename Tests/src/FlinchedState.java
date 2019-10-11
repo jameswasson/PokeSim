@@ -2,8 +2,11 @@ import attack_states.moves.Tackle;
 import org.junit.jupiter.api.Test;
 import pokemons.pokemon_states.FlinchedPokemon;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.verify;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class FlinchedState extends MoveTest {
     @Test
@@ -25,15 +28,15 @@ public class FlinchedState extends MoveTest {
         FlinchedPokemon.makeFlinch(Caterpie);
         Caterpie.attack(Magikarp);
         Caterpie.runPostBattleStates();
-        Caterpie.selectMove(Tackle.class);
         assert (!FlinchedPokemon.isFlinched(Caterpie));
     }
 
     @Test
     public void flinchPreventsAttack() {
         Caterpie.selectMove(Tackle.class);
+        MoveTest.customMoveMiss(Caterpie.getSelectedMove(), false);
         FlinchedPokemon.makeFlinch(Caterpie);
-        Caterpie.attack(Magikarp);
-        assertEquals(Magikarp.getCurHP(), Magikarp.getBaseHP());
+        Caterpie.attack(MagikarpMock);
+        verify(MagikarpMock, times(0)).loseHP(anyInt(), any());
     }
 }

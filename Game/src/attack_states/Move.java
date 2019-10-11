@@ -5,7 +5,6 @@ import battle_states.SemiInvulnerable;
 import pokemons.EleType;
 import pokemons.Movedex;
 import pokemons.Pokemon;
-import utils.RNG;
 
 import java.util.List;
 
@@ -19,6 +18,7 @@ public class Move extends AttackState {
     protected int baseAccuracy;
     private boolean wasCritical;
     private double criticalEffect;
+    private MoveRNG moveRNG;
 
     public Move() {
         criticalEffect = 1;
@@ -31,11 +31,15 @@ public class Move extends AttackState {
         currentPowerPoints = powerPoints;
         basePower = Integer.valueOf(allInfo.get(5));
         baseAccuracy = Integer.valueOf(allInfo.get(6));
+        moveRNG = new MoveRNG();
     }
 
     //returns new instance from move by name
     public static Move getMove(String s) {
-        Class<? extends Move> classOfMove = getClass(s);
+        return Move.getMove(getClass(s));
+    }
+
+    public static Move getMove(Class<? extends Move> classOfMove) {
         try {
             return classOfMove.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
@@ -69,15 +73,11 @@ public class Move extends AttackState {
             logger.println("But it missed!");
     }
 
-    protected boolean canHitSemiInvulnerable(Pokemon opponent) {
-        return !SemiInvulnerable.isSemiInvulnerable(opponent);
-    }
-
-    private boolean willMiss(Pokemon ourselves, Pokemon opponent) {
-        if (!canHitSemiInvulnerable(opponent))
+    protected boolean willMiss(Pokemon ourselves, Pokemon opponent) {
+        if (SemiInvulnerable.isSemiInvulnerable(opponent))
             return true;
-        double getHitChance = getChanceOfHitting(ourselves, opponent);
-        return RNG.random() > getHitChance;
+        double hitChance = getChanceOfHitting(ourselves, opponent);
+        return moveRNG.moveWillMiss(hitChance);
     }
 
     private double getChanceOfHitting(Pokemon ourselves, Pokemon opponent) {
@@ -152,7 +152,7 @@ public class Move extends AttackState {
         double chance = getChanceOfCrit(pokemon);
         chance *= critBonus();
         chance *= pokemon.getCritBonus();
-        wasCritical = RNG.random() < chance;
+        wasCritical = moveRNG.moveWillCrit(chance);
         return wasCritical;
     }
 
@@ -186,5 +186,9 @@ public class Move extends AttackState {
 
     public String getDisplayText() {
         return AttackState.getName(getClass()) + " (" + getCurrentPowerPoints() + "/" + getPowerPoints() + ")";
+    }
+
+    public void setMoveRNG(MoveRNG moveRNG) {
+        this.moveRNG = moveRNG;
     }
 }

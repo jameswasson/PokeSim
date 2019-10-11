@@ -9,17 +9,18 @@ import utils.RNG;
 
 public class ConfusedPokemon extends WrapperPokemon {
     private int turnsTillNotConfused;
-    private ConfusedPokemon(){
+
+    private ConfusedPokemon() {
         turnsTillNotConfused = RNG.randomInt(1, 3);
     }
+
     @Override
     public void attack(Pokemon toAttack) {
         if (turnsTillNotConfused <= 0) {
             logger.println(getName() + " snapped out of confusion!");
             removeSelf();
             super.attack(toAttack);
-        }
-        else{
+        } else {
             logger.println(getName() + " is confused!");
             if (RNG.random() < .5)
                 super.attack(toAttack);
@@ -29,11 +30,13 @@ public class ConfusedPokemon extends WrapperPokemon {
             }
         }
     }
+
     @Override
     public void runPostBattleStates() {
         turnsTillNotConfused--;
         super.runPostBattleStates();
     }
+
     private static void hurtSelf(Pokemon pokemon) {
         //attack self with a typeless 40 damage hit with no chance of crit.
         class HurtConfusion extends Move {
@@ -54,17 +57,20 @@ public class ConfusedPokemon extends WrapperPokemon {
             protected void sayWeUsedMove(Pokemon us) {
                 //empty because we should not declare that we used a move
             }
+
             @Override
-            protected boolean canHitSemiInvulnerable(Pokemon opponent) {
-                return true;
+            protected boolean willMiss(Pokemon ourselves, Pokemon opponent) {
+                return false;
             }
         }
         HurtConfusion hurtConfusion = new HurtConfusion();
         hurtConfusion.execute(pokemon, pokemon);
     }
-    public static boolean isConfused(Pokemon pokemon){
+
+    public static boolean isConfused(Pokemon pokemon) {
         return pokemon.containsState(ConfusedPokemon.class);
     }
+
     public static void tryToConfuse(Pokemon pokemon) {
         if (isConfused(pokemon)) {
             logger.println(pokemon.getName() + " is already confused!");

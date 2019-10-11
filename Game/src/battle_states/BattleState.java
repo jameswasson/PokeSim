@@ -5,11 +5,9 @@ import battle_states.post.BadPoison;
 import battle_states.post.Burn;
 import battle_states.post.Poison;
 import facade.FacadeFactory;
-import pokemons.pokemon_states.ParalyzedPokemon;
 import pokemons.Pokemon;
+import pokemons.pokemon_states.ParalyzedPokemon;
 import pokemons.pokemon_states.SleepingPokemon;
-
-import java.util.List;
 
 public abstract class BattleState {
 

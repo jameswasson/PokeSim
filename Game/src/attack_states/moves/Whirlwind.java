@@ -5,8 +5,8 @@ import pokemons.Pokemon;
 
 public class Whirlwind extends Move {
     @Override
-    public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
-        logger.println("But it failed!");
+    protected boolean willMiss(Pokemon ourselves, Pokemon opponent) {
+        return true;
         //This move always fails, ha
     }
 }

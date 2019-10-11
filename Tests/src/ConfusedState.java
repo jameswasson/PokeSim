@@ -1,34 +1,33 @@
+import attack_states.Move;
 import attack_states.moves.ConfuseRay;
-import attack_states.moves.Tackle;
 import org.junit.jupiter.api.Test;
-import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
+
 public class ConfusedState extends MoveTest {
+
+    private Move mockedMove;
+
     @Test
     public void allowAttack() {
         RNG.setSeed(1);
         attack();
-        assert (Caterpie.getBaseHP() - Caterpie.getCurHP() != 0);
+        verify(mockedMove, times(1)).execute(Magikarp, Caterpie);
     }
 
     @Test
     public void preventAttack() {
+        RNG.setSeed(0);
         attack();
-        assert (Caterpie.getBaseHP() - Caterpie.getCurHP() == 0);
-    }
-
-    @Test
-    public void isConfusedWorks() {
-        attack();
-        assert (ConfusedPokemon.isConfused(Magikarp));
-        assert (!ConfusedPokemon.isConfused(Caterpie));
-        Magikarp.selectMove(Tackle.class);
-        assert (ConfusedPokemon.isConfused(Magikarp));
+        verify(mockedMove, times(0)).execute(Magikarp, Caterpie);
     }
 
     public void attack() {
-        Magikarp.selectMove(Tackle.class);
+        mockedMove = mock(Move.class);
+        Magikarp.selectMove(mockedMove);
         Caterpie.selectMove(ConfuseRay.class);
         Caterpie.attack(Magikarp);
         Magikarp.attack(Caterpie);
