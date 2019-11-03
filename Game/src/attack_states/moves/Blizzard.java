@@ -9,7 +9,7 @@ public class Blizzard extends Move {
     @Override
     public void attack(Pokemon ourselves, Pokemon opponent, int damage) {
         super.attack(ourselves, opponent, damage);
-        if (RNG.random() < .1)
+        if (moveRNG.moveWillApplyStatus(.1))
             FrozenPokemon.tryToFreeze(opponent);
     }
 }

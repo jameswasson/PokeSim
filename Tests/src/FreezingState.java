@@ -1,3 +1,4 @@
+import attack_states.MoveRNG;
 import attack_states.moves.FireBlast;
 import attack_states.moves.FirePunch;
 import attack_states.moves.Flamethrower;
@@ -27,8 +28,10 @@ public class FreezingState extends MoveTest {
 
     @Test
     public void freezingMove() {
-        RNG.setSeed(11);
         Caterpie.selectMove(IceBeam.class);
+        MoveTest.customMoveMiss(Caterpie.getSelectedMove(), false);
+        MoveTest.customMoveStatus(Caterpie.getSelectedMove(), true);
+
         Caterpie.attack(Magikarp);
         assert (FrozenPokemon.isFrozen(Magikarp));
     }

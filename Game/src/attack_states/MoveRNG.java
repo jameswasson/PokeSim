@@ -10,4 +10,8 @@ public class MoveRNG {
     public boolean moveWillCrit(double critChance) {
         return RNG.random() < critChance;
     }
+
+    public boolean moveWillApplyStatus(double statusChance){
+        return RNG.random() < statusChance;
+    }
 }

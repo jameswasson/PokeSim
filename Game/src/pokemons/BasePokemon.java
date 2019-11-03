@@ -201,7 +201,7 @@ public class BasePokemon extends Pokemon {
     }
 
     public int getCurDEF(AttackState move) {
-        return (int) (getBaseDEF(move) * StageIncrementer.getStatMultiplier(SPCStage));
+        return (int) (getBaseDEF(move) * StageIncrementer.getStatMultiplier(DEFStage));
     }
 
     public int getCurSPC(AttackState move) {

@@ -1,6 +1,8 @@
 import attack_states.Move;
 import attack_states.moves.ConfuseRay;
+import attack_states.moves.Confusion;
 import org.junit.jupiter.api.Test;
+import pokemons.pokemon_states.ConfusedPokemon;
 import utils.RNG;
 
 import static org.mockito.Mockito.mock;
@@ -14,22 +16,22 @@ public class ConfusedState extends MoveTest {
     @Test
     public void allowAttack() {
         RNG.setSeed(1);
-        attack();
+        mockedMove = mock(Move.class);
+        Magikarp.selectMove(mockedMove);
+        ConfusedPokemon.tryToConfuse(Magikarp);
+
+        Magikarp.attack(Caterpie);
         verify(mockedMove, times(1)).execute(Magikarp, Caterpie);
     }
 
     @Test
     public void preventAttack() {
-        RNG.setSeed(0);
-        attack();
-        verify(mockedMove, times(0)).execute(Magikarp, Caterpie);
-    }
-
-    public void attack() {
+        RNG.setSeed(2000);
         mockedMove = mock(Move.class);
         Magikarp.selectMove(mockedMove);
-        Caterpie.selectMove(ConfuseRay.class);
-        Caterpie.attack(Magikarp);
+        ConfusedPokemon.tryToConfuse(Magikarp);
+
         Magikarp.attack(Caterpie);
+        verify(mockedMove, times(0)).execute(Magikarp, Caterpie);
     }
 }

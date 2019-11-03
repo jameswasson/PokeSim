@@ -18,7 +18,7 @@ public class Move extends AttackState {
     protected int baseAccuracy;
     private boolean wasCritical;
     private double criticalEffect;
-    private MoveRNG moveRNG;
+    protected MoveRNG moveRNG;
 
     public Move() {
         criticalEffect = 1;
@@ -190,5 +190,9 @@ public class Move extends AttackState {
 
     public void setMoveRNG(MoveRNG moveRNG) {
         this.moveRNG = moveRNG;
+    }
+
+    public MoveRNG getMoveRNG(){
+        return this.moveRNG;
     }
 }
