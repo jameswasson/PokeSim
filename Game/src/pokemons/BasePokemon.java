@@ -40,11 +40,11 @@ public class BasePokemon extends Pokemon {
         List<String> pokeInfo = Pokedex.getPokemonInfo(name);
         this.type1 = EleType.enumOf(pokeInfo.get(1));
         this.type2 = EleType.enumOf(pokeInfo.get(2));
-        this.HP = Integer.valueOf(pokeInfo.get(3));
-        this.ATK = Integer.valueOf(pokeInfo.get(4));
-        this.DEF = Integer.valueOf(pokeInfo.get(5));
-        this.SPC = Integer.valueOf(pokeInfo.get(6));
-        this.SPD = Integer.valueOf(pokeInfo.get(7));
+        this.HP = Integer.parseInt(pokeInfo.get(3));
+        this.ATK = Integer.parseInt(pokeInfo.get(4));
+        this.DEF = Integer.parseInt(pokeInfo.get(5));
+        this.SPC = Integer.parseInt(pokeInfo.get(6));
+        this.SPD = Integer.parseInt(pokeInfo.get(7));
         this.moves = new ArrayList<>();
         for (int i = 8; i < pokeInfo.size(); i++) {
             this.moves.add(Move.getMove(pokeInfo.get(i)));

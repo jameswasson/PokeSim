@@ -24,7 +24,7 @@ public abstract class AttackState {
 
     //reverse of above function, returns class associated with provided name
     public static Class<? extends Move> getClass(String s) {
-        Class<?> dummyClass = Swift.class;
+        Class<? extends Move> dummyClass = Swift.class;
         String baseDirectory = dummyClass.getName();
         String toRemoveName = dummyClass.getSimpleName();
         String nothing = "";
@@ -36,7 +36,7 @@ public abstract class AttackState {
         try {
             toReturn = Class.forName(classFullName).asSubclass(Move.class);
         } catch (Exception e) {
-            toReturn = null;
+            throw new RuntimeException("Could not find class with name " + classFullName);
         }
         return toReturn;
     }

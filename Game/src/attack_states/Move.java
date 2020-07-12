@@ -162,7 +162,7 @@ public class Move extends AttackState {
 
     private void dealDamage(Pokemon opponent, int damage) {
         if (damage == -1)
-            logger.println("-1 damage was dealt!");
+            throw new RuntimeException("-1 damage was dealt!");
         opponent.loseHP(damage, this);
         if (wasCritical())
             logger.println("Critical Hit!");
